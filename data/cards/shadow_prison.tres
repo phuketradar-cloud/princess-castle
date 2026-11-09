@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_aepja"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/shadow_prison.png" id="2_4i7yc"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_ffpx7"]
+
+[sub_resource type="Resource" id="Resource_y5p2y"]
+script = ExtResource("1_aepja")
+id = "shadow_prison"
+display_name = "Shadow Prison"
+damage_multiplier = 0.8
+status = 3
+status_turns = 3
+status_potency = 0.4
+
+[resource]
+script = ExtResource("3_ffpx7")
+id = "shadow_prison"
+display_name = "Shadow Prison"
+category = 1
+element = 2
+rarity = 1
+description = "โซ่เงาพันธนาการ (80%) ลดพลังโจมตีศัตรู 40% 3 เทิร์น"
+effect = SubResource("Resource_y5p2y")
+icon = ExtResource("2_4i7yc")

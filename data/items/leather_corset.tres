@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_yjj3a"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_c3c4g"]
+[ext_resource type="Texture2D" path="res://assets/art/items/leather_corset.png" id="3_o34if"]
+
+[sub_resource type="Resource" id="Resource_xhcr8"]
+script = ExtResource("2_c3c4g")
+max_hp = 15
+attack = 0
+defense = 3
+
+[resource]
+script = ExtResource("1_yjj3a")
+id = "leather_corset"
+display_name = "Leather Corset"
+slot = 3
+description = "เสื้อรัดหนังทนทาน"
+stats = SubResource("Resource_xhcr8")
+texture = ExtResource("3_o34if")

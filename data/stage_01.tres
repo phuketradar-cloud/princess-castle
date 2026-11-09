@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StageDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="1_v5g55"]
+[ext_resource type="Resource" path="res://data/encounters/01_slime_ambush.tres" id="2_dg7ku"]
+[ext_resource type="Resource" path="res://data/encounters/02_night_wings.tres" id="3_fjvgi"]
+[ext_resource type="Resource" path="res://data/encounters/03_goblin_patrol.tres" id="4_yrh2y"]
+[ext_resource type="Resource" path="res://data/encounters/04_crypt_guardians.tres" id="5_ho7cs"]
+[ext_resource type="Script" path="res://scripts/data/stage_definition.gd" id="6_wbrub"]
+
+[resource]
+script = ExtResource("6_wbrub")
+display_name = "Haunted Gate"
+description = "ประตูผีสิงหน้าปราสาท — มินิบอส Skeleton Knight"
+encounters = Array[ExtResource("1_v5g55")]([ExtResource("2_dg7ku"), ExtResource("3_fjvgi"), ExtResource("4_yrh2y"), ExtResource("5_ho7cs")])
+monster_hp_scale = 1.3
+monster_attack_scale = 1.3

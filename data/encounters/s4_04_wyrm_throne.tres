@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EncounterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="1_d30ra"]
+[ext_resource type="Resource" path="res://data/monsters/elder_wyrm.tres" id="2_qt131"]
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="3_71ugb"]
+
+[resource]
+script = ExtResource("3_71ugb")
+display_name = "Wyrm's Throne"
+monsters = Array[ExtResource("1_d30ra")]([ExtResource("2_qt131")])
+reward_tier = 2

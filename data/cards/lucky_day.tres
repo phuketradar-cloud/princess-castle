@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_wg1gh"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/lucky_day.png" id="2_ohhw5"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_31c2l"]
+
+[sub_resource type="Resource" id="Resource_1b3b4"]
+script = ExtResource("1_wg1gh")
+id = "lucky_day"
+display_name = "Lucky Day"
+target = 2
+damage_multiplier = 0.0
+status = 9
+status_turns = 3
+status_potency = 0.35
+
+[resource]
+script = ExtResource("3_31c2l")
+id = "lucky_day"
+display_name = "Lucky Day"
+category = 2
+element = 3
+rarity = 1
+description = "โอกาสคริติคอล +35% นาน 3 เทิร์น"
+effect = SubResource("Resource_1b3b4")
+icon = ExtResource("2_ohhw5")

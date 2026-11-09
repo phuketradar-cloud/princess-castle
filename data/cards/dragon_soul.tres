@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_ffb0x"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/dragons_wrath.png" id="2_mn2yi"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_1l6u8"]
+
+[sub_resource type="Resource" id="Resource_ikmgb"]
+script = ExtResource("1_ffb0x")
+id = "dragon_soul"
+display_name = "Dragon Soul"
+target = 1
+damage_multiplier = 1.6
+status = 10
+status_turns = 3
+status_potency = 0.05
+
+[resource]
+script = ExtResource("3_1l6u8")
+id = "dragon_soul"
+display_name = "Dragon Soul"
+category = 3
+element = 4
+rarity = 3
+description = "วิญญาณมังกร: ทุกตัว 160% + ติดไฟ (การ์ดเฉพาะ Dragon Princess)"
+mana_cost = 4
+effect = SubResource("Resource_ikmgb")
+icon = ExtResource("2_mn2yi")
+drop_weight = 0.0
+exclusive_to = "dragon_princess"

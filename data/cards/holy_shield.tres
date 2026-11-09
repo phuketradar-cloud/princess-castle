@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_yrvu3"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/holy_shield.png" id="2_4ejhd"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_eeu8x"]
+
+[sub_resource type="Resource" id="Resource_pcxc7"]
+script = ExtResource("1_yrvu3")
+id = "holy_shield"
+display_name = "Holy Shield"
+target = 2
+damage_multiplier = 0.0
+status = 8
+status_turns = 3
+status_potency = 2.5
+
+[resource]
+script = ExtResource("3_eeu8x")
+id = "holy_shield"
+display_name = "Holy Shield"
+category = 2
+element = 3
+rarity = 1
+description = "โล่ศักดิ์สิทธิ์ดูดซับดาเมจ = 250% ATK นาน 3 เทิร์น"
+mana_cost = 2
+effect = SubResource("Resource_pcxc7")
+icon = ExtResource("2_4ejhd")

@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="PrincessDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_sivq2"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_l41ta"]
+[ext_resource type="Texture2D" path="res://assets/art/princesses/sword_princess/body.png" id="3_al2fl"]
+[ext_resource type="Resource" path="res://data/cards/rose_oath.tres" id="4_npakj"]
+[ext_resource type="Script" path="res://scripts/data/princess_definition.gd" id="4_w6xp3"]
+[ext_resource type="Resource" path="res://data/furniture/rose_vanity.tres" id="5_fepuo"]
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="5_npakj"]
+[ext_resource type="Resource" path="res://data/items/rusty_sword.tres" id="6_fepuo"]
+
+[sub_resource type="Resource" id="Resource_sv2bj"]
+script = ExtResource("1_sivq2")
+
+[sub_resource type="Resource" id="Resource_je507"]
+script = ExtResource("1_sivq2")
+id = "crescent_slash"
+display_name = "Crescent Slash"
+target = 1
+damage_multiplier = 0.75
+cooldown = 3
+
+[sub_resource type="Resource" id="Resource_h2kue"]
+script = ExtResource("1_sivq2")
+id = "pommel_bash"
+display_name = "Pommel Bash"
+damage_multiplier = 0.6
+cooldown = 4
+status = 2
+status_turns = 1
+
+[sub_resource type="Resource" id="Resource_al2fl"]
+script = ExtResource("1_sivq2")
+id = "cross_slash"
+display_name = "Cross Slash"
+damage_multiplier = 1.2
+status = 3
+status_turns = 2
+status_potency = 0.2
+
+[sub_resource type="Resource" id="Resource_wt3lp"]
+script = ExtResource("2_l41ta")
+max_hp = 160
+attack = 20
+defense = 6
+critical = 0.1
+evasion = 0.05
+luck = 10.0
+
+[resource]
+script = ExtResource("4_w6xp3")
+title = "Blade of the Rose"
+description = "สายโจมตีกายภาพ สมดุล ตีเดี่ยวแรงและฟันกวาดทั้งแถว"
+base_stats = SubResource("Resource_wt3lp")
+abilities = Array[ExtResource("1_sivq2")]([SubResource("Resource_sv2bj"), SubResource("Resource_je507"), SubResource("Resource_h2kue")])
+starting_equipment = Array[ExtResource("5_npakj")]([ExtResource("6_fepuo")])
+face_dir = "res://assets/art/princesses/sword_princess"
+bond_card = ExtResource("4_npakj")
+bond_cosmetic = ExtResource("5_fepuo")
+growth_hp = 9.0
+growth_attack = 1.3
+growth_defense = 0.5
+assist = SubResource("Resource_al2fl")
+activity_weights = PackedFloat32Array(1, 1, 1, 0.5, 3, 0.7, 0.8)
+battle_texture = ExtResource("3_al2fl")

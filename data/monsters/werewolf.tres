@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_4qtf0"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_rioqf"]
+[ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_es42j"]
+[ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_qq546"]
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_7tnub"]
+[ext_resource type="Texture2D" path="res://assets/art/monster_werewolf.png" id="6_hywhj"]
+
+[sub_resource type="Resource" id="Resource_ica87"]
+script = ExtResource("1_4qtf0")
+id = "frenzy_bite"
+display_name = "Frenzy Bite"
+damage_multiplier = 0.65
+hit_count = 3
+cooldown = 3
+initial_cooldown = 1
+intent_tag = "FRENZY"
+
+[sub_resource type="Resource" id="Resource_bcuwo"]
+script = ExtResource("1_4qtf0")
+id = "claw"
+display_name = "Claw"
+intent_tag = "ATK"
+
+[sub_resource type="Resource" id="Resource_5crk4"]
+script = ExtResource("2_rioqf")
+max_hp = 200
+attack = 19
+defense = 8
+critical = 0.15
+evasion = 0.08
+
+[sub_resource type="Resource" id="Resource_5kg2t"]
+script = ExtResource("3_es42j")
+element = 2
+min_amount = 2
+max_amount = 3
+
+[sub_resource type="Resource" id="Resource_ss5kb"]
+script = ExtResource("3_es42j")
+material = "bone_fragment"
+max_amount = 2
+
+[sub_resource type="Resource" id="Resource_4qg52"]
+script = ExtResource("4_qq546")
+announce = "Werewolf: อาวู้ววว! จันทร์สีเลือด! (คลั่ง)"
+enrage = 0.45
+cleanse = true
+
+[resource]
+script = ExtResource("5_7tnub")
+id = "werewolf"
+display_name = "Werewolf"
+description = "มินิบอส: กัดรัว 3 ครั้ง — เลือดต่ำกว่าครึ่งจะคลั่งใต้แสงจันทร์ (โจมตีแรงขึ้นมาก)"
+base_stats = SubResource("Resource_5crk4")
+abilities = Array[ExtResource("1_4qtf0")]([SubResource("Resource_ica87"), SubResource("Resource_bcuwo")])
+is_boss = true
+control_resistance = 0.6
+phases = Array[ExtResource("4_qq546")]([SubResource("Resource_4qg52")])
+drops = Array[ExtResource("3_es42j")]([SubResource("Resource_5kg2t"), SubResource("Resource_ss5kb")])
+texture = ExtResource("6_hywhj")
+visual_scale = 1.05

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_k2i0g"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/sleep.png" id="2_7krte"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_6wrup"]
+
+[sub_resource type="Resource" id="Resource_tckyj"]
+script = ExtResource("1_k2i0g")
+id = "sleep"
+display_name = "Sleep"
+damage_multiplier = 0.0
+status = 6
+status_turns = 3
+
+[resource]
+script = ExtResource("3_6wrup")
+id = "sleep"
+display_name = "Sleep"
+category = 1
+element = 3
+description = "ทำให้ศัตรูหลับ 3 เทิร์น (ตื่นเมื่อโดนโจมตี)"
+effect = SubResource("Resource_tckyj")
+icon = ExtResource("2_7krte")

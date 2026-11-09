@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_blvou"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_f3eeg"]
+[ext_resource type="Texture2D" path="res://assets/art/items/rose_rapier.png" id="3_vaext"]
+
+[sub_resource type="Resource" id="Resource_csxma"]
+script = ExtResource("2_f3eeg")
+max_hp = 0
+attack = 6
+critical = 0.05
+
+[resource]
+script = ExtResource("1_blvou")
+id = "rose_rapier"
+display_name = "Rose Rapier"
+rarity = 1
+description = "เรเปียร์เบาหวิว แทงได้แม่นยำ"
+stats = SubResource("Resource_csxma")
+texture = ExtResource("3_vaext")

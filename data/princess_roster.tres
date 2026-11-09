@@ -1,0 +1,171 @@
+[gd_resource type="Resource" script_class="PrincessRoster" format=3]
+
+[ext_resource type="Resource" path="res://data/dialogue_db.tres" id="1_hni6u"]
+[ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="2_uw0ry"]
+[ext_resource type="Resource" path="res://data/furniture/simple_bed.tres" id="3_kketf"]
+[ext_resource type="Resource" path="res://data/furniture/old_desk.tres" id="4_ldorh"]
+[ext_resource type="Resource" path="res://data/furniture/wooden_dummy.tres" id="5_og0j2"]
+[ext_resource type="Resource" path="res://data/furniture/plain_chair.tres" id="6_3iaga"]
+[ext_resource type="Resource" path="res://data/furniture/lucky_bed.tres" id="7_xs64e"]
+[ext_resource type="Resource" path="res://data/furniture/dragon_bed.tres" id="8_bd1x8"]
+[ext_resource type="Resource" path="res://data/furniture/tea_set_table.tres" id="9_8nw0m"]
+[ext_resource type="Resource" path="res://data/furniture/frozen_library.tres" id="10_mjlen"]
+[ext_resource type="Resource" path="res://data/furniture/training_dummy.tres" id="11_3a2iv"]
+[ext_resource type="Resource" path="res://data/furniture/rose_training_hall.tres" id="12_6ooru"]
+[ext_resource type="Resource" path="res://data/furniture/shadow_mirror.tres" id="13_1xdni"]
+[ext_resource type="Resource" path="res://data/furniture/light_throne.tres" id="14_hnmxg"]
+[ext_resource type="Resource" path="res://data/furniture/velvet_wardrobe.tres" id="15_k4b0x"]
+[ext_resource type="Resource" path="res://data/furniture/pink_canopy_bed.tres" id="16_dgg6n"]
+[ext_resource type="Resource" path="res://data/furniture/starry_canopy_bed.tres" id="17_7h278"]
+[ext_resource type="Resource" path="res://data/furniture/rose_vanity.tres" id="18_wg1qa"]
+[ext_resource type="Script" path="res://scripts/data/princess_definition.gd" id="19_ebcsx"]
+[ext_resource type="Resource" path="res://data/princess_sword.tres" id="20_adrhm"]
+[ext_resource type="Resource" path="res://data/princesses/magic_princess.tres" id="21_2fxcm"]
+[ext_resource type="Resource" path="res://data/princesses/shadow_princess.tres" id="22_b0v1h"]
+[ext_resource type="Resource" path="res://data/princesses/light_princess.tres" id="23_ogpmo"]
+[ext_resource type="Resource" path="res://data/princesses/dragon_princess.tres" id="24_dypc6"]
+[ext_resource type="Script" path="res://scripts/castle/princess_roster.gd" id="25_kmxkt"]
+[ext_resource type="Script" path="res://scripts/data/stage_definition.gd" id="26_xtsfe"]
+[ext_resource type="Resource" path="res://data/stage_01.tres" id="27_3iaga"]
+[ext_resource type="Script" path="res://scripts/data/synergy.gd" id="27_owq0n"]
+[ext_resource type="Resource" path="res://data/stage_02.tres" id="28_xs64e"]
+[ext_resource type="Resource" path="res://data/stage_03.tres" id="29_bd1x8"]
+[ext_resource type="Resource" path="res://data/stage_04.tres" id="30_8nw0m"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="32_mjlen"]
+
+[sub_resource type="Resource" id="Resource_3a2iv"]
+script = ExtResource("32_mjlen")
+max_hp = 0
+attack = 0
+
+[sub_resource type="Resource" id="Resource_6ooru"]
+script = ExtResource("27_owq0n")
+princess_a = "sword_princess"
+princess_b = "magic_princess"
+display_name = "Spellblade"
+description = "ดาบอาบเวท: ความเสียหายทั้งหมด +15%"
+stats = SubResource("Resource_3a2iv")
+damage_bonus = 0.15
+
+[sub_resource type="Resource" id="Resource_1xdni"]
+script = ExtResource("27_owq0n")
+princess_a = "sword_princess"
+princess_b = "light_princess"
+display_name = "Holy Oath"
+description = "คำสาบานศักดิ์สิทธิ์: ฟื้น HP 4% ทุกเทิร์น"
+stats = SubResource("Resource_3a2iv")
+regen = 0.04
+
+[sub_resource type="Resource" id="Resource_hnmxg"]
+script = ExtResource("32_mjlen")
+max_hp = 0
+attack = 0
+critical = 0.12
+
+[sub_resource type="Resource" id="Resource_k4b0x"]
+script = ExtResource("27_owq0n")
+princess_a = "shadow_princess"
+princess_b = "dragon_princess"
+display_name = "Eclipse Fang"
+description = "เขี้ยวสุริยคราส: คริติคอล +12%"
+stats = SubResource("Resource_hnmxg")
+
+[sub_resource type="Resource" id="Resource_dgg6n"]
+script = ExtResource("32_mjlen")
+max_hp = 0
+attack = 3
+critical = 0.05
+
+[sub_resource type="Resource" id="Resource_7h278"]
+script = ExtResource("27_owq0n")
+princess_a = "sword_princess"
+princess_b = "shadow_princess"
+display_name = "Twin Edge"
+description = "คมคู่: ATK +3 คริติคอล +5%"
+stats = SubResource("Resource_dgg6n")
+
+[sub_resource type="Resource" id="Resource_wg1qa"]
+script = ExtResource("32_mjlen")
+max_hp = 30
+attack = 0
+defense = 4
+
+[sub_resource type="Resource" id="Resource_ebcsx"]
+script = ExtResource("27_owq0n")
+princess_a = "sword_princess"
+princess_b = "dragon_princess"
+display_name = "Knight & Wyrm"
+description = "อัศวินกับมังกร: HP +30 DEF +4"
+stats = SubResource("Resource_wg1qa")
+
+[sub_resource type="Resource" id="Resource_adrhm"]
+script = ExtResource("32_mjlen")
+max_hp = 0
+attack = 0
+evasion = 0.05
+
+[sub_resource type="Resource" id="Resource_2fxcm"]
+script = ExtResource("27_owq0n")
+princess_a = "magic_princess"
+princess_b = "shadow_princess"
+display_name = "Moonless Rite"
+description = "พิธีไร้จันทร์: มานาเริ่ม +1 หลบหลีก +5%"
+stats = SubResource("Resource_adrhm")
+start_mana = 1
+
+[sub_resource type="Resource" id="Resource_b0v1h"]
+script = ExtResource("27_owq0n")
+princess_a = "magic_princess"
+princess_b = "light_princess"
+display_name = "Starlit Prayer"
+description = "บทสวดใต้แสงดาว: มานาเริ่ม +1 ฟื้น HP 2% ทุกเทิร์น"
+stats = SubResource("Resource_3a2iv")
+regen = 0.02
+start_mana = 1
+
+[sub_resource type="Resource" id="Resource_ogpmo"]
+script = ExtResource("27_owq0n")
+princess_a = "magic_princess"
+princess_b = "dragon_princess"
+display_name = "Elemental Storm"
+description = "พายุธาตุ: ความเสียหาย +12%"
+stats = SubResource("Resource_3a2iv")
+damage_bonus = 0.12
+
+[sub_resource type="Resource" id="Resource_dypc6"]
+script = ExtResource("32_mjlen")
+max_hp = 0
+attack = 0
+evasion = 0.08
+
+[sub_resource type="Resource" id="Resource_kmxkt"]
+script = ExtResource("27_owq0n")
+princess_a = "shadow_princess"
+princess_b = "light_princess"
+display_name = "Dusk & Dawn"
+description = "สนธยา: หลบหลีก +8% ฟื้น HP 2% ทุกเทิร์น"
+stats = SubResource("Resource_dypc6")
+regen = 0.02
+
+[sub_resource type="Resource" id="Resource_xtsfe"]
+script = ExtResource("32_mjlen")
+max_hp = 40
+attack = 0
+
+[sub_resource type="Resource" id="Resource_owq0n"]
+script = ExtResource("27_owq0n")
+princess_a = "light_princess"
+princess_b = "dragon_princess"
+display_name = "Sacred Flame"
+description = "เปลวไฟศักดิ์สิทธิ์: HP +40 ฟื้น HP 3% ทุกเทิร์น"
+stats = SubResource("Resource_xtsfe")
+regen = 0.03
+
+[resource]
+script = ExtResource("25_kmxkt")
+princesses = Array[ExtResource("19_ebcsx")]([ExtResource("20_adrhm"), ExtResource("21_2fxcm"), ExtResource("22_b0v1h"), ExtResource("23_ogpmo"), ExtResource("24_dypc6")])
+furniture = Array[ExtResource("2_uw0ry")]([ExtResource("3_kketf"), ExtResource("4_ldorh"), ExtResource("5_og0j2"), ExtResource("6_3iaga"), ExtResource("7_xs64e"), ExtResource("8_bd1x8"), ExtResource("9_8nw0m"), ExtResource("10_mjlen"), ExtResource("11_3a2iv"), ExtResource("12_6ooru"), ExtResource("13_1xdni"), ExtResource("14_hnmxg"), ExtResource("15_k4b0x"), ExtResource("16_dgg6n"), ExtResource("17_7h278"), ExtResource("18_wg1qa")])
+starter_furniture = Array[ExtResource("2_uw0ry")]([ExtResource("3_kketf"), ExtResource("4_ldorh"), ExtResource("5_og0j2"), ExtResource("6_3iaga")])
+dialogue = ExtResource("1_hni6u")
+stages = Array[ExtResource("26_xtsfe")]([ExtResource("27_3iaga"), ExtResource("28_xs64e"), ExtResource("29_bd1x8"), ExtResource("30_8nw0m")])
+synergies = Array[ExtResource("27_owq0n")]([SubResource("Resource_6ooru"), SubResource("Resource_1xdni"), SubResource("Resource_k4b0x"), SubResource("Resource_7h278"), SubResource("Resource_ebcsx"), SubResource("Resource_2fxcm"), SubResource("Resource_b0v1h"), SubResource("Resource_ogpmo"), SubResource("Resource_kmxkt"), SubResource("Resource_owq0n")])

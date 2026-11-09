@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_222m5"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_bm7j1"]
+[ext_resource type="Texture2D" path="res://assets/art/items/mirror_of_thorns.png" id="3_i1ex2"]
+
+[sub_resource type="Resource" id="Resource_dmxvw"]
+script = ExtResource("2_bm7j1")
+max_hp = 15
+attack = 0
+defense = 4
+
+[resource]
+script = ExtResource("1_222m5")
+id = "mirror_of_thorns"
+display_name = "Mirror of Thorns"
+slot = 4
+rarity = 3
+description = "กระจกที่สะท้อนความเจ็บปวดกลับไป"
+stats = SubResource("Resource_dmxvw")
+special = 2
+special_value = 0.3
+texture = ExtResource("3_i1ex2")

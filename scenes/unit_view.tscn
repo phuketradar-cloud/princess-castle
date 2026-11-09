@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/battle/unit_view.gd" id="1_view"]
+[ext_resource type="Script" path="res://scripts/battle/ellipse_shape.gd" id="2_ellipse"]
+[ext_resource type="Script" path="res://scripts/battle/character_animator.gd" id="3_anim"]
+[ext_resource type="Script" path="res://scripts/battle/paper_doll.gd" id="4_doll"]
+
+[node name="UnitView" type="Node2D"]
+script = ExtResource("1_view")
+
+[node name="Selection" type="Node2D" parent="."]
+script = ExtResource("2_ellipse")
+radius = Vector2(100, 26)
+color = Color(1, 0.84, 0.45, 0.95)
+ring = true
+thickness = 7.0
+
+[node name="Shadow" type="Node2D" parent="."]
+script = ExtResource("2_ellipse")
+radius = Vector2(70, 16)
+color = Color(0, 0, 0, 0.45)
+
+[node name="Visual" type="Node2D" parent="."]
+script = ExtResource("3_anim")
+
+[node name="Doll" type="Node2D" parent="Visual"]
+script = ExtResource("4_doll")
+
+[node name="Overhead" type="Node2D" parent="."]
+position = Vector2(0, -260)
+
+[node name="StatusLabel" type="Label" parent="Overhead"]
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = -116.0
+theme_override_colors/font_color = Color(0.8, 0.6, 1, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.03, 0.12, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IntentLabel" type="Label" parent="Overhead"]
+offset_left = -200.0
+offset_top = -112.0
+offset_right = 200.0
+offset_bottom = -72.0
+theme_override_colors/font_color = Color(1, 0.75, 0.45, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.03, 0.12, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameLabel" type="Label" parent="Overhead"]
+offset_left = -200.0
+offset_top = -68.0
+offset_right = 200.0
+offset_bottom = -34.0
+theme_override_colors/font_color = Color(0.88, 0.82, 0.96, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.03, 0.12, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HpBack" type="ColorRect" parent="Overhead"]
+offset_left = -88.0
+offset_top = -25.0
+offset_right = 88.0
+offset_bottom = -3.0
+mouse_filter = 2
+color = Color(0.08, 0.03, 0.1, 0.9)
+
+[node name="HpFill" type="ColorRect" parent="Overhead"]
+offset_left = -85.0
+offset_top = -22.0
+offset_right = 85.0
+offset_bottom = -6.0
+mouse_filter = 2
+color = Color(0.95, 0.35, 0.45, 1)
+
+[node name="HpLabel" type="Label" parent="Overhead"]
+offset_left = -100.0
+offset_top = -30.0
+offset_right = 100.0
+offset_bottom = 2.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.03, 0.12, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+vertical_alignment = 1

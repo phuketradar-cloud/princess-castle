@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_2yrba"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_2ccq7"]
+[ext_resource type="Texture2D" path="res://assets/art/items/prayer_staff.png" id="3_x7lyy"]
+
+[sub_resource type="Resource" id="Resource_5kl1u"]
+script = ExtResource("2_2ccq7")
+max_hp = 15
+attack = 1
+
+[resource]
+script = ExtResource("1_2yrba")
+id = "prayer_staff"
+display_name = "Prayer Staff"
+description = "คทาที่ใช้สวดภาวนาทุกเช้า"
+stats = SubResource("Resource_5kl1u")
+texture = ExtResource("3_x7lyy")

@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="PrincessDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_apo4o"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_0doku"]
+[ext_resource type="Texture2D" path="res://assets/art/princesses/light_princess/body.png" id="3_3b3mj"]
+[ext_resource type="Resource" path="res://data/cards/saints_grace.tres" id="4_knuwn"]
+[ext_resource type="Resource" path="res://data/furniture/pink_canopy_bed.tres" id="5_6ns2s"]
+[ext_resource type="Script" path="res://scripts/data/princess_definition.gd" id="6_lye3h"]
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="7_hb5kt"]
+[ext_resource type="Resource" path="res://data/items/prayer_staff.tres" id="8_ni2hx"]
+
+[sub_resource type="Resource" id="Resource_dsmyq"]
+script = ExtResource("1_apo4o")
+display_name = "Holy Strike"
+
+[sub_resource type="Resource" id="Resource_csldl"]
+script = ExtResource("1_apo4o")
+id = "prayer"
+display_name = "Prayer"
+target = 2
+damage_multiplier = 0.0
+heal_multiplier = 1.8
+cooldown = 3
+
+[sub_resource type="Resource" id="Resource_2x8n8"]
+script = ExtResource("1_apo4o")
+id = "sanctuary"
+display_name = "Sanctuary"
+target = 2
+damage_multiplier = 0.0
+cooldown = 4
+status = 8
+status_turns = 3
+status_potency = 2.0
+
+[sub_resource type="Resource" id="Resource_apo4o"]
+script = ExtResource("1_apo4o")
+id = "blessing"
+display_name = "Blessing"
+target = 3
+damage_multiplier = 0.0
+heal_multiplier = 1.6
+
+[sub_resource type="Resource" id="Resource_pied7"]
+script = ExtResource("2_0doku")
+max_hp = 175
+attack = 17
+defense = 8
+critical = 0.06
+evasion = 0.04
+luck = 15.0
+
+[resource]
+script = ExtResource("6_lye3h")
+id = "light_princess"
+display_name = "Light Princess"
+title = "Saint of the Morning Bell"
+archetype = 3
+description = "นักบวชแสง: ฟื้นฟู HP และโล่ป้องกัน อึดที่สุด"
+base_stats = SubResource("Resource_pied7")
+abilities = Array[ExtResource("1_apo4o")]([SubResource("Resource_dsmyq"), SubResource("Resource_csldl"), SubResource("Resource_2x8n8")])
+starting_equipment = Array[ExtResource("7_hb5kt")]([ExtResource("8_ni2hx")])
+personality = 3
+wing = 3
+unlock_clears = 3
+liked_material = "light"
+face_dir = "res://assets/art/princesses/light_princess"
+bond_card = ExtResource("4_knuwn")
+bond_cosmetic = ExtResource("5_6ns2s")
+unlock_stage = "stage_02"
+growth_hp = 10.0
+growth_attack = 1.0
+growth_defense = 0.6
+growth_luck = 0.6
+assist = SubResource("Resource_apo4o")
+activity_weights = PackedFloat32Array(1, 1, 1, 1.5, 0.3, 1, 3)
+battle_texture = ExtResource("3_3b3mj")

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FurnitureDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_od5gj"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_4gqkn"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture/velvet_wardrobe.png" id="3_k0sk2"]
+
+[sub_resource type="Resource" id="Resource_vpmkl"]
+script = ExtResource("2_4gqkn")
+max_hp = 0
+attack = 0
+defense = 2
+evasion = 0.02
+
+[resource]
+script = ExtResource("1_od5gj")
+id = "velvet_wardrobe"
+display_name = "Velvet Wardrobe"
+slot = 3
+rarity = 1
+description = "ตู้เสื้อผ้ากำมะหยี่"
+stats = SubResource("Resource_vpmkl")
+texture = ExtResource("3_k0sk2")
+recipe = {
+"light": 2,
+"shadow": 3
+}

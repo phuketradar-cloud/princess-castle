@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_l2j0n"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_pvu5y"]
+[ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_hmmac"]
+[ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_vjfos"]
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_ikd66"]
+[ext_resource type="Texture2D" path="res://assets/art/monster_drake.png" id="6_dqmjw"]
+
+[sub_resource type="Resource" id="Resource_orkbd"]
+script = ExtResource("1_l2j0n")
+id = "flame_breath"
+display_name = "Flame Breath"
+damage_multiplier = 1.3
+cooldown = 3
+initial_cooldown = 1
+intent_tag = "FIRE"
+status = 10
+status_turns = 3
+status_potency = 0.05
+
+[sub_resource type="Resource" id="Resource_ftb7w"]
+script = ExtResource("1_l2j0n")
+id = "bite"
+display_name = "Bite"
+intent_tag = "ATK"
+
+[sub_resource type="Resource" id="Resource_ypyb3"]
+script = ExtResource("2_pvu5y")
+max_hp = 270
+attack = 21
+defense = 12
+critical = 0.08
+
+[sub_resource type="Resource" id="Resource_bx15q"]
+script = ExtResource("3_hmmac")
+element = 4
+min_amount = 2
+max_amount = 3
+
+[sub_resource type="Resource" id="Resource_4q18e"]
+script = ExtResource("3_hmmac")
+max_amount = 2
+
+[sub_resource type="Resource" id="Resource_ah2x1"]
+script = ExtResource("3_hmmac")
+material = "dragon_scale"
+max_amount = 2
+
+[sub_resource type="Resource" id="Resource_eomav"]
+script = ExtResource("4_vjfos")
+announce = "Fire Drake: เกล็ดลุกเป็นไฟ! (คลั่ง + โล่)"
+enrage = 0.3
+cleanse = true
+shield_fraction = 0.15
+
+[resource]
+script = ExtResource("5_ikd66")
+id = "drake"
+display_name = "Fire Drake"
+description = "มินิบอส: พ่นไฟติดเผาไหม้ — เลือดครึ่งหนึ่งจะคลั่งและสร้างเกราะเกล็ด"
+base_stats = SubResource("Resource_ypyb3")
+abilities = Array[ExtResource("1_l2j0n")]([SubResource("Resource_orkbd"), SubResource("Resource_ftb7w")])
+is_boss = true
+control_resistance = 0.65
+phases = Array[ExtResource("4_vjfos")]([SubResource("Resource_eomav")])
+drops = Array[ExtResource("3_hmmac")]([SubResource("Resource_bx15q"), SubResource("Resource_4q18e"), SubResource("Resource_ah2x1")])
+texture = ExtResource("6_dqmjw")

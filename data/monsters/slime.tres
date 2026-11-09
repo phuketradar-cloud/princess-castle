@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_gesbe"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_gsjrs"]
+[ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_hsnj0"]
+[ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_xulun"]
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_d6j8p"]
+[ext_resource type="Texture2D" path="res://assets/art/slime.png" id="6_ulqam"]
+
+[sub_resource type="Resource" id="Resource_o1lla"]
+script = ExtResource("1_gesbe")
+id = "sticky_goo"
+display_name = "Sticky Goo"
+damage_multiplier = 0.6
+cooldown = 3
+ai_use_chance = 0.5
+intent_tag = "GOO"
+status = 3
+status_turns = 2
+status_potency = 0.25
+
+[sub_resource type="Resource" id="Resource_x47od"]
+script = ExtResource("1_gesbe")
+id = "tackle"
+display_name = "Tackle"
+intent_tag = "ATK"
+
+[sub_resource type="Resource" id="Resource_q2gc3"]
+script = ExtResource("2_gsjrs")
+max_hp = 38
+attack = 9
+defense = 2
+
+[sub_resource type="Resource" id="Resource_8maa8"]
+script = ExtResource("3_hsnj0")
+element = 1
+chance = 0.8
+
+[sub_resource type="Resource" id="Resource_ygyn7"]
+script = ExtResource("3_hsnj0")
+element = 3
+chance = 0.25
+
+[sub_resource type="Resource" id="Resource_gesbe"]
+script = ExtResource("3_hsnj0")
+material = "ice_crystal"
+chance = 0.12
+
+[resource]
+script = ExtResource("5_d6j8p")
+description = "ตัวเดียวไม่น่ากลัว แต่ Sticky Goo ลดพลังโจมตี"
+base_stats = SubResource("Resource_q2gc3")
+abilities = Array[ExtResource("1_gesbe")]([SubResource("Resource_o1lla"), SubResource("Resource_x47od")])
+drops = Array[ExtResource("3_hsnj0")]([SubResource("Resource_8maa8"), SubResource("Resource_ygyn7"), SubResource("Resource_gesbe")])
+texture = ExtResource("6_ulqam")
+visual_scale = 0.9

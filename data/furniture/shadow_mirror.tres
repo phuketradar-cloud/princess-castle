@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FurnitureDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_0270d"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_e7i2p"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture/shadow_mirror.png" id="3_4p5o6"]
+
+[sub_resource type="Resource" id="Resource_1ecda"]
+script = ExtResource("2_e7i2p")
+max_hp = 0
+attack = 0
+evasion = 0.04
+
+[resource]
+script = ExtResource("1_0270d")
+id = "shadow_mirror"
+display_name = "Shadow Mirror"
+slot = 3
+rarity = 2
+room_type = 2
+description = "กระจกเงา (Evasion) — เฉพาะห้องเงา"
+stats = SubResource("Resource_1ecda")
+texture = ExtResource("3_4p5o6")
+recipe = {
+"bone_fragment": 1,
+"shadow": 6
+}

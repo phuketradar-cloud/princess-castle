@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_slj3s"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_n5r0q"]
+[ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_ee1yq"]
+[ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_c1hrj"]
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_75fjt"]
+[ext_resource type="Texture2D" path="res://assets/art/skeleton.png" id="6_s5vvk"]
+
+[sub_resource type="Resource" id="Resource_250xw"]
+script = ExtResource("1_slj3s")
+id = "bone_crusher"
+display_name = "Bone Crusher"
+damage_multiplier = 2.4
+cooldown = 3
+initial_cooldown = 2
+intent_tag = "HEAVY"
+
+[sub_resource type="Resource" id="Resource_yd3qd"]
+script = ExtResource("1_slj3s")
+id = "cleave"
+display_name = "Cleave"
+intent_tag = "ATK"
+
+[sub_resource type="Resource" id="Resource_bucxx"]
+script = ExtResource("2_n5r0q")
+max_hp = 80
+attack = 13
+defense = 10
+critical = 0.05
+
+[sub_resource type="Resource" id="Resource_c0qok"]
+script = ExtResource("3_ee1yq")
+element = 2
+min_amount = 2
+max_amount = 3
+
+[sub_resource type="Resource" id="Resource_vgvyi"]
+script = ExtResource("3_ee1yq")
+element = 4
+max_amount = 2
+
+[sub_resource type="Resource" id="Resource_slj3s"]
+script = ExtResource("3_ee1yq")
+material = "bone_fragment"
+max_amount = 2
+
+[sub_resource type="Resource" id="Resource_n5r0q"]
+script = ExtResource("3_ee1yq")
+material = "dragon_scale"
+chance = 0.3
+
+[resource]
+script = ExtResource("5_75fjt")
+id = "skeleton_knight"
+display_name = "Skeleton Knight"
+description = "มินิบอส: ส่งสัญญาณก่อนใช้ Bone Crusher (ตีหนักมาก) ให้กด Defend ตอนเห็น! ต้าน Stun 50%"
+base_stats = SubResource("Resource_bucxx")
+abilities = Array[ExtResource("1_slj3s")]([SubResource("Resource_250xw"), SubResource("Resource_yd3qd")])
+is_boss = true
+control_resistance = 0.5
+drops = Array[ExtResource("3_ee1yq")]([SubResource("Resource_c0qok"), SubResource("Resource_vgvyi"), SubResource("Resource_slj3s"), SubResource("Resource_n5r0q")])
+texture = ExtResource("6_s5vvk")
+visual_scale = 1.05

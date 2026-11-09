@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FurnitureDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_ph3k1"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_s31vd"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture/rose_training_hall.png" id="3_2t2mp"]
+
+[sub_resource type="Resource" id="Resource_8ylb7"]
+script = ExtResource("2_s31vd")
+max_hp = 0
+attack = 4
+defense = 2
+
+[resource]
+script = ExtResource("1_ph3k1")
+id = "rose_training_hall"
+display_name = "Rose Training Hall"
+slot = 2
+rarity = 2
+room_type = 0
+description = "ชั้นวางอาวุธอัศวินกุหลาบ — เฉพาะห้องดาบ"
+stats = SubResource("Resource_8ylb7")
+texture = ExtResource("3_2t2mp")
+recipe = {
+"bone_fragment": 2,
+"fire": 5
+}

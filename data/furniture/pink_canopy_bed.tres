@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FurnitureDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_3uvf8"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_cjrnf"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture/pink_canopy_bed.png" id="3_04hj7"]
+
+[sub_resource type="Resource" id="Resource_2q0re"]
+script = ExtResource("2_cjrnf")
+max_hp = 0
+attack = 0
+
+[resource]
+script = ExtResource("1_3uvf8")
+id = "pink_canopy_bed"
+display_name = "Pink Canopy Bed"
+rarity = 2
+description = "สกินเตียง (ไม่มีค่าสถานะ) — รางวัล Bond"
+stats = SubResource("Resource_2q0re")
+is_skin = true
+texture = ExtResource("3_04hj7")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EncounterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="1_e21k1"]
+[ext_resource type="Resource" path="res://data/monsters/wyvern.tres" id="2_llu8w"]
+[ext_resource type="Resource" path="res://data/monsters/imp.tres" id="3_nebp3"]
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="4_dxdmo"]
+
+[resource]
+script = ExtResource("4_dxdmo")
+display_name = "Wyvern Nest"
+monsters = Array[ExtResource("1_e21k1")]([ExtResource("2_llu8w"), ExtResource("2_llu8w"), ExtResource("3_nebp3")])

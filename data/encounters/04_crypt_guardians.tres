@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="1_vhwrt"]
+[ext_resource type="Resource" path="res://data/monsters/skeleton_knight.tres" id="2_d4cjj"]
+[ext_resource type="Resource" path="res://data/monsters/dark_shaman.tres" id="3_u62eu"]
+[ext_resource type="Resource" path="res://data/monsters/goblin.tres" id="4_dcmqx"]
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="5_mai45"]
+
+[resource]
+script = ExtResource("5_mai45")
+display_name = "Crypt Guardians"
+monsters = Array[ExtResource("1_vhwrt")]([ExtResource("2_d4cjj"), ExtResource("3_u62eu"), ExtResource("4_dcmqx")])
+reward_tier = 1

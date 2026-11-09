@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_f0uo8"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/heal.png" id="2_khx0r"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_ioyms"]
+
+[sub_resource type="Resource" id="Resource_bec1x"]
+script = ExtResource("1_f0uo8")
+id = "saints_grace"
+display_name = "Saint's Grace"
+target = 2
+damage_multiplier = 0.0
+heal_multiplier = 3.0
+
+[resource]
+script = ExtResource("3_ioyms")
+id = "saints_grace"
+display_name = "Saint's Grace"
+category = 2
+element = 3
+rarity = 3
+description = "พรนักบุญ: ฟื้น HP 300% ATK (การ์ดเฉพาะ Light Princess)"
+mana_cost = 2
+effect = SubResource("Resource_bec1x")
+icon = ExtResource("2_khx0r")
+drop_weight = 0.0
+exclusive_to = "light_princess"

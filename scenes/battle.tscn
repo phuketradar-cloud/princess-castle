@@ -1,0 +1,34 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/battle/battle_controller.gd" id="1_ctrl"]
+[ext_resource type="Resource" path="res://data/princess_sword.tres" id="2_princess"]
+[ext_resource type="Resource" path="res://data/stage_01.tres" id="3_stage"]
+[ext_resource type="Resource" path="res://data/balance_config.tres" id="4_balance"]
+[ext_resource type="PackedScene" path="res://scenes/unit_view.tscn" id="5_unit"]
+[ext_resource type="Texture2D" path="res://assets/art/bg.png" id="6_bg"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="7_hud"]
+[ext_resource type="Resource" path="res://data/loot_table.tres" id="8_loot"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_ctrl")
+princess = ExtResource("2_princess")
+stage = ExtResource("3_stage")
+balance = ExtResource("4_balance")
+unit_view_scene = ExtResource("5_unit")
+loot = ExtResource("8_loot")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(960, 540)
+scale = Vector2(5.4, 5.4)
+texture = ExtResource("6_bg")
+
+[node name="Units" type="Node2D" parent="."]
+
+[node name="Popups" type="Node2D" parent="."]
+z_index = 200
+
+[node name="HUD" parent="." instance=ExtResource("7_hud")]

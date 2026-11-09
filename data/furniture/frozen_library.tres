@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FurnitureDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_b722n"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_4jd6e"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture/frozen_library.png" id="3_3gw2n"]
+
+[sub_resource type="Resource" id="Resource_ilvhw"]
+script = ExtResource("2_4jd6e")
+max_hp = 0
+attack = 3
+luck = 8.0
+
+[resource]
+script = ExtResource("1_b722n")
+id = "frozen_library"
+display_name = "Frozen Library"
+slot = 1
+rarity = 2
+room_type = 1
+description = "ห้องสมุดผลึกน้ำแข็ง — เฉพาะห้องเวท"
+stats = SubResource("Resource_ilvhw")
+texture = ExtResource("3_3gw2n")
+recipe = {
+"ice": 5,
+"ice_crystal": 2
+}

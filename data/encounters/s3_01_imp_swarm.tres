@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EncounterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="1_y8ans"]
+[ext_resource type="Resource" path="res://data/monsters/imp.tres" id="2_r4j2r"]
+[ext_resource type="Resource" path="res://data/monsters/goblin.tres" id="3_wxr6e"]
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="4_84ofb"]
+
+[resource]
+script = ExtResource("4_84ofb")
+display_name = "Imp Swarm"
+monsters = Array[ExtResource("1_y8ans")]([ExtResource("2_r4j2r"), ExtResource("2_r4j2r"), ExtResource("3_wxr6e")])

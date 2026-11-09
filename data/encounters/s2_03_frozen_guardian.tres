@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EncounterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="1_pysnd"]
+[ext_resource type="Resource" path="res://data/monsters/frost_golem.tres" id="2_effoq"]
+[ext_resource type="Resource" path="res://data/monsters/ice_wisp.tres" id="3_nat3d"]
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="4_t6sma"]
+
+[resource]
+script = ExtResource("4_t6sma")
+display_name = "Frozen Guardian"
+monsters = Array[ExtResource("1_pysnd")]([ExtResource("2_effoq"), ExtResource("3_nat3d")])
+reward_tier = 1

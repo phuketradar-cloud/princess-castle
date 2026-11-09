@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="FurnitureDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_j5qpi"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_gf35i"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture/tea_set_table.png" id="3_0qfia"]
+
+[sub_resource type="Resource" id="Resource_b3bdh"]
+script = ExtResource("2_gf35i")
+max_hp = 15
+attack = 0
+
+[resource]
+script = ExtResource("1_j5qpi")
+id = "tea_set_table"
+display_name = "Tea Set Table"
+slot = 1
+rarity = 1
+description = "โต๊ะน้ำชายามบ่าย (HP)"
+stats = SubResource("Resource_b3bdh")
+texture = ExtResource("3_0qfia")
+recipe = {
+"fire": 2,
+"light": 3
+}

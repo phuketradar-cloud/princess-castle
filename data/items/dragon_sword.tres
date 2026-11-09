@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_k0bg3"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_ivirv"]
+[ext_resource type="Texture2D" path="res://assets/art/items/dragon_sword.png" id="3_nfrh8"]
+
+[sub_resource type="Resource" id="Resource_jvqgq"]
+script = ExtResource("2_ivirv")
+max_hp = 0
+attack = 14
+critical = 0.05
+
+[resource]
+script = ExtResource("1_k0bg3")
+id = "dragon_sword"
+display_name = "Dragon Sword"
+rarity = 3
+description = "ดาบเล่มนี้หนักจัง... แต่ฟันทีเดียวแทบขาด"
+stats = SubResource("Resource_jvqgq")
+special = 3
+special_value = 0.5
+texture = ExtResource("3_nfrh8")

@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_t3pth"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_ieux6"]
+[ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_s2j7w"]
+[ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_tilw8"]
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_tultc"]
+[ext_resource type="Texture2D" path="res://assets/art/shaman.png" id="6_i3h8l"]
+
+[sub_resource type="Resource" id="Resource_6wy1h"]
+script = ExtResource("1_t3pth")
+id = "dark_mend"
+display_name = "Dark Mend"
+target = 3
+damage_multiplier = 0.0
+heal_multiplier = 1.6
+cooldown = 2
+intent_tag = "HEAL"
+
+[sub_resource type="Resource" id="Resource_0n8ya"]
+script = ExtResource("1_t3pth")
+id = "hex"
+display_name = "Hex"
+damage_multiplier = 0.7
+cooldown = 3
+ai_use_chance = 0.6
+intent_tag = "HEX"
+status = 3
+status_turns = 2
+status_potency = 0.3
+
+[sub_resource type="Resource" id="Resource_rpq2f"]
+script = ExtResource("1_t3pth")
+id = "shadow_bolt"
+display_name = "Shadow Bolt"
+intent_tag = "ATK"
+
+[sub_resource type="Resource" id="Resource_77i5e"]
+script = ExtResource("2_ieux6")
+max_hp = 40
+defense = 3
+critical = 0.05
+evasion = 0.05
+
+[sub_resource type="Resource" id="Resource_e7cdt"]
+script = ExtResource("3_s2j7w")
+element = 3
+max_amount = 2
+
+[sub_resource type="Resource" id="Resource_uokhg"]
+script = ExtResource("3_s2j7w")
+element = 2
+chance = 0.5
+
+[sub_resource type="Resource" id="Resource_t3pth"]
+script = ExtResource("3_s2j7w")
+material = "holy_fragment"
+chance = 0.4
+
+[resource]
+script = ExtResource("5_tultc")
+id = "dark_shaman"
+display_name = "Dark Shaman"
+description = "ฮีลมอนสเตอร์ที่เลือดน้อยที่สุด และสาปให้อ่อนแรง — ฆ่าก่อน!"
+base_stats = SubResource("Resource_77i5e")
+abilities = Array[ExtResource("1_t3pth")]([SubResource("Resource_6wy1h"), SubResource("Resource_0n8ya"), SubResource("Resource_rpq2f")])
+drops = Array[ExtResource("3_s2j7w")]([SubResource("Resource_e7cdt"), SubResource("Resource_uokhg"), SubResource("Resource_t3pth")])
+texture = ExtResource("6_i3h8l")

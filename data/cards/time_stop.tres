@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_xf6r2"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/time_stop.png" id="2_70rsc"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_hbw0g"]
+
+[sub_resource type="Resource" id="Resource_fcdjl"]
+script = ExtResource("1_xf6r2")
+id = "time_stop"
+display_name = "Time Stop"
+target = 1
+damage_multiplier = 0.0
+status = 2
+status_turns = 1
+
+[resource]
+script = ExtResource("3_hbw0g")
+id = "time_stop"
+display_name = "Time Stop"
+category = 3
+element = 1
+rarity = 3
+description = "หยุดเวลา: ศัตรูทุกตัวขยับไม่ได้ 1 เทิร์น (บอสอาจต้านได้)"
+mana_cost = 4
+effect = SubResource("Resource_fcdjl")
+icon = ExtResource("2_70rsc")
+drop_weight = 0.4

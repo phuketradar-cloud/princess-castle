@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_7nww8"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_mu4jn"]
+[ext_resource type="Texture2D" path="res://assets/art/items/silver_tiara.png" id="3_cxj1d"]
+
+[sub_resource type="Resource" id="Resource_dbkc4"]
+script = ExtResource("2_mu4jn")
+max_hp = 10
+attack = 0
+critical = 0.05
+luck = 10.0
+
+[resource]
+script = ExtResource("1_7nww8")
+id = "silver_tiara"
+display_name = "Silver Tiara"
+slot = 1
+rarity = 1
+description = "มงกุฎเงินเล็กๆ ของเจ้าหญิงฝึกหัด"
+stats = SubResource("Resource_dbkc4")
+texture = ExtResource("3_cxj1d")

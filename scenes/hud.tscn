@@ -1,0 +1,348 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/battle/battle_hud.gd" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="Style_hp_bg"]
+bg_color = Color(0.05, 0.02, 0.07, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.47, 0.27, 0.59, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="Style_hp_fill"]
+bg_color = Color(0.43, 0.86, 0.59, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Style_box"]
+bg_color = Color(0.1, 0.055, 0.15, 0.97)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.47, 0.27, 0.59, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopBar" type="ColorRect" parent="Root"]
+layout_mode = 1
+anchor_right = 1.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.08, 0.03, 0.12, 0.78)
+
+[node name="StageLabel" type="Label" parent="Root/TopBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_right = 1100.0
+theme_override_colors/font_color = Color(1, 0.84, 0.47, 1)
+theme_override_font_sizes/font_size = 32
+text = "Stage"
+vertical_alignment = 1
+
+[node name="TurnLabel" type="Label" parent="Root/TopBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -700.0
+offset_right = -36.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.84, 0.77, 0.94, 1)
+theme_override_font_sizes/font_size = 30
+text = "Round 1"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LogPanel" type="ColorRect" parent="Root"]
+layout_mode = 1
+offset_left = 24.0
+offset_top = 92.0
+offset_right = 704.0
+offset_bottom = 256.0
+mouse_filter = 2
+color = Color(0.05, 0.02, 0.08, 0.55)
+
+[node name="LogLabel" type="Label" parent="Root/LogPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 10.0
+offset_right = -18.0
+offset_bottom = -10.0
+theme_override_colors/font_color = Color(0.84, 0.77, 0.94, 1)
+theme_override_font_sizes/font_size = 24
+clip_text = true
+
+[node name="BottomPanel" type="ColorRect" parent="Root"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -330.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.1, 0.055, 0.15, 0.92)
+
+[node name="TopEdge" type="ColorRect" parent="Root/BottomPanel"]
+layout_mode = 1
+anchor_right = 1.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.47, 0.27, 0.59, 1)
+
+[node name="ManaTitle" type="Label" parent="Root/BottomPanel"]
+layout_mode = 1
+offset_left = 44.0
+offset_top = 18.0
+offset_right = 540.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.55, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "MANA"
+
+[node name="ManaLabel" type="Label" parent="Root/BottomPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 400.0
+offset_top = 18.0
+offset_right = 540.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.55, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "0/6"
+horizontal_alignment = 2
+
+[node name="ManaGems" type="HBoxContainer" parent="Root/BottomPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 44.0
+offset_top = 64.0
+offset_right = 540.0
+offset_bottom = 110.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="CardHand" type="HBoxContainer" parent="Root/BottomPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_right = 1.0
+offset_left = 580.0
+offset_top = 14.0
+offset_right = -40.0
+offset_bottom = 128.0
+grow_horizontal = 2
+theme_override_constants/separation = 14
+
+[node name="PlayerName" type="Label" parent="Root/BottomPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 44.0
+offset_top = 150.0
+offset_right = 560.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(1, 0.84, 0.47, 1)
+theme_override_font_sizes/font_size = 40
+text = "Princess"
+
+[node name="HpBar" type="ProgressBar" parent="Root/BottomPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 44.0
+offset_top = 222.0
+offset_right = 540.0
+offset_bottom = 272.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("Style_hp_bg")
+theme_override_styles/fill = SubResource("Style_hp_fill")
+max_value = 1.0
+step = 0.0
+value = 1.0
+show_percentage = false
+
+[node name="HpLabel" type="Label" parent="Root/BottomPanel/HpBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.03, 0.12, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 26
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Actions" type="HBoxContainer" parent="Root/BottomPanel"]
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1014.0
+offset_top = -190.0
+offset_right = -40.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 18
+
+[node name="AttackButton" type="Button" parent="Root/BottomPanel/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 170)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Attack"
+autowrap_mode = 3
+
+[node name="Skill1Button" type="Button" parent="Root/BottomPanel/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 170)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Skill"
+autowrap_mode = 3
+
+[node name="Skill2Button" type="Button" parent="Root/BottomPanel/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 170)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Skill"
+autowrap_mode = 3
+
+[node name="DefendButton" type="Button" parent="Root/BottomPanel/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 170)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Defend
+-50% dmg"
+autowrap_mode = 3
+
+[node name="HintLabel" type="Label" parent="Root"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -46.0
+offset_right = 860.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.84, 0.77, 0.94, 0.95)
+theme_override_font_sizes/font_size = 22
+vertical_alignment = 1
+
+[node name="ResultPanel" type="ColorRect" parent="Root"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.72)
+
+[node name="Box" type="PanelContainer" parent="Root/ResultPanel"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -620.0
+offset_top = -270.0
+offset_right = 620.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("Style_box")
+
+[node name="VBox" type="VBoxContainer" parent="Root/ResultPanel/Box"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="ResultTitle" type="Label" parent="Root/ResultPanel/Box/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08, 0.03, 0.12, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 96
+text = "VICTORY!"
+horizontal_alignment = 1
+
+[node name="ResultSubtitle" type="Label" parent="Root/ResultPanel/Box/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.84, 0.77, 0.94, 1)
+theme_override_font_sizes/font_size = 34
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Root/ResultPanel/Box/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="EquipmentButton" type="Button" parent="Root/ResultPanel/Box/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 110)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 36
+text = "อุปกรณ์"
+
+[node name="CardsButton" type="Button" parent="Root/ResultPanel/Box/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 110)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 36
+text = "การ์ด"
+
+[node name="CastleButton" type="Button" parent="Root/ResultPanel/Box/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 110)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 34
+text = "ปราสาท"
+
+[node name="ContinueButton" type="Button" parent="Root/ResultPanel/Box/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 110)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "Continue"

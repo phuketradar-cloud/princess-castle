@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EncounterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="1_gaa5o"]
+[ext_resource type="Resource" path="res://data/monsters/ice_wisp.tres" id="2_e6adu"]
+[ext_resource type="Resource" path="res://data/monsters/bat.tres" id="3_twolt"]
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="4_qgi06"]
+
+[resource]
+script = ExtResource("4_qgi06")
+display_name = "Whispering Stacks"
+monsters = Array[ExtResource("1_gaa5o")]([ExtResource("2_e6adu"), ExtResource("2_e6adu"), ExtResource("3_twolt")])

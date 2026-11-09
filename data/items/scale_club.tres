@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_oboqk"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_sk4x8"]
+[ext_resource type="Texture2D" path="res://assets/art/items/scale_club.png" id="3_a6gdo"]
+
+[sub_resource type="Resource" id="Resource_gglkq"]
+script = ExtResource("2_sk4x8")
+max_hp = 0
+attack = 4
+
+[resource]
+script = ExtResource("1_oboqk")
+id = "scale_club"
+display_name = "Scale Club"
+description = "กระบองหุ้มเกล็ดมังกร หนักแต่ทุบแรง"
+stats = SubResource("Resource_gglkq")
+texture = ExtResource("3_a6gdo")

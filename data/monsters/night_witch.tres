@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_r4b7v"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_87wx3"]
+[ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_jlvx5"]
+[ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_6mltp"]
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_v6mlg"]
+[ext_resource type="Resource" path="res://data/monsters/imp.tres" id="6_4bexj"]
+[ext_resource type="Texture2D" path="res://assets/art/monster_night_witch.png" id="7_sbumd"]
+
+[sub_resource type="Resource" id="Resource_rejg5"]
+script = ExtResource("1_r4b7v")
+id = "withering_hex"
+display_name = "Withering Hex"
+damage_multiplier = 0.8
+cooldown = 3
+initial_cooldown = 1
+intent_tag = "HEX"
+status = 3
+status_turns = 2
+status_potency = 0.3
+
+[sub_resource type="Resource" id="Resource_5r0ft"]
+script = ExtResource("1_r4b7v")
+id = "midnight_curse"
+display_name = "Midnight Curse"
+damage_multiplier = 0.7
+cooldown = 4
+initial_cooldown = 2
+intent_tag = "CURSE"
+status = 1
+status_turns = 3
+status_potency = 0.06
+
+[sub_resource type="Resource" id="Resource_ejjxd"]
+script = ExtResource("1_r4b7v")
+id = "shadow_bolt"
+display_name = "Shadow Bolt"
+intent_tag = "ATK"
+
+[sub_resource type="Resource" id="Resource_57bgs"]
+script = ExtResource("2_87wx3")
+max_hp = 270
+attack = 19
+defense = 6
+critical = 0.08
+evasion = 0.1
+
+[sub_resource type="Resource" id="Resource_222ba"]
+script = ExtResource("3_jlvx5")
+element = 2
+min_amount = 3
+max_amount = 4
+
+[sub_resource type="Resource" id="Resource_maly8"]
+script = ExtResource("3_jlvx5")
+element = 3
+max_amount = 2
+
+[sub_resource type="Resource" id="Resource_xmwyd"]
+script = ExtResource("3_jlvx5")
+material = "holy_fragment"
+max_amount = 2
+
+[sub_resource type="Resource" id="Resource_jrvwk"]
+script = ExtResource("4_6mltp")
+hp_threshold = 0.66
+announce = "Night Witch: ลูกๆ แห่งราตรี มาหาแม่สิ!"
+shield_fraction = 0.2
+summons = Array[ExtResource("5_v6mlg")]([ExtResource("6_4bexj"), ExtResource("6_4bexj")])
+
+[sub_resource type="Resource" id="Resource_wnil1"]
+script = ExtResource("4_6mltp")
+hp_threshold = 0.33
+announce = "Night Witch: ม่านจันทร์ปกป้องข้า! (ล้างสถานะ + ฟื้นฟู)"
+enrage = 0.15
+cleanse = true
+heal_fraction = 0.12
+summons = Array[ExtResource("5_v6mlg")]([ExtResource("6_4bexj")])
+
+[resource]
+script = ExtResource("5_v6mlg")
+id = "night_witch"
+display_name = "Night Witch"
+description = "บอส: สาปให้อ่อนแรง กางโล่และเรียกอิมพ์ที่ 66% ล้างสถานะ+ฟื้นเลือด+เรียกอิมพ์ที่ 33%"
+base_stats = SubResource("Resource_57bgs")
+abilities = Array[ExtResource("1_r4b7v")]([SubResource("Resource_rejg5"), SubResource("Resource_5r0ft"), SubResource("Resource_ejjxd")])
+is_boss = true
+control_resistance = 0.7
+phases = Array[ExtResource("4_6mltp")]([SubResource("Resource_jrvwk"), SubResource("Resource_wnil1")])
+drops = Array[ExtResource("3_jlvx5")]([SubResource("Resource_222ba"), SubResource("Resource_maly8"), SubResource("Resource_xmwyd")])
+texture = ExtResource("7_sbumd")

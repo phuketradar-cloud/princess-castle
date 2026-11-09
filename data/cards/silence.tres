@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_jfwb2"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/silence.png" id="2_h4wux"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_i7fv5"]
+
+[sub_resource type="Resource" id="Resource_4o52k"]
+script = ExtResource("1_jfwb2")
+id = "silence"
+display_name = "Silence"
+damage_multiplier = 0.0
+status = 7
+status_turns = 3
+
+[resource]
+script = ExtResource("3_i7fv5")
+id = "silence"
+display_name = "Silence"
+category = 1
+element = 2
+description = "ห้ามศัตรูใช้ความสามารถพิเศษ 3 เทิร์น (ตีธรรมดาได้)"
+effect = SubResource("Resource_4o52k")
+icon = ExtResource("2_h4wux")

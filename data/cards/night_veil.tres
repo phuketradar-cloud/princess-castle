@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_iq51o"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/sleep.png" id="2_d3hxi"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_b5ofa"]
+
+[sub_resource type="Resource" id="Resource_w5c71"]
+script = ExtResource("1_iq51o")
+id = "night_veil"
+display_name = "Night Veil"
+damage_multiplier = 1.6
+status = 6
+status_turns = 2
+
+[resource]
+script = ExtResource("3_b5ofa")
+id = "night_veil"
+display_name = "Night Veil"
+category = 1
+element = 2
+rarity = 3
+description = "ม่านราตรี: 160% + หลับ 2 เทิร์น (การ์ดเฉพาะ Shadow Princess)"
+mana_cost = 2
+effect = SubResource("Resource_w5c71")
+icon = ExtResource("2_d3hxi")
+drop_weight = 0.0
+exclusive_to = "shadow_princess"

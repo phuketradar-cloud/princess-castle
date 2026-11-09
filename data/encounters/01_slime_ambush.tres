@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EncounterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="1_jetrv"]
+[ext_resource type="Resource" path="res://data/monsters/slime.tres" id="2_a2ktu"]
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="3_un42k"]
+
+[resource]
+script = ExtResource("3_un42k")
+display_name = "Slime Ambush"
+monsters = Array[ExtResource("1_jetrv")]([ExtResource("2_a2ktu"), ExtResource("2_a2ktu")])

@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="PrincessDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_4h43x"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_m6ps8"]
+[ext_resource type="Texture2D" path="res://assets/art/princesses/dragon_princess/body.png" id="3_t3we4"]
+[ext_resource type="Resource" path="res://data/cards/dragon_soul.tres" id="4_le3o8"]
+[ext_resource type="Resource" path="res://data/furniture/pink_canopy_bed.tres" id="5_ool72"]
+[ext_resource type="Script" path="res://scripts/data/princess_definition.gd" id="6_araw4"]
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="7_8jrrl"]
+[ext_resource type="Resource" path="res://data/items/scale_club.tres" id="8_xif7u"]
+
+[sub_resource type="Resource" id="Resource_1dxot"]
+script = ExtResource("1_4h43x")
+display_name = "Claw"
+
+[sub_resource type="Resource" id="Resource_rjk3c"]
+script = ExtResource("1_4h43x")
+id = "dragon_roar"
+display_name = "Dragon Roar"
+target = 1
+damage_multiplier = 0.6
+cooldown = 3
+status = 3
+status_turns = 2
+status_potency = 0.25
+
+[sub_resource type="Resource" id="Resource_t3w8m"]
+script = ExtResource("1_4h43x")
+id = "dragon_fang"
+display_name = "Dragon Fang"
+damage_multiplier = 1.9
+cooldown = 3
+
+[sub_resource type="Resource" id="Resource_4h43x"]
+script = ExtResource("1_4h43x")
+id = "ember_breath"
+display_name = "Ember Breath"
+target = 1
+damage_multiplier = 0.5
+status = 10
+status_turns = 2
+status_potency = 0.04
+
+[sub_resource type="Resource" id="Resource_mm8qd"]
+script = ExtResource("2_m6ps8")
+max_hp = 175
+attack = 20
+defense = 8
+critical = 0.08
+evasion = 0.02
+luck = 5.0
+
+[resource]
+script = ExtResource("6_araw4")
+id = "dragon_princess"
+display_name = "Dragon Princess"
+title = "Last Ember of the Dragon Clan"
+archetype = 4
+description = "เจ้าหญิงมังกร: ตีหนัก ถึก ปราบบอส"
+base_stats = SubResource("Resource_mm8qd")
+abilities = Array[ExtResource("1_4h43x")]([SubResource("Resource_1dxot"), SubResource("Resource_rjk3c"), SubResource("Resource_t3w8m")])
+starting_equipment = Array[ExtResource("7_8jrrl")]([ExtResource("8_xif7u")])
+personality = 4
+wing = 4
+unlock_clears = 4
+liked_material = "dragon"
+face_dir = "res://assets/art/princesses/dragon_princess"
+bond_card = ExtResource("4_le3o8")
+bond_cosmetic = ExtResource("5_ool72")
+unlock_stage = "stage_03"
+growth_hp = 10.0
+growth_attack = 1.3
+growth_defense = 0.5
+growth_luck = 0.3
+assist = SubResource("Resource_4h43x")
+activity_weights = PackedFloat32Array(1, 0.8, 2, 0.3, 2, 0.8, 0.5)
+battle_texture = ExtResource("3_t3we4")

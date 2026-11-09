@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EncounterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="1_ictiu"]
+[ext_resource type="Resource" path="res://data/monsters/night_witch.tres" id="2_hdhr5"]
+[ext_resource type="Resource" path="res://data/monsters/imp.tres" id="3_mb8gh"]
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="4_jm0lh"]
+
+[resource]
+script = ExtResource("4_jm0lh")
+display_name = "Witch's Hut"
+monsters = Array[ExtResource("1_ictiu")]([ExtResource("2_hdhr5"), ExtResource("3_mb8gh")])
+reward_tier = 2

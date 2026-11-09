@@ -1,0 +1,147 @@
+[gd_resource type="Resource" script_class="CardLibrary" format=3]
+
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="1_60ncq"]
+[ext_resource type="Resource" path="res://data/cards/fireball.tres" id="2_7mjjt"]
+[ext_resource type="Resource" path="res://data/cards/fire_blast.tres" id="3_8hfa5"]
+[ext_resource type="Resource" path="res://data/cards/meteor.tres" id="4_jmavg"]
+[ext_resource type="Resource" path="res://data/cards/dragon_breath.tres" id="5_qqr40"]
+[ext_resource type="Resource" path="res://data/cards/ice_prison.tres" id="6_di881"]
+[ext_resource type="Resource" path="res://data/cards/shadow_prison.tres" id="7_a5qtn"]
+[ext_resource type="Resource" path="res://data/cards/dimensional_prison.tres" id="8_7tphn"]
+[ext_resource type="Resource" path="res://data/cards/banish.tres" id="9_otex6"]
+[ext_resource type="Resource" path="res://data/cards/sleep.tres" id="10_awft4"]
+[ext_resource type="Resource" path="res://data/cards/silence.tres" id="11_o5lj2"]
+[ext_resource type="Resource" path="res://data/cards/heal.tres" id="12_pooch"]
+[ext_resource type="Resource" path="res://data/cards/holy_shield.tres" id="13_4wpyu"]
+[ext_resource type="Resource" path="res://data/cards/lucky_day.tres" id="14_0mpgv"]
+[ext_resource type="Resource" path="res://data/cards/time_stop.tres" id="15_04mx0"]
+[ext_resource type="Resource" path="res://data/cards/shadow_execution.tres" id="16_r0bu3"]
+[ext_resource type="Resource" path="res://data/cards/dragons_wrath.tres" id="17_07f15"]
+[ext_resource type="Script" path="res://scripts/cards/craft_recipe.gd" id="18_pnxp7"]
+[ext_resource type="Script" path="res://scripts/cards/fusion_recipe.gd" id="19_2epax"]
+[ext_resource type="Script" path="res://scripts/cards/card_library.gd" id="20_cv55o"]
+
+[sub_resource type="Resource" id="Resource_far4m"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("2_7mjjt")
+cost = {
+"fire": 3
+}
+
+[sub_resource type="Resource" id="Resource_d6j74"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("6_di881")
+cost = {
+"ice": 5
+}
+
+[sub_resource type="Resource" id="Resource_huuqw"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("5_qqr40")
+cost = {
+"dragon": 5,
+"fire": 5
+}
+
+[sub_resource type="Resource" id="Resource_b5adv"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("10_awft4")
+cost = {
+"ice": 1,
+"light": 2
+}
+
+[sub_resource type="Resource" id="Resource_qy7eb"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("11_o5lj2")
+cost = {
+"shadow": 3
+}
+
+[sub_resource type="Resource" id="Resource_6d2od"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("7_a5qtn")
+cost = {
+"shadow": 5
+}
+
+[sub_resource type="Resource" id="Resource_7gtjh"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("12_pooch")
+cost = {
+"light": 3
+}
+
+[sub_resource type="Resource" id="Resource_6iwmi"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("13_4wpyu")
+cost = {
+"ice": 2,
+"light": 4
+}
+
+[sub_resource type="Resource" id="Resource_sis24"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("14_0mpgv")
+cost = {
+"light": 2,
+"shadow": 2
+}
+
+[sub_resource type="Resource" id="Resource_7h6xn"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("4_jmavg")
+cost = {
+"fire": 6,
+"light": 2
+}
+
+[sub_resource type="Resource" id="Resource_53jyc"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("9_otex6")
+cost = {
+"light": 2,
+"shadow": 4
+}
+
+[sub_resource type="Resource" id="Resource_2he3g"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("16_r0bu3")
+cost = {
+"dragon": 1,
+"shadow": 6
+}
+
+[sub_resource type="Resource" id="Resource_y75bn"]
+script = ExtResource("18_pnxp7")
+result = ExtResource("15_04mx0")
+cost = {
+"ice": 4,
+"light": 4,
+"shadow": 4
+}
+
+[sub_resource type="Resource" id="Resource_1dyq4"]
+script = ExtResource("19_2epax")
+inputs = Array[ExtResource("1_60ncq")]([ExtResource("2_7mjjt"), ExtResource("2_7mjjt"), ExtResource("2_7mjjt")])
+result = ExtResource("3_8hfa5")
+
+[sub_resource type="Resource" id="Resource_miexj"]
+script = ExtResource("19_2epax")
+inputs = Array[ExtResource("1_60ncq")]([ExtResource("6_di881"), ExtResource("7_a5qtn")])
+result = ExtResource("8_7tphn")
+
+[sub_resource type="Resource" id="Resource_h6lhd"]
+script = ExtResource("19_2epax")
+inputs = Array[ExtResource("1_60ncq")]([ExtResource("5_qqr40"), ExtResource("5_qqr40")])
+result = ExtResource("17_07f15")
+
+[resource]
+script = ExtResource("20_cv55o")
+cards = Array[ExtResource("1_60ncq")]([ExtResource("2_7mjjt"), ExtResource("3_8hfa5"), ExtResource("4_jmavg"), ExtResource("5_qqr40"), ExtResource("6_di881"), ExtResource("7_a5qtn"), ExtResource("8_7tphn"), ExtResource("9_otex6"), ExtResource("10_awft4"), ExtResource("11_o5lj2"), ExtResource("12_pooch"), ExtResource("13_4wpyu"), ExtResource("14_0mpgv"), ExtResource("15_04mx0"), ExtResource("16_r0bu3"), ExtResource("17_07f15")])
+craft_recipes = Array[ExtResource("18_pnxp7")]([SubResource("Resource_far4m"), SubResource("Resource_d6j74"), SubResource("Resource_huuqw"), SubResource("Resource_b5adv"), SubResource("Resource_qy7eb"), SubResource("Resource_6d2od"), SubResource("Resource_7gtjh"), SubResource("Resource_6iwmi"), SubResource("Resource_sis24"), SubResource("Resource_7h6xn"), SubResource("Resource_53jyc"), SubResource("Resource_2he3g"), SubResource("Resource_y75bn")])
+fusion_recipes = Array[ExtResource("19_2epax")]([SubResource("Resource_1dyq4"), SubResource("Resource_miexj"), SubResource("Resource_h6lhd")])
+starting_cards = Array[ExtResource("1_60ncq")]([ExtResource("2_7mjjt"), ExtResource("12_pooch")])
+normal_weights = PackedFloat32Array(60, 32, 8, 0, 0)
+mini_boss_weights = PackedFloat32Array(25, 45, 25, 5, 0)
+boss_weights = PackedFloat32Array(0, 35, 45, 18, 2)

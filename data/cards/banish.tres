@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_opn68"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/banish.png" id="2_n6ao4"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_boci2"]
+
+[sub_resource type="Resource" id="Resource_ueqc0"]
+script = ExtResource("1_opn68")
+id = "banish"
+display_name = "Banish"
+damage_multiplier = 0.0
+status = 5
+status_turns = 2
+
+[resource]
+script = ExtResource("3_boci2")
+id = "banish"
+display_name = "Banish"
+category = 1
+element = 2
+rarity = 2
+description = "ส่งศัตรูที่เลือกออกจากสนาม 2 เทิร์น (บอสไม่มีผล)"
+mana_cost = 2
+effect = SubResource("Resource_ueqc0")
+icon = ExtResource("2_n6ao4")
+drop_weight = 0.8

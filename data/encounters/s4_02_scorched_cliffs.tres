@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EncounterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="1_nhhit"]
+[ext_resource type="Resource" path="res://data/monsters/wyvern.tres" id="2_14f7q"]
+[ext_resource type="Resource" path="res://data/monsters/imp.tres" id="3_7507r"]
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="4_ohoj7"]
+
+[resource]
+script = ExtResource("4_ohoj7")
+display_name = "Scorched Cliffs"
+monsters = Array[ExtResource("1_nhhit")]([ExtResource("2_14f7q"), ExtResource("3_7507r"), ExtResource("3_7507r"), ExtResource("2_14f7q")])

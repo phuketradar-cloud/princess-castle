@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_xrwl1"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/meteor.png" id="2_7hxie"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_8jsis"]
+
+[sub_resource type="Resource" id="Resource_rox6t"]
+script = ExtResource("1_xrwl1")
+id = "meteor"
+display_name = "Meteor"
+target = 1
+damage_multiplier = 1.1
+
+[resource]
+script = ExtResource("3_8jsis")
+id = "meteor"
+display_name = "Meteor"
+rarity = 2
+description = "อุกกาบาตถล่มศัตรูทุกตัว (110%)"
+mana_cost = 3
+effect = SubResource("Resource_rox6t")
+icon = ExtResource("2_7hxie")
+drop_weight = 0.6

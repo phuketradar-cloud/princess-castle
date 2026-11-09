@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_kj1o8"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_64ji7"]
+[ext_resource type="Texture2D" path="res://assets/art/items/starfall_halo.png" id="3_fsvlt"]
+
+[sub_resource type="Resource" id="Resource_6egtk"]
+script = ExtResource("2_64ji7")
+max_hp = 25
+attack = 0
+critical = 0.12
+evasion = 0.05
+luck = 30.0
+
+[resource]
+script = ExtResource("1_kj1o8")
+id = "starfall_halo"
+display_name = "Starfall Halo"
+slot = 1
+rarity = 4
+description = "วงแหวนดาวตกที่ลอยเหนือศีรษะ"
+stats = SubResource("Resource_6egtk")
+texture = ExtResource("3_fsvlt")

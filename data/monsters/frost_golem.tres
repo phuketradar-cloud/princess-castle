@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_s85px"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_twyl5"]
+[ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_nrb2b"]
+[ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_wxhbw"]
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_osrm5"]
+[ext_resource type="Texture2D" path="res://assets/art/monster_frost_golem.png" id="6_acx6n"]
+
+[sub_resource type="Resource" id="Resource_yfs01"]
+script = ExtResource("1_s85px")
+id = "glacier_slam"
+display_name = "Glacier Slam"
+damage_multiplier = 2.3
+cooldown = 3
+initial_cooldown = 2
+intent_tag = "HEAVY"
+
+[sub_resource type="Resource" id="Resource_p7t7f"]
+script = ExtResource("1_s85px")
+id = "stone_fist"
+display_name = "Stone Fist"
+intent_tag = "ATK"
+
+[sub_resource type="Resource" id="Resource_xgcgg"]
+script = ExtResource("2_twyl5")
+max_hp = 150
+attack = 15
+defense = 15
+
+[sub_resource type="Resource" id="Resource_xj62q"]
+script = ExtResource("3_nrb2b")
+element = 1
+min_amount = 2
+max_amount = 3
+
+[sub_resource type="Resource" id="Resource_0sjcy"]
+script = ExtResource("3_nrb2b")
+material = "ice_crystal"
+max_amount = 2
+
+[sub_resource type="Resource" id="Resource_73r1b"]
+script = ExtResource("4_wxhbw")
+announce = "Frost Golem: แกนน้ำแข็งก่อตัว! (โล่)"
+cleanse = true
+shield_fraction = 0.2
+
+[resource]
+script = ExtResource("5_osrm5")
+id = "frost_golem"
+display_name = "Frost Golem"
+description = "มินิบอส: เกราะหนามาก ส่งสัญญาณ Glacier Slam ก่อนทุบ (กด Defend!) — เลือด 50% จะสร้างแกนน้ำแข็งป้องกัน"
+base_stats = SubResource("Resource_xgcgg")
+abilities = Array[ExtResource("1_s85px")]([SubResource("Resource_yfs01"), SubResource("Resource_p7t7f")])
+is_boss = true
+control_resistance = 0.6
+phases = Array[ExtResource("4_wxhbw")]([SubResource("Resource_73r1b")])
+drops = Array[ExtResource("3_nrb2b")]([SubResource("Resource_xj62q"), SubResource("Resource_0sjcy")])
+texture = ExtResource("6_acx6n")

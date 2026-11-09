@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EncounterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="1_wf2te"]
+[ext_resource type="Resource" path="res://data/monsters/slime.tres" id="2_6rtix"]
+[ext_resource type="Resource" path="res://data/monsters/bat.tres" id="3_k607s"]
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="4_0hgf8"]
+
+[resource]
+script = ExtResource("4_0hgf8")
+display_name = "Night Wings"
+monsters = Array[ExtResource("1_wf2te")]([ExtResource("2_6rtix"), ExtResource("3_k607s"), ExtResource("3_k607s")])

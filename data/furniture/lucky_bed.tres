@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="FurnitureDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_gpguv"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_wq60j"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture/lucky_bed.png" id="3_ya46w"]
+
+[sub_resource type="Resource" id="Resource_paysy"]
+script = ExtResource("2_wq60j")
+max_hp = 0
+attack = 0
+luck = 12.0
+
+[resource]
+script = ExtResource("1_gpguv")
+id = "lucky_bed"
+display_name = "Lucky Bed"
+rarity = 1
+description = "นอนแล้วโชคดี (Luck)"
+stats = SubResource("Resource_paysy")
+texture = ExtResource("3_ya46w")
+recipe = {
+"ice": 2,
+"light": 4
+}

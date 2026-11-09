@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_fyrtt"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/fire_blast.png" id="2_h7lsr"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_kn70s"]
+
+[sub_resource type="Resource" id="Resource_2ixf7"]
+script = ExtResource("1_fyrtt")
+id = "fire_blast"
+display_name = "Fire Blast"
+damage_multiplier = 3.0
+status = 10
+status_turns = 3
+status_potency = 0.05
+
+[resource]
+script = ExtResource("3_kn70s")
+id = "fire_blast"
+display_name = "Fire Blast"
+rarity = 2
+description = "ระเบิดเพลิงใส่ศัตรู 1 ตัว (300%) + ติดไฟ 3 เทิร์น — ได้จาก Fusion"
+mana_cost = 2
+effect = SubResource("Resource_2ixf7")
+icon = ExtResource("2_h7lsr")
+drop_weight = 0.0

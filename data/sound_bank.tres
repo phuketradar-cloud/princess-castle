@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="SoundBank" format=3]
+
+[ext_resource type="AudioStream" path="res://assets/audio/music_castle.res" id="1_tul6p"]
+[ext_resource type="AudioStream" path="res://assets/audio/music_battle.res" id="2_qh76x"]
+[ext_resource type="AudioStream" path="res://assets/audio/music_boss.res" id="3_a3ia3"]
+[ext_resource type="Script" path="res://scripts/audio/sound_bank.gd" id="4_bpnax"]
+[ext_resource type="AudioStream" path="res://assets/audio/click.res" id="5_no0gh"]
+[ext_resource type="AudioStream" path="res://assets/audio/hit.res" id="6_2suf0"]
+[ext_resource type="AudioStream" path="res://assets/audio/crit.res" id="7_45jjb"]
+[ext_resource type="AudioStream" path="res://assets/audio/miss.res" id="8_d1bgh"]
+[ext_resource type="AudioStream" path="res://assets/audio/heal.res" id="9_0y6b0"]
+[ext_resource type="AudioStream" path="res://assets/audio/shield.res" id="10_84mn1"]
+[ext_resource type="AudioStream" path="res://assets/audio/status.res" id="11_h2srb"]
+[ext_resource type="AudioStream" path="res://assets/audio/death.res" id="12_h7866"]
+[ext_resource type="AudioStream" path="res://assets/audio/card.res" id="13_ilo7e"]
+[ext_resource type="AudioStream" path="res://assets/audio/victory.res" id="14_wbmtc"]
+[ext_resource type="AudioStream" path="res://assets/audio/defeat.res" id="15_qaxvg"]
+[ext_resource type="AudioStream" path="res://assets/audio/level_up.res" id="16_0oea8"]
+[ext_resource type="AudioStream" path="res://assets/audio/boss_phase.res" id="17_1x6r2"]
+[ext_resource type="AudioStream" path="res://assets/audio/summon.res" id="18_iawkw"]
+[ext_resource type="AudioStream" path="res://assets/audio/reward.res" id="19_83aq3"]
+[ext_resource type="AudioStream" path="res://assets/audio/coin.res" id="20_dmu02"]
+[ext_resource type="AudioStream" path="res://assets/audio/unlock.res" id="21_hhaoc"]
+[ext_resource type="AudioStream" path="res://assets/audio/error.res" id="22_wjmqy"]
+
+[resource]
+script = ExtResource("4_bpnax")
+sfx = {
+"boss_phase": ExtResource("17_1x6r2"),
+"card": ExtResource("13_ilo7e"),
+"click": ExtResource("5_no0gh"),
+"coin": ExtResource("20_dmu02"),
+"crit": ExtResource("7_45jjb"),
+"death": ExtResource("12_h7866"),
+"defeat": ExtResource("15_qaxvg"),
+"error": ExtResource("22_wjmqy"),
+"heal": ExtResource("9_0y6b0"),
+"hit": ExtResource("6_2suf0"),
+"level_up": ExtResource("16_0oea8"),
+"miss": ExtResource("8_d1bgh"),
+"reward": ExtResource("19_83aq3"),
+"shield": ExtResource("10_84mn1"),
+"status": ExtResource("11_h2srb"),
+"summon": ExtResource("18_iawkw"),
+"unlock": ExtResource("21_hhaoc"),
+"victory": ExtResource("14_wbmtc")
+}
+music = {
+"battle": ExtResource("2_qh76x"),
+"boss": ExtResource("3_a3ia3"),
+"castle": ExtResource("1_tul6p")
+}
+sfx_db = {
+"click": -6.0,
+"miss": -4.0,
+"status": -3.0
+}

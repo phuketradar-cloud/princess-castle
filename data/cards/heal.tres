@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_ad4at"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/heal.png" id="2_eg4es"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_38iky"]
+
+[sub_resource type="Resource" id="Resource_8vmo3"]
+script = ExtResource("1_ad4at")
+id = "heal"
+display_name = "Heal"
+target = 2
+damage_multiplier = 0.0
+heal_multiplier = 1.2
+
+[resource]
+script = ExtResource("3_38iky")
+id = "heal"
+display_name = "Heal"
+category = 2
+element = 3
+description = "ฟื้น HP เท่ากับ 120% ของพลังโจมตี"
+effect = SubResource("Resource_8vmo3")
+icon = ExtResource("2_eg4es")

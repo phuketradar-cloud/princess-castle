@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="StageDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="1_0yqel"]
+[ext_resource type="Resource" path="res://data/encounters/s2_01_whispering_stacks.tres" id="2_kwwf1"]
+[ext_resource type="Resource" path="res://data/encounters/s2_02_haunted_shelves.tres" id="3_hh1hi"]
+[ext_resource type="Resource" path="res://data/encounters/s2_03_frozen_guardian.tres" id="4_a4r07"]
+[ext_resource type="Resource" path="res://data/encounters/s2_04_throne_of_frost.tres" id="5_7oi5l"]
+[ext_resource type="Script" path="res://scripts/data/stage_definition.gd" id="6_hh2ro"]
+
+[resource]
+script = ExtResource("6_hh2ro")
+id = "stage_02"
+display_name = "Frozen Library"
+description = "ห้องสมุดเยือกแข็ง: ภูติน้ำแข็งสร้างโล่ — ใช้สกิลแรง/ติดสถานะ"
+encounters = Array[ExtResource("1_0yqel")]([ExtResource("2_kwwf1"), ExtResource("3_hh1hi"), ExtResource("4_a4r07"), ExtResource("5_7oi5l")])
+recommended_level = 6
+unlock_after = "stage_01"
+monster_hp_scale = 1.3
+monster_attack_scale = 1.2

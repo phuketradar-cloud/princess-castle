@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_dx8py"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_56oil"]
+[ext_resource type="Texture2D" path="res://assets/art/items/lace_guard_dress.png" id="3_3toe4"]
+
+[sub_resource type="Resource" id="Resource_ncd6y"]
+script = ExtResource("2_56oil")
+max_hp = 25
+attack = 0
+defense = 5
+
+[resource]
+script = ExtResource("1_dx8py")
+id = "lace_guard_dress"
+display_name = "Lace Guard Dress"
+slot = 3
+rarity = 1
+description = "ชุดลูกไม้เสริมเกราะเงิน"
+stats = SubResource("Resource_ncd6y")
+texture = ExtResource("3_3toe4")

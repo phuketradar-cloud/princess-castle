@@ -1,0 +1,5 @@
+[gd_resource type="SystemFont" format=3]
+
+[resource]
+font_names = PackedStringArray("Leelawadee UI", "Noto Sans Thai UI", "Noto Sans Thai", "Tahoma", "sans-serif")
+font_weight = 600

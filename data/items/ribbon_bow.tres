@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_bucsp"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_ybyir"]
+[ext_resource type="Texture2D" path="res://assets/art/items/ribbon_bow.png" id="3_ae0a3"]
+
+[sub_resource type="Resource" id="Resource_78t0n"]
+script = ExtResource("2_ybyir")
+max_hp = 0
+attack = 0
+luck = 15.0
+
+[resource]
+script = ExtResource("1_bucsp")
+id = "ribbon_bow"
+display_name = "Ribbon Bow"
+slot = 1
+description = "โบว์นำโชค"
+stats = SubResource("Resource_78t0n")
+texture = ExtResource("3_ae0a3")

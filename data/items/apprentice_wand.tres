@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_r684d"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_x8lww"]
+[ext_resource type="Texture2D" path="res://assets/art/items/apprentice_wand.png" id="3_3cr41"]
+
+[sub_resource type="Resource" id="Resource_4lqxx"]
+script = ExtResource("2_x8lww")
+max_hp = 0
+attack = 2
+luck = 10.0
+
+[resource]
+script = ExtResource("1_r684d")
+id = "apprentice_wand"
+display_name = "Apprentice Wand"
+description = "ไม้กายสิทธิ์ของนักเวทฝึกหัด"
+stats = SubResource("Resource_4lqxx")
+texture = ExtResource("3_3cr41")

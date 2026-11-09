@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CardDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_4p7kv"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/dimensional_prison.png" id="2_qlver"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_3qixn"]
+
+[sub_resource type="Resource" id="Resource_gw1fs"]
+script = ExtResource("1_4p7kv")
+id = "dimensional_prison"
+display_name = "Dimensional Prison"
+target = 1
+damage_multiplier = 0.3
+status = 4
+status_turns = 2
+
+[resource]
+script = ExtResource("3_3qixn")
+id = "dimensional_prison"
+display_name = "Dimensional Prison"
+category = 1
+element = 2
+rarity = 3
+description = "กักขังศัตรูทุกตัวในมิติ 2 เทิร์น — ได้จาก Fusion"
+mana_cost = 3
+effect = SubResource("Resource_gw1fs")
+icon = ExtResource("2_qlver")
+drop_weight = 0.0

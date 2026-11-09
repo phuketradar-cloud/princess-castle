@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_8plg1"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_psun7"]
+[ext_resource type="Texture2D" path="res://assets/art/items/clover_charm.png" id="3_mp1st"]
+
+[sub_resource type="Resource" id="Resource_j020q"]
+script = ExtResource("2_psun7")
+max_hp = 0
+attack = 0
+luck = 25.0
+
+[resource]
+script = ExtResource("1_8plg1")
+id = "clover_charm"
+display_name = "Clover Charm"
+slot = 4
+description = "ใบโคลเวอร์สี่แฉก"
+stats = SubResource("Resource_j020q")
+texture = ExtResource("3_mp1st")

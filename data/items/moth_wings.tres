@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_gpriw"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_loopm"]
+[ext_resource type="Texture2D" path="res://assets/art/items/moth_wings.png" id="3_w3b43"]
+
+[sub_resource type="Resource" id="Resource_npn8m"]
+script = ExtResource("2_loopm")
+max_hp = 0
+attack = 0
+evasion = 0.03
+
+[resource]
+script = ExtResource("1_gpriw")
+id = "moth_wings"
+display_name = "Moth Wings"
+slot = 2
+description = "ปีกผีเสื้อกลางคืนนุ่มๆ"
+stats = SubResource("Resource_npn8m")
+texture = ExtResource("3_w3b43")

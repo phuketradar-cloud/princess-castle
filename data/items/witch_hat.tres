@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_colvx"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_h2nrx"]
+[ext_resource type="Texture2D" path="res://assets/art/items/witch_hat.png" id="3_a086e"]
+
+[sub_resource type="Resource" id="Resource_n7loq"]
+script = ExtResource("2_h2nrx")
+max_hp = 0
+attack = 4
+critical = 0.06
+
+[resource]
+script = ExtResource("1_colvx")
+id = "witch_hat"
+display_name = "Witch Hat"
+slot = 1
+rarity = 2
+description = "หมวกแม่มดที่ทำให้อาวุธอาบยาพิษ"
+stats = SubResource("Resource_n7loq")
+special = 4
+special_value = 0.3
+texture = ExtResource("3_a086e")

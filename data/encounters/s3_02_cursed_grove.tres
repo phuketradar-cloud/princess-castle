@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EncounterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="1_3qyvc"]
+[ext_resource type="Resource" path="res://data/monsters/imp.tres" id="2_1c1s0"]
+[ext_resource type="Resource" path="res://data/monsters/dark_shaman.tres" id="3_v736x"]
+[ext_resource type="Resource" path="res://data/monsters/bat.tres" id="4_eec20"]
+[ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="5_tqxhu"]
+
+[resource]
+script = ExtResource("5_tqxhu")
+display_name = "Cursed Grove"
+monsters = Array[ExtResource("1_3qyvc")]([ExtResource("2_1c1s0"), ExtResource("3_v736x"), ExtResource("4_eec20"), ExtResource("2_1c1s0")])

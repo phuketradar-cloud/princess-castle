@@ -1,0 +1,5 @@
+PERF castle overview                    avg  1.03 ms ( 969 FPS) | worst  13.1 ms | draw calls   62 | nodes   96 | mem  58.1 MB
+PERF castle room                        avg  0.82 ms (1214 FPS) | worst   8.4 ms | draw calls   36 | nodes   56 | mem  60.5 MB
+PERF battle stage 1                     avg  0.82 ms (1226 FPS) | worst   4.2 ms | draw calls   76 | nodes  107 | mem  67.0 MB
+PERF battle boss (stage 4, 6 monsters)  avg  0.89 ms (1118 FPS) | worst   3.4 ms | draw calls   96 | nodes  133 | mem  67.3 MB
+PERF OK

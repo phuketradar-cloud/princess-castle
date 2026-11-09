@@ -1,0 +1,135 @@
+Godot Engine v4.6.2.stable.official.71f334935 - https://godotengine.org
+
+PASS test_damage_equals_attack_without_defense
+PASS test_defense_diminishing_returns
+PASS test_critical_multiplies
+PASS test_evasion_dodges_and_is_capped
+PASS test_defending_halves_and_min_damage
+PASS test_estimate_matches_flat_hit
+PASS test_start_plans_intents
+PASS test_kill_last_enemy_is_victory
+PASS test_player_death_is_defeat
+PASS test_full_round
+PASS test_multiple_enemies_all_act_and_targeting
+PASS test_area_attack_hits_all
+PASS test_cooldown
+PASS test_stun_skips_enemy_turn
+PASS test_boss_resists_stun
+PASS test_poison_ticks_then_expires
+PASS test_defend_halves_incoming
+PASS test_invalid_commands_rejected
+PASS test_healer_heals_lowest_ally
+PASS test_stunned_player_skips_turn
+PASS test_thousand_random_battles_terminate
+PASS test_equipment_adds_stats
+PASS test_carried_hp_is_clamped_to_new_max
+PASS test_item_stat_lines
+PASS test_lifesteal_heals_attacker
+PASS test_thorns_reflects_damage
+PASS test_thorns_can_kill_attacker
+PASS test_crit_power_increases_crit_damage
+PASS test_poison_edge_applies_poison
+PASS test_reward_options_shape
+PASS test_owned_items_are_skipped
+PASS test_rarity_weights_respected
+PASS test_equip_replaces_slot
+WARNING: Collection.equip: 'x' is not owned
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] equip (res://scripts/items/collection.gd:55)
+       [1] test_cannot_equip_unowned (res://tests/test_items.gd:184)
+       [2] _init (res://tests/run_tests.gd:30)
+PASS test_cannot_equip_unowned
+PASS test_starting_gear_given_once
+PASS test_save_roundtrip_and_unknown_items
+PASS test_real_item_data_is_valid
+ERROR: Parse JSON failed. Error at line 0: Expected key
+   at: parse_string (core/io/json.cpp:624)
+   GDScript backtrace (most recent call first):
+       [0] load_game (res://scripts/core/game_state.gd:91)
+       [1] test_game_state_writes_and_reads_json_file (res://tests/test_items.gd:262)
+       [2] _init (res://tests/run_tests.gd:30)
+WARNING: Save file unreadable; starting fresh (old file kept as .bak)
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] load_game (res://scripts/core/game_state.gd:93)
+       [1] test_game_state_writes_and_reads_json_file (res://tests/test_items.gd:262)
+       [2] _init (res://tests/run_tests.gd:30)
+PASS test_game_state_writes_and_reads_json_file
+PASS test_card_costs_mana_and_keeps_turn
+ERROR: Invalid card: มานาไม่พอ (1/4)
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] play_card (res://scripts/combat/battle_engine.gd:174)
+       [1] test_not_enough_mana (res://tests/test_cards.gd:79)
+       [2] _init (res://tests/run_tests.gd:30)
+PASS test_not_enough_mana
+PASS test_mana_regenerates_and_caps
+PASS test_card_can_win_the_battle
+PASS test_ice_prison_freezes_for_turns
+PASS test_boss_control_halved_and_banish_immune
+PASS test_banish_removes_from_field_then_returns
+PASS test_banished_enemy_prevents_premature_victory
+PASS test_sleep_wakes_on_damage
+PASS test_silence_forces_basic_attack
+PASS test_holy_shield_absorbs
+PASS test_lucky_day_crit
+PASS test_execute_kills_low_hp_and_hurts_boss
+PASS test_burn_ticks
+PASS test_time_stop_stuns_all
+PASS test_crafting_spends_essence
+PASS test_fusion_consumes_cards
+PASS test_deck_limit_and_rules
+PASS test_fusion_only_cards_never_drop
+PASS test_essence_drop_range
+PASS test_save_v2_roundtrip_and_v1_compat
+PASS test_real_card_data_is_valid
+PASS test_bond_levels
+PASS test_talk_daily_limit
+PASS test_gifts
+PASS test_bond_rewards_granted_once
+PASS test_add_bond_reports_level_up
+PASS test_diminishing_returns_and_cap
+PASS test_skin_gives_no_stats
+PASS test_furniture_owner_only_and_room_type
+PASS test_decorate_bond_once_per_piece
+PASS test_craft_furniture
+PASS test_unlock_by_stage_clears
+PASS test_dialogue_specificity
+PASS test_furniture_bonus_and_mana_perk_in_battle
+PASS test_exclusive_cards
+PASS test_castle_save_roundtrip
+PASS test_real_roster
+PASS test_phase_enrage_and_summon_fire_once
+PASS test_phase_cleanse_shield_heal
+PASS test_summons_respect_max_enemies
+PASS test_real_boss_resists_control
+PASS test_companion_assists_every_interval
+PASS test_companion_blessing_heals_princess
+PASS test_synergy_damage_and_regen
+PASS test_roster_synergies
+PASS test_level_stats_growth
+PASS test_exp_and_level_cap
+PASS test_unlock_by_stage_and_chain
+PASS test_save_v4_roundtrip_and_migration
+PASS test_real_stages
+SIM  smart       first-run win  58.5%   lost at battle 1-4: [0, 0, 4, 162]
+SIM  attack-only first-run win   0.0%   lost at battle 1-4: [0, 20, 306, 74]
+SIM  progression: avg attempts to first clear 1.44 | cleared by attempt #1 64%, #2 95%, #3 99%, #4 99%, #5 100%
+PASS simulate_stage (smart first-run win rate must be 20%..85%)
+SIM  sword_princess   first-run win  61.0%  
+SIM  magic_princess   first-run win  47.0%  
+SIM  shadow_princess  first-run win  39.0%  
+SIM  light_princess   first-run win  38.0%  
+SIM  dragon_princess  first-run win  67.0%  
+SIM  campaign Haunted Gate    cleared 100% | avg attempts 1.1 | first-try  90% | Lv at clear 4.1 (rec 1) 
+SIM  campaign Frozen Library  cleared 100% | avg attempts 2.3 | first-try  20% | Lv at clear 7.3 (rec 6) 
+SIM  campaign Shadow Woods    cleared 100% | avg attempts 2.5 | first-try  23% | Lv at clear 10.7 (rec 10) 
+SIM  campaign Dragon's Peak   cleared 100% | avg attempts 2.9 | first-try  23% | Lv at clear 14.0 (rec 14) 
+PASS simulate_campaign (every stage cleared by 70 percent within 15 attempts, later stages not trivial)
+
+89 passed, 0 failed
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2641)
+ERROR: 4 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)

@@ -1,0 +1,684 @@
+[gd_resource type="Resource" script_class="DialogueDB" format=3]
+
+[ext_resource type="Script" path="res://scripts/castle/dialogue_line.gd" id="1_ydije"]
+[ext_resource type="Script" path="res://scripts/castle/dialogue_db.gd" id="2_1yb3d"]
+
+[sub_resource type="Resource" id="Resource_vf5i3"]
+script = ExtResource("1_ydije")
+trigger = "GREETING"
+text = "ยินดีต้อนรับกลับมานะ!"
+expression = 1
+
+[sub_resource type="Resource" id="Resource_2naxm"]
+script = ExtResource("1_ydije")
+trigger = "GREETING"
+text = "กลับมาแล้วเหรอ! วันนี้ไปฝึกด้วยกันไหม?"
+expression = 1
+personality = 0
+
+[sub_resource type="Resource" id="Resource_25xx8"]
+script = ExtResource("1_ydije")
+trigger = "GREETING"
+text = "อ๊ะ... ขอโทษที เพลินอ่านหนังสืออยู่น่ะ"
+expression = 3
+personality = 1
+
+[sub_resource type="Resource" id="Resource_toy6j"]
+script = ExtResource("1_ydije")
+trigger = "GREETING"
+text = "ฉันรู้อยู่แล้วว่าเธอจะมา... ฮึๆ"
+expression = 7
+personality = 2
+
+[sub_resource type="Resource" id="Resource_rd4dl"]
+script = ExtResource("1_ydije")
+trigger = "GREETING"
+text = "เหนื่อยไหม? มาจิบชาด้วยกันสิ"
+expression = 1
+personality = 3
+
+[sub_resource type="Resource" id="Resource_q6wx8"]
+script = ExtResource("1_ydije")
+trigger = "GREETING"
+text = "ฮึ่ม มาช้านะ... ไม่ได้รอหรอกนะ!"
+expression = 6
+personality = 4
+
+[sub_resource type="Resource" id="Resource_7hdht"]
+script = ExtResource("1_ydije")
+text = "อืม? มีอะไรเหรอ"
+expression = 3
+
+[sub_resource type="Resource" id="Resource_7oxio"]
+script = ExtResource("1_ydije")
+text = "ดาบต้องลับทุกวัน ใจก็เหมือนกัน!"
+expression = 1
+personality = 0
+
+[sub_resource type="Resource" id="Resource_4dndw"]
+script = ExtResource("1_ydije")
+text = "ถ้ามีมอนสเตอร์มาอีก ฉันจะปกป้องปราสาทเอง"
+personality = 0
+
+[sub_resource type="Resource" id="Resource_djoy4"]
+script = ExtResource("1_ydije")
+text = "ขอบคุณที่อยู่ข้างๆ ฉันเสมอนะ"
+expression = 1
+personality = 0
+min_bond = 2
+
+[sub_resource type="Resource" id="Resource_p76uw"]
+script = ExtResource("1_ydije")
+text = "ถ้าไม่มีเธอ... ฉันคงไม่กล้าขนาดนี้หรอก"
+expression = 1
+personality = 0
+min_bond = 4
+
+[sub_resource type="Resource" id="Resource_4h5pe"]
+script = ExtResource("1_ydije")
+text = "รู้ไหม Ice Prison เกิดจากผลึกน้ำแข็งสามชั้น!"
+expression = 3
+personality = 1
+
+[sub_resource type="Resource" id="Resource_owxfi"]
+script = ExtResource("1_ydije")
+text = "หนังสือเล่มนี้บอกว่าบอสกลัวไฟนะ... มั้ง"
+expression = 3
+personality = 1
+
+[sub_resource type="Resource" id="Resource_k7o70"]
+script = ExtResource("1_ydije")
+text = "เธอฟังฉันพูดเรื่องเวทมนตร์ได้ทั้งวันเลยเหรอ? ดีใจจัง"
+expression = 1
+personality = 1
+min_bond = 2
+
+[sub_resource type="Resource" id="Resource_d5y3a"]
+script = ExtResource("1_ydije")
+text = "ฉันจดชื่อเธอไว้ในหน้าแรกของสมุดเลยนะ"
+expression = 1
+personality = 1
+min_bond = 4
+
+[sub_resource type="Resource" id="Resource_bx5fa"]
+script = ExtResource("1_ydije")
+text = "เงาในห้องนี้คุยด้วยสนุกกว่าคนอื่น..."
+expression = 7
+personality = 2
+
+[sub_resource type="Resource" id="Resource_6ch3x"]
+script = ExtResource("1_ydije")
+text = "อย่ามองฉันนานนักสิ เดี๋ยวก็หายไปหรอก"
+expression = 7
+personality = 2
+
+[sub_resource type="Resource" id="Resource_bhcwq"]
+script = ExtResource("1_ydije")
+text = "ความลับของฉัน... บอกเธอคนเดียวก็ได้"
+expression = 7
+personality = 2
+min_bond = 2
+
+[sub_resource type="Resource" id="Resource_wq1hf"]
+script = ExtResource("1_ydije")
+text = "ในความมืด มีเธอเป็นแสงเดียวที่ฉันมองเห็น"
+expression = 1
+personality = 2
+min_bond = 4
+
+[sub_resource type="Resource" id="Resource_sb31o"]
+script = ExtResource("1_ydije")
+text = "วันนี้อากาศดีจัง ดอกไม้ในสวนบานแล้วนะ"
+expression = 1
+personality = 3
+
+[sub_resource type="Resource" id="Resource_qsnbt"]
+script = ExtResource("1_ydije")
+text = "อย่าลืมดูแลตัวเองด้วยนะ"
+personality = 3
+
+[sub_resource type="Resource" id="Resource_w4e2t"]
+script = ExtResource("1_ydije")
+text = "ชาที่ชงวันนี้ ตั้งใจชงให้เธอเลยนะ"
+expression = 1
+personality = 3
+min_bond = 2
+
+[sub_resource type="Resource" id="Resource_uqq3k"]
+script = ExtResource("1_ydije")
+text = "พรของฉันจะคุ้มครองเธอเสมอ"
+expression = 1
+personality = 3
+min_bond = 4
+
+[sub_resource type="Resource" id="Resource_0up4s"]
+script = ExtResource("1_ydije")
+text = "อย่าคิดว่าฉันชอบคุยกับเธอนะ!"
+expression = 6
+personality = 4
+
+[sub_resource type="Resource" id="Resource_o5vht"]
+script = ExtResource("1_ydije")
+text = "มังกรอย่างฉันไม่กลัวอะไรทั้งนั้น... ยกเว้นแมงมุม"
+expression = 4
+personality = 4
+
+[sub_resource type="Resource" id="Resource_6sedh"]
+script = ExtResource("1_ydije")
+text = "ก็... ไม่ได้แย่ที่มีเธออยู่ด้วยหรอก"
+expression = 7
+personality = 4
+min_bond = 2
+
+[sub_resource type="Resource" id="Resource_wvxdo"]
+script = ExtResource("1_ydije")
+text = "ฉันยอมรับเธอเป็นคู่หูก็ได้... แค่คนเดียวนะ!"
+expression = 1
+personality = 4
+min_bond = 4
+
+[sub_resource type="Resource" id="Resource_yo5ty"]
+script = ExtResource("1_ydije")
+trigger = "TALK_LIMIT"
+text = "วันนี้คุยกันเยอะแล้ว พรุ่งนี้มาใหม่นะ"
+expression = 1
+
+[sub_resource type="Resource" id="Resource_htyce"]
+script = ExtResource("1_ydije")
+trigger = "ACTIVITY_SLEEPING"
+text = "ฮ้าว... ขอนอนอีกห้านาที..."
+
+[sub_resource type="Resource" id="Resource_aa20s"]
+script = ExtResource("1_ydije")
+trigger = "ACTIVITY_READING"
+text = "หน้านี้น่าสนใจจัง..."
+expression = 3
+
+[sub_resource type="Resource" id="Resource_kgfqv"]
+script = ExtResource("1_ydije")
+trigger = "ACTIVITY_TRAINING"
+text = "ฮึบ! อีกร้อยครั้ง!"
+expression = 6
+
+[sub_resource type="Resource" id="Resource_53qpt"]
+script = ExtResource("1_ydije")
+trigger = "ACTIVITY_TRAINING"
+text = "เหงื่อออกแล้ว~ แต่สนุก!"
+expression = 1
+personality = 0
+
+[sub_resource type="Resource" id="Resource_iy48b"]
+script = ExtResource("1_ydije")
+trigger = "ACTIVITY_LOOKING_OUTSIDE"
+text = "ดาวคืนนี้สวยจัง..."
+
+[sub_resource type="Resource" id="Resource_oahbm"]
+script = ExtResource("1_ydije")
+trigger = "ACTIVITY_LOOKING_OUTSIDE"
+text = "ข้างนอกนั่น... มีอะไรซ่อนอยู่นะ"
+expression = 7
+personality = 2
+
+[sub_resource type="Resource" id="Resource_edq1p"]
+script = ExtResource("1_ydije")
+trigger = "ACTIVITY_DRINKING_TEA"
+text = "ชาหอมจัง~"
+expression = 1
+
+[sub_resource type="Resource" id="Resource_daus8"]
+script = ExtResource("1_ydije")
+trigger = "ACTIVITY_SITTING"
+text = "พักสักหน่อยนะ"
+
+[sub_resource type="Resource" id="Resource_jvoiv"]
+script = ExtResource("1_ydije")
+trigger = "ACTIVITY_STANDING"
+text = "วันนี้ทำอะไรดีนะ"
+expression = 3
+
+[sub_resource type="Resource" id="Resource_hrv56"]
+script = ExtResource("1_ydije")
+trigger = "GIFT_LIKED"
+text = "ว้าว! ของที่ชอบที่สุดเลย ขอบคุณนะ!"
+expression = 1
+
+[sub_resource type="Resource" id="Resource_6r1qs"]
+script = ExtResource("1_ydije")
+trigger = "GIFT_LIKED"
+text = "ฮะ!? ร-รู้ได้ไงว่าฉันชอบ... ขอบใจ"
+expression = 2
+personality = 4
+
+[sub_resource type="Resource" id="Resource_yhjpk"]
+script = ExtResource("1_ydije")
+trigger = "GIFT"
+text = "ขอบคุณนะ จะเก็บไว้อย่างดี"
+expression = 1
+
+[sub_resource type="Resource" id="Resource_7qimd"]
+script = ExtResource("1_ydije")
+trigger = "DECORATE"
+text = "ห้องดูสวยขึ้นเยอะเลย!"
+expression = 1
+
+[sub_resource type="Resource" id="Resource_0ukbs"]
+script = ExtResource("1_ydije")
+trigger = "DECORATE"
+text = "มุมนี้ได้เงาสวยดี... ชอบนะ"
+expression = 7
+personality = 2
+
+[sub_resource type="Resource" id="Resource_r3mj6"]
+script = ExtResource("1_ydije")
+trigger = "BOND_UP"
+text = "รู้สึกเหมือนเราสนิทกันมากขึ้นนะ"
+expression = 1
+
+[sub_resource type="Resource" id="Resource_xaub4"]
+script = ExtResource("1_ydije")
+trigger = "BOND_UP"
+text = "อ-อย่าเข้าใจผิดนะ! แค่... นิดเดียวเอง"
+expression = 6
+personality = 4
+
+[sub_resource type="Resource" id="Resource_ahwpp"]
+script = ExtResource("1_ydije")
+trigger = "UNLOCK"
+text = "ยินดีที่ได้รู้จักนะ! ต่อจากนี้ฝากตัวด้วย"
+expression = 1
+
+[sub_resource type="Resource" id="Resource_bhgpt"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "ของใหม่! ขอบคุณนะ"
+expression = 1
+
+[sub_resource type="Resource" id="Resource_gkgav"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "อาวุธใหม่! ลองฟันดูหน่อยดีกว่า"
+expression = 1
+slot = 0
+
+[sub_resource type="Resource" id="Resource_ehh5o"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "เข้ากับฉันไหมนะ?"
+expression = 3
+slot = 1
+
+[sub_resource type="Resource" id="Resource_qp8qp"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "ปีกนี้... บินได้จริงหรือเปล่า?"
+expression = 2
+slot = 2
+
+[sub_resource type="Resource" id="Resource_fckgq"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "อุ่นจัง แต่หนักนิดหน่อยนะ"
+slot = 3
+
+[sub_resource type="Resource" id="Resource_a6qj8"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "แวววาวจัง~"
+expression = 1
+slot = 4
+
+[sub_resource type="Resource" id="Resource_ghjrn"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "ข-ของระดับตำนาน!? จริงเหรอเนี่ย!"
+expression = 2
+min_rarity = 3
+
+[sub_resource type="Resource" id="Resource_hym5s"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "ฮึ ของที่คู่ควรกับฉันก็ต้องระดับนี้แหละ"
+expression = 7
+personality = 4
+min_rarity = 3
+
+[sub_resource type="Resource" id="Resource_td2hs"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "ดาบเล่มนี้หนักจัง..."
+expression = 2
+item_id = "dragon_sword"
+
+[sub_resource type="Resource" id="Resource_up6a8"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "มันสวยเกินไปหรือเปล่านะ?"
+expression = 3
+item_id = "queen_crown"
+
+[sub_resource type="Resource" id="Resource_1cisj"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "ฉันดูน่ากลัวขึ้นไหม?"
+expression = 4
+item_id = "dragon_wings"
+
+[sub_resource type="Resource" id="Resource_lcj56"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "หมวกแม่มด... รู้สึกฉลาดขึ้นเลย"
+expression = 7
+item_id = "witch_hat"
+
+[sub_resource type="Resource" id="Resource_rgop0"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "เคียวนี้... เย็นยะเยือกจัง"
+expression = 4
+item_id = "abyss_scythe"
+
+[sub_resource type="Resource" id="Resource_15bdn"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_RECEIVED"
+text = "ได้ยินเสียงกระซิบจากล็อกเก็ต..."
+expression = 4
+item_id = "vampire_locket"
+
+[sub_resource type="Resource" id="Resource_hk3qn"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_EQUIPPED"
+text = "เป็นไงบ้าง เหมาะกับฉันไหม?"
+expression = 1
+
+[sub_resource type="Resource" id="Resource_ffbb4"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_EQUIPPED"
+text = "พร้อมออกรบแล้ว!"
+expression = 1
+personality = 0
+
+[sub_resource type="Resource" id="Resource_qf3fn"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_EQUIPPED"
+text = "แน่นอนว่าฉันใส่อะไรก็ดูดี"
+expression = 7
+personality = 4
+
+[sub_resource type="Resource" id="Resource_oyilk"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_EQUIPPED"
+text = "ขอดูในหนังสือก่อนว่าใช้ยังไง..."
+expression = 3
+personality = 1
+
+[sub_resource type="Resource" id="Resource_0wfin"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_CHANGED"
+text = "ขอบคุณของชิ้นเก่าที่ดูแลกันมานะ"
+
+[sub_resource type="Resource" id="Resource_uwhri"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_CHANGED"
+text = "ลาก่อน... ของเก่า"
+expression = 7
+personality = 2
+
+[sub_resource type="Resource" id="Resource_htr4n"]
+script = ExtResource("1_ydije")
+trigger = "ITEM_CHANGED"
+text = "เปลี่ยนแล้วรู้สึกเบาตัวขึ้นเลย"
+expression = 1
+personality = 3
+
+[sub_resource type="Resource" id="Resource_whiw6"]
+script = ExtResource("1_ydije")
+trigger = "BATTLE_START"
+text = "ไปกันเถอะ!"
+
+[sub_resource type="Resource" id="Resource_rnvt6"]
+script = ExtResource("1_ydije")
+trigger = "BATTLE_START"
+text = "วิเคราะห์ศัตรูแล้ว... เริ่มได้!"
+expression = 3
+personality = 1
+
+[sub_resource type="Resource" id="Resource_kp4jj"]
+script = ExtResource("1_ydije")
+trigger = "BOSS_APPEAR"
+text = "ต-ตัวใหญ่จัง..."
+expression = 4
+
+[sub_resource type="Resource" id="Resource_o3s8k"]
+script = ExtResource("1_ydije")
+trigger = "BOSS_APPEAR"
+text = "น่ากลัว... แต่ฉันไม่ถอย!"
+expression = 4
+personality = 0
+
+[sub_resource type="Resource" id="Resource_es4i3"]
+script = ExtResource("1_ydije")
+trigger = "BOSS_APPEAR"
+text = "ม-มังกรอย่างฉันไม่กลัวหรอก!"
+expression = 4
+personality = 4
+
+[sub_resource type="Resource" id="Resource_cqhdx"]
+script = ExtResource("1_ydije")
+trigger = "VICTORY"
+text = "ชนะแล้ว!"
+expression = 1
+
+[sub_resource type="Resource" id="Resource_lp44y"]
+script = ExtResource("1_ydije")
+trigger = "VICTORY"
+text = "ก็บอกแล้วว่าฉันเก่งที่สุด"
+expression = 7
+personality = 4
+
+[sub_resource type="Resource" id="Resource_67gp3"]
+script = ExtResource("1_ydije")
+trigger = "VICTORY"
+text = "ทุกคนปลอดภัยนะ ดีจัง"
+expression = 1
+personality = 3
+
+[sub_resource type="Resource" id="Resource_6ulj7"]
+script = ExtResource("1_ydije")
+trigger = "DEFEAT"
+text = "ฮึก... ขอโทษนะ..."
+expression = 5
+
+[sub_resource type="Resource" id="Resource_7yonj"]
+script = ExtResource("1_ydije")
+trigger = "DEFEAT"
+text = "ครั้งหน้าฉันจะแข็งแกร่งกว่านี้..."
+expression = 5
+personality = 0
+
+[sub_resource type="Resource" id="Resource_684jn"]
+script = ExtResource("1_ydije")
+trigger = "DEFEAT"
+text = "ฉ-ฉันไม่ได้ร้องไห้นะ!"
+expression = 5
+personality = 4
+
+[sub_resource type="Resource" id="Resource_2a4xu"]
+script = ExtResource("1_ydije")
+trigger = "CARD_SPECIAL"
+text = "ดูนี่สิ~"
+expression = 7
+
+[sub_resource type="Resource" id="Resource_get3j"]
+script = ExtResource("1_ydije")
+trigger = "CARD_SPECIAL"
+text = "หายไปซะ..."
+expression = 7
+personality = 2
+
+[sub_resource type="Resource" id="Resource_jb35d"]
+script = ExtResource("1_ydije")
+trigger = "BOSS_PHASE"
+text = "ม-มันแข็งแกร่งขึ้นอีกแล้ว!"
+expression = 2
+
+[sub_resource type="Resource" id="Resource_e7jv4"]
+script = ExtResource("1_ydije")
+trigger = "BOSS_PHASE"
+text = "ระวัง! มันเปลี่ยนท่าแล้ว"
+expression = 4
+personality = 3
+
+[sub_resource type="Resource" id="Resource_rutk7"]
+script = ExtResource("1_ydije")
+trigger = "BOSS_PHASE"
+text = "ฮึ แค่นี้เองเหรอ?"
+expression = 6
+personality = 4
+
+[sub_resource type="Resource" id="Resource_uc6ut"]
+script = ExtResource("1_ydije")
+trigger = "BOSS_PHASE"
+text = "น่าสนใจ... รูปแบบการโจมตีเปลี่ยนไป"
+expression = 3
+personality = 1
+
+[sub_resource type="Resource" id="Resource_jsxgt"]
+script = ExtResource("1_ydije")
+trigger = "LEVEL_UP"
+text = "รู้สึกแข็งแกร่งขึ้นเลย!"
+expression = 1
+
+[sub_resource type="Resource" id="Resource_bi8cg"]
+script = ExtResource("1_ydije")
+trigger = "LEVEL_UP"
+text = "เห็นไหม ฉันเก่งขึ้นอีกแล้ว"
+expression = 7
+personality = 4
+
+[sub_resource type="Resource" id="Resource_n06vv"]
+script = ExtResource("1_ydije")
+trigger = "LEVEL_UP"
+text = "เลเวลอัป! ต้องจดบันทึกไว้"
+expression = 3
+personality = 1
+
+[sub_resource type="Resource" id="Resource_uy86p"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "รู้ไหม... ตอนเด็กๆ ฉันกลัวความมืดมาก"
+princess_id = "sword_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_y6bqf"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "ท่านแม่มอบดาบเล่มแรกให้ แล้วบอกว่าความกล้าไม่ใช่การไม่กลัว"
+expression = 3
+princess_id = "sword_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_re85r"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "แต่คือการเดินหน้าทั้งที่กลัว... วันนี้ฉันเข้าใจแล้ว เพราะมีเธอ"
+expression = 1
+princess_id = "sword_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_8op61"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "ห้องสมุดนี้เคยเป็นของอาจารย์ฉัน"
+princess_id = "magic_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_2lya6"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "ท่านหายไปในคืนที่ดาวตก... ทิ้งไว้แค่สมุดเล่มนี้"
+expression = 5
+princess_id = "magic_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_xupg3"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "ฉันจะอ่านมันให้จบ แล้วพาเธอไปหาท่านด้วยกันนะ"
+expression = 1
+princess_id = "magic_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_gotke"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "ฉันเกิดในวันที่ไม่มีดวงจันทร์"
+expression = 7
+princess_id = "shadow_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_pre5j"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "ทุกคนบอกว่าฉันเป็นลางร้าย ฉันจึงซ่อนตัวอยู่ในเงา"
+expression = 5
+princess_id = "shadow_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_adby1"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "แต่เธอเป็นคนแรกที่เรียกฉันออกมา... ขอบใจนะ"
+expression = 1
+princess_id = "shadow_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_o0bkv"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "แสงของฉันรักษาคนอื่นได้ แต่รักษาตัวเองไม่ได้"
+princess_id = "light_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_donar"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "บางคืนฉันก็เหนื่อยจนอยากร้องไห้"
+expression = 5
+princess_id = "light_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_rmq3i"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "แต่พอเห็นเธอยิ้ม ฉันก็มีแรงอีกครั้ง"
+expression = 1
+princess_id = "light_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_hujv3"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "ฉันเป็นมังกรตัวสุดท้ายของเผ่า"
+expression = 6
+princess_id = "dragon_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_jd5ur"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "เลยต้องทำตัวเข้มแข็งตลอดเวลา..."
+expression = 5
+princess_id = "dragon_princess"
+min_bond = 3
+
+[sub_resource type="Resource" id="Resource_8h4jf"]
+script = ExtResource("1_ydije")
+trigger = "STORY_BOND3"
+text = "แต่กับเธอ... ฉันไม่ต้องฝืนก็ได้ใช่ไหม?"
+expression = 2
+princess_id = "dragon_princess"
+min_bond = 3
+
+[resource]
+script = ExtResource("2_1yb3d")
+lines = Array[ExtResource("1_ydije")]([SubResource("Resource_vf5i3"), SubResource("Resource_2naxm"), SubResource("Resource_25xx8"), SubResource("Resource_toy6j"), SubResource("Resource_rd4dl"), SubResource("Resource_q6wx8"), SubResource("Resource_7hdht"), SubResource("Resource_7oxio"), SubResource("Resource_4dndw"), SubResource("Resource_djoy4"), SubResource("Resource_p76uw"), SubResource("Resource_4h5pe"), SubResource("Resource_owxfi"), SubResource("Resource_k7o70"), SubResource("Resource_d5y3a"), SubResource("Resource_bx5fa"), SubResource("Resource_6ch3x"), SubResource("Resource_bhcwq"), SubResource("Resource_wq1hf"), SubResource("Resource_sb31o"), SubResource("Resource_qsnbt"), SubResource("Resource_w4e2t"), SubResource("Resource_uqq3k"), SubResource("Resource_0up4s"), SubResource("Resource_o5vht"), SubResource("Resource_6sedh"), SubResource("Resource_wvxdo"), SubResource("Resource_yo5ty"), SubResource("Resource_htyce"), SubResource("Resource_aa20s"), SubResource("Resource_kgfqv"), SubResource("Resource_53qpt"), SubResource("Resource_iy48b"), SubResource("Resource_oahbm"), SubResource("Resource_edq1p"), SubResource("Resource_daus8"), SubResource("Resource_jvoiv"), SubResource("Resource_hrv56"), SubResource("Resource_6r1qs"), SubResource("Resource_yhjpk"), SubResource("Resource_7qimd"), SubResource("Resource_0ukbs"), SubResource("Resource_r3mj6"), SubResource("Resource_xaub4"), SubResource("Resource_ahwpp"), SubResource("Resource_bhgpt"), SubResource("Resource_gkgav"), SubResource("Resource_ehh5o"), SubResource("Resource_qp8qp"), SubResource("Resource_fckgq"), SubResource("Resource_a6qj8"), SubResource("Resource_ghjrn"), SubResource("Resource_hym5s"), SubResource("Resource_td2hs"), SubResource("Resource_up6a8"), SubResource("Resource_1cisj"), SubResource("Resource_lcj56"), SubResource("Resource_rgop0"), SubResource("Resource_15bdn"), SubResource("Resource_hk3qn"), SubResource("Resource_ffbb4"), SubResource("Resource_qf3fn"), SubResource("Resource_oyilk"), SubResource("Resource_0wfin"), SubResource("Resource_uwhri"), SubResource("Resource_htr4n"), SubResource("Resource_whiw6"), SubResource("Resource_rnvt6"), SubResource("Resource_kp4jj"), SubResource("Resource_o3s8k"), SubResource("Resource_es4i3"), SubResource("Resource_cqhdx"), SubResource("Resource_lp44y"), SubResource("Resource_67gp3"), SubResource("Resource_6ulj7"), SubResource("Resource_7yonj"), SubResource("Resource_684jn"), SubResource("Resource_2a4xu"), SubResource("Resource_get3j"), SubResource("Resource_jb35d"), SubResource("Resource_e7jv4"), SubResource("Resource_rutk7"), SubResource("Resource_uc6ut"), SubResource("Resource_jsxgt"), SubResource("Resource_bi8cg"), SubResource("Resource_n06vv"), SubResource("Resource_uy86p"), SubResource("Resource_y6bqf"), SubResource("Resource_re85r"), SubResource("Resource_8op61"), SubResource("Resource_2lya6"), SubResource("Resource_xupg3"), SubResource("Resource_gotke"), SubResource("Resource_pre5j"), SubResource("Resource_adby1"), SubResource("Resource_o0bkv"), SubResource("Resource_donar"), SubResource("Resource_rmq3i"), SubResource("Resource_hujv3"), SubResource("Resource_jd5ur"), SubResource("Resource_8h4jf")])

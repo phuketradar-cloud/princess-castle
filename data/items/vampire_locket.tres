@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_8hi7y"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_tnayi"]
+[ext_resource type="Texture2D" path="res://assets/art/items/vampire_locket.png" id="3_hqvbo"]
+
+[sub_resource type="Resource" id="Resource_5cwtl"]
+script = ExtResource("2_tnayi")
+max_hp = 10
+attack = 0
+
+[resource]
+script = ExtResource("1_8hi7y")
+id = "vampire_locket"
+display_name = "Vampire Locket"
+slot = 4
+rarity = 2
+description = "ล็อกเก็ตรูปหัวใจที่กระหายเลือด"
+stats = SubResource("Resource_5cwtl")
+special = 1
+special_value = 0.1
+texture = ExtResource("3_hqvbo")

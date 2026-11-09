@@ -1,0 +1,89 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_w6jqk"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_wwpjf"]
+[ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_meehb"]
+[ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_axbhg"]
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_rxubu"]
+[ext_resource type="Resource" path="res://data/monsters/wyvern.tres" id="6_h1tl4"]
+[ext_resource type="Texture2D" path="res://assets/art/monster_elder_wyrm.png" id="7_1edm3"]
+
+[sub_resource type="Resource" id="Resource_3inyg"]
+script = ExtResource("1_w6jqk")
+id = "inferno"
+display_name = "Inferno"
+damage_multiplier = 2.6
+cooldown = 4
+initial_cooldown = 2
+intent_tag = "HEAVY"
+status = 10
+status_turns = 3
+status_potency = 0.04
+
+[sub_resource type="Resource" id="Resource_rao27"]
+script = ExtResource("1_w6jqk")
+id = "tail_sweep"
+display_name = "Tail Sweep"
+cooldown = 3
+ai_use_chance = 0.6
+intent_tag = "SWEEP"
+status = 3
+status_turns = 2
+status_potency = 0.25
+
+[sub_resource type="Resource" id="Resource_uq7jc"]
+script = ExtResource("1_w6jqk")
+id = "crush"
+display_name = "Crush"
+intent_tag = "ATK"
+
+[sub_resource type="Resource" id="Resource_btm8n"]
+script = ExtResource("2_wwpjf")
+max_hp = 440
+attack = 23
+defense = 14
+critical = 0.08
+
+[sub_resource type="Resource" id="Resource_8hkxm"]
+script = ExtResource("3_meehb")
+element = 4
+min_amount = 4
+max_amount = 5
+
+[sub_resource type="Resource" id="Resource_c54q6"]
+script = ExtResource("3_meehb")
+min_amount = 2
+max_amount = 3
+
+[sub_resource type="Resource" id="Resource_6ulhn"]
+script = ExtResource("3_meehb")
+material = "dragon_scale"
+min_amount = 3
+max_amount = 4
+
+[sub_resource type="Resource" id="Resource_jhira"]
+script = ExtResource("4_axbhg")
+hp_threshold = 0.6
+announce = "Elder Wyrm: บุตรแห่งเปลวเพลิง จงมา!"
+summons = Array[ExtResource("5_rxubu")]([ExtResource("6_h1tl4"), ExtResource("6_h1tl4")])
+
+[sub_resource type="Resource" id="Resource_58dca"]
+script = ExtResource("4_axbhg")
+hp_threshold = 0.3
+announce = "Elder Wyrm: ข้าคือราชันมังกร!! (คลั่ง + ล้างสถานะ)"
+enrage = 0.4
+cleanse = true
+shield_fraction = 0.1
+
+[resource]
+script = ExtResource("5_rxubu")
+id = "elder_wyrm"
+display_name = "Elder Wyrm"
+description = "บอสใหญ่: ส่งสัญญาณ INFERNO ก่อนพ่นไฟมหาประลัย (Defend!) เรียกไวเวิร์นที่ 60% คลั่งที่ 30%"
+base_stats = SubResource("Resource_btm8n")
+abilities = Array[ExtResource("1_w6jqk")]([SubResource("Resource_3inyg"), SubResource("Resource_rao27"), SubResource("Resource_uq7jc")])
+is_boss = true
+control_resistance = 0.75
+phases = Array[ExtResource("4_axbhg")]([SubResource("Resource_jhira"), SubResource("Resource_58dca")])
+drops = Array[ExtResource("3_meehb")]([SubResource("Resource_8hkxm"), SubResource("Resource_c54q6"), SubResource("Resource_6ulhn")])
+texture = ExtResource("7_1edm3")

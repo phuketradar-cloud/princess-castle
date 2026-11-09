@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="MonsterDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_jqme6"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_i3iva"]
+[ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_gm7mc"]
+[ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_maglv"]
+[ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_rnbcm"]
+[ext_resource type="Resource" path="res://data/monsters/ice_wisp.tres" id="6_f585s"]
+[ext_resource type="Texture2D" path="res://assets/art/monster_lich_queen.png" id="7_lm8m1"]
+
+[sub_resource type="Resource" id="Resource_aa5bb"]
+script = ExtResource("1_jqme6")
+id = "death_curse"
+display_name = "Death Curse"
+damage_multiplier = 0.6
+cooldown = 3
+initial_cooldown = 1
+intent_tag = "CURSE"
+status = 1
+status_turns = 3
+status_potency = 0.05
+
+[sub_resource type="Resource" id="Resource_kfc0k"]
+script = ExtResource("1_jqme6")
+id = "soul_frost"
+display_name = "Soul Frost"
+damage_multiplier = 1.8
+cooldown = 4
+initial_cooldown = 3
+intent_tag = "HEAVY"
+
+[sub_resource type="Resource" id="Resource_wkqlu"]
+script = ExtResource("1_jqme6")
+id = "frost_bolt"
+display_name = "Frost Bolt"
+intent_tag = "ATK"
+
+[sub_resource type="Resource" id="Resource_ekvw4"]
+script = ExtResource("2_i3iva")
+max_hp = 240
+attack = 17
+defense = 8
+critical = 0.05
+evasion = 0.05
+
+[sub_resource type="Resource" id="Resource_6eope"]
+script = ExtResource("3_gm7mc")
+element = 1
+min_amount = 3
+max_amount = 4
+
+[sub_resource type="Resource" id="Resource_eo5gn"]
+script = ExtResource("3_gm7mc")
+element = 2
+max_amount = 2
+
+[sub_resource type="Resource" id="Resource_x2tuf"]
+script = ExtResource("3_gm7mc")
+material = "ice_crystal"
+min_amount = 2
+max_amount = 3
+
+[sub_resource type="Resource" id="Resource_8mmbj"]
+script = ExtResource("3_gm7mc")
+material = "bone_fragment"
+max_amount = 2
+
+[sub_resource type="Resource" id="Resource_si44r"]
+script = ExtResource("4_maglv")
+hp_threshold = 0.7
+announce = "Lich Queen: ลุกขึ้นมา ข้ารับใช้ของข้า!"
+summons = Array[ExtResource("5_rnbcm")]([ExtResource("6_f585s"), ExtResource("6_f585s")])
+
+[sub_resource type="Resource" id="Resource_hoyr4"]
+script = ExtResource("4_maglv")
+hp_threshold = 0.35
+announce = "Lich Queen: เจ้ากล้าดียังไง! (คลั่ง + ล้างสถานะ)"
+enrage = 0.35
+cleanse = true
+
+[resource]
+script = ExtResource("5_rnbcm")
+id = "lich_queen"
+display_name = "Lich Queen"
+description = "บอส: สาปให้เลือดไหลทุกเทิร์น เรียกภูติน้ำแข็งที่ 70% และคลั่งพร้อมล้างสถานะที่ 35%"
+base_stats = SubResource("Resource_ekvw4")
+abilities = Array[ExtResource("1_jqme6")]([SubResource("Resource_aa5bb"), SubResource("Resource_kfc0k"), SubResource("Resource_wkqlu")])
+is_boss = true
+control_resistance = 0.7
+phases = Array[ExtResource("4_maglv")]([SubResource("Resource_si44r"), SubResource("Resource_hoyr4")])
+drops = Array[ExtResource("3_gm7mc")]([SubResource("Resource_6eope"), SubResource("Resource_eo5gn"), SubResource("Resource_x2tuf"), SubResource("Resource_8mmbj")])
+texture = ExtResource("7_lm8m1")

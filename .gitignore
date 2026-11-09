@@ -1,0 +1,18 @@
+# Godot cache / import data (rebuilt automatically when the project is opened)
+.godot/
+# Built games (APK / EXE) — rebuild with the commands in README section 6
+build/
+*.apk
+*.aab
+*.idsig
+*.exe
+*.pck
+# Signing keys and secrets: never commit
+*.keystore
+*.jks
+export_credentials.cfg
+# Temp / OS files
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db

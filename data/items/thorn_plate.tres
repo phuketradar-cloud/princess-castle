@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EquipmentDefinition" format=3]
+
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_kftbb"]
+[ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_5qgvn"]
+[ext_resource type="Texture2D" path="res://assets/art/items/thorn_plate.png" id="3_47pnd"]
+
+[sub_resource type="Resource" id="Resource_fohy5"]
+script = ExtResource("2_5qgvn")
+max_hp = 30
+attack = 0
+defense = 8
+
+[resource]
+script = ExtResource("1_kftbb")
+id = "thorn_plate"
+display_name = "Thorn Plate"
+slot = 3
+rarity = 2
+description = "เกราะหนามกุหลาบ ใครตีก็เจ็บเอง"
+stats = SubResource("Resource_fohy5")
+special = 2
+special_value = 0.2
+texture = ExtResource("3_47pnd")

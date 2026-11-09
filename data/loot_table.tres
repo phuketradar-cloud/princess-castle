@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="LootTable" format=3]
+
+[ext_resource type="Resource" path="res://data/card_library.tres" id="1_44px4"]
+[ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_vf3m0"]
+[ext_resource type="Resource" path="res://data/items/rusty_sword.tres" id="2_44px4"]
+[ext_resource type="Resource" path="res://data/items/rose_rapier.tres" id="3_2lrl5"]
+[ext_resource type="Resource" path="res://data/items/moonlight_blade.tres" id="4_crb2d"]
+[ext_resource type="Resource" path="res://data/items/dragon_sword.tres" id="5_orn3d"]
+[ext_resource type="Resource" path="res://data/items/abyss_scythe.tres" id="6_x1wj8"]
+[ext_resource type="Resource" path="res://data/items/ribbon_bow.tres" id="7_wjks0"]
+[ext_resource type="Resource" path="res://data/items/silver_tiara.tres" id="8_dkb6l"]
+[ext_resource type="Resource" path="res://data/items/witch_hat.tres" id="9_0rf7r"]
+[ext_resource type="Resource" path="res://data/items/queen_crown.tres" id="10_wviim"]
+[ext_resource type="Resource" path="res://data/items/starfall_halo.tres" id="11_v6moq"]
+[ext_resource type="Resource" path="res://data/items/moth_wings.tres" id="12_vd2e6"]
+[ext_resource type="Resource" path="res://data/items/bat_wings.tres" id="13_sqf2j"]
+[ext_resource type="Resource" path="res://data/items/fairy_wings.tres" id="14_mmhhy"]
+[ext_resource type="Resource" path="res://data/items/dragon_wings.tres" id="15_8s6pn"]
+[ext_resource type="Resource" path="res://data/items/seraph_wings.tres" id="16_k3up6"]
+[ext_resource type="Resource" path="res://data/items/leather_corset.tres" id="17_53hjk"]
+[ext_resource type="Resource" path="res://data/items/lace_guard_dress.tres" id="18_but4b"]
+[ext_resource type="Resource" path="res://data/items/thorn_plate.tres" id="19_rv6i1"]
+[ext_resource type="Resource" path="res://data/items/rose_knight_armor.tres" id="20_rx6ac"]
+[ext_resource type="Resource" path="res://data/items/clover_charm.tres" id="21_75etd"]
+[ext_resource type="Resource" path="res://data/items/ruby_pendant.tres" id="22_uwpay"]
+[ext_resource type="Resource" path="res://data/items/vampire_locket.tres" id="23_1ybye"]
+[ext_resource type="Resource" path="res://data/items/mirror_of_thorns.tres" id="24_vnl1f"]
+[ext_resource type="Resource" path="res://data/items/moon_tear.tres" id="25_11x5x"]
+[ext_resource type="Script" path="res://scripts/items/loot_table.gd" id="26_rfa71"]
+
+[resource]
+script = ExtResource("26_rfa71")
+items = Array[ExtResource("1_vf3m0")]([ExtResource("2_44px4"), ExtResource("3_2lrl5"), ExtResource("4_crb2d"), ExtResource("5_orn3d"), ExtResource("6_x1wj8"), ExtResource("7_wjks0"), ExtResource("8_dkb6l"), ExtResource("9_0rf7r"), ExtResource("10_wviim"), ExtResource("11_v6moq"), ExtResource("12_vd2e6"), ExtResource("13_sqf2j"), ExtResource("14_mmhhy"), ExtResource("15_8s6pn"), ExtResource("16_k3up6"), ExtResource("17_53hjk"), ExtResource("18_but4b"), ExtResource("19_rv6i1"), ExtResource("20_rx6ac"), ExtResource("21_75etd"), ExtResource("22_uwpay"), ExtResource("23_1ybye"), ExtResource("24_vnl1f"), ExtResource("25_11x5x")])
+normal_weights = PackedFloat32Array(60, 30, 9, 1, 0)
+mini_boss_weights = PackedFloat32Array(15, 45, 30, 9, 1)
+boss_weights = PackedFloat32Array(0, 25, 45, 24, 6)
+option_kinds = PackedStringArray("equipment", "equipment", "card")
+card_library = ExtResource("1_44px4")
