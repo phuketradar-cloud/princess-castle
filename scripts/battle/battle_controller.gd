@@ -618,12 +618,12 @@ func react(trigger: String, item: EquipmentDefinition = null) -> void:
 		pv.doll.set_expression(CastleTypes.Expr.NORMAL)
 
 
-## Small ⚙ button in the top-right corner (settings can change speed / volume mid-fight).
+## Small "ตั้งค่า" (settings) button in the top-right corner (settings can change speed / volume mid-fight).
 func _add_settings_button() -> void:
-	settings_button = UIKit.button("⚙", UIKit.BUTTON_ALT, 34, Vector2(84, 76))
+	settings_button = UIKit.button("ตั้งค่า", UIKit.BUTTON_ALT, 26, Vector2(140, 76))
 	settings_button.name = "SettingsButton"
 	settings_button.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	settings_button.offset_left = -104
+	settings_button.offset_left = -160
 	settings_button.offset_right = -20
 	settings_button.offset_top = 92
 	settings_button.offset_bottom = 168

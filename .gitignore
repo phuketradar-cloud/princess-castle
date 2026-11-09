@@ -16,3 +16,5 @@ export_credentials.cfg
 *.bak
 .DS_Store
 Thumbs.db
+# Local tool config
+.claude/

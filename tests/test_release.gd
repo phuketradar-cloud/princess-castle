@@ -189,3 +189,36 @@ func test_android_export_preset() -> void:
 	check(cfg.get_value("preset.0.options", "permissions/vibrate", false), "vibrate permission")
 	eq(ProjectSettings.get_setting("application/config/quit_on_go_back"), false, "Back button handled by the game")
 	check(ProjectSettings.get_setting("rendering/textures/vram_compression/import_etc2_astc"), "mobile texture compression")
+
+
+## Web / Android have no Windows fonts: every character in the game text must exist in the
+## bundled fonts (Prompt for Thai + Latin, Noto Sans Symbols 2 for ★ ✓ ♥ ...).
+func test_bundled_fonts_cover_all_game_text() -> void:
+	var prompt: FontFile = load("res://assets/fonts/Prompt-SemiBold.ttf")
+	var symbols: FontFile = load("res://assets/fonts/NotoSansSymbols2-Regular.ttf")
+	var ui: Font = load("res://assets/fonts/ui_font.tres")
+	check(ui is FontVariation and (ui as FontVariation).base_font == prompt, "UI font is the bundled Prompt font")
+	var missing := {}
+	for dir in ["res://scripts", "res://data", "res://scenes"]:
+		for path in _files(dir):
+			var text := FileAccess.get_file_as_string(path)
+			for i in text.length():
+				var c := text.unicode_at(i)
+				if c < 32 or c == 0xFEFF:
+					continue
+				if not prompt.has_char(c) and not symbols.has_char(c):
+					missing[String.chr(c)] = path.get_file()
+	check(missing.is_empty(), "characters missing from bundled fonts: %s" % str(missing))
+
+
+func _files(dir: String) -> Array[String]:
+	var out: Array[String] = []
+	var d := DirAccess.open(dir)
+	if d == null:
+		return out
+	for f in d.get_files():
+		if f.ends_with(".gd") or f.ends_with(".tres") or f.ends_with(".tscn"):
+			out.append(dir.path_join(f))
+	for sub in d.get_directories():
+		out.append_array(_files(dir.path_join(sub)))
+	return out

@@ -1,5 +1,11 @@
-[gd_resource type="SystemFont" format=3]
+[gd_resource type="FontVariation" load_steps=4 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/Prompt-SemiBold.ttf" id="1_prompt"]
+[ext_resource type="FontFile" path="res://assets/fonts/NotoSansSymbols2-Regular.ttf" id="2_symbols"]
+
+[sub_resource type="SystemFont" id="SystemFont_last"]
+font_names = PackedStringArray("Segoe UI Emoji", "Noto Color Emoji", "sans-serif")
 
 [resource]
-font_names = PackedStringArray("Leelawadee UI", "Noto Sans Thai UI", "Noto Sans Thai", "Tahoma", "sans-serif")
-font_weight = 600
+base_font = ExtResource("1_prompt")
+fallbacks = Array[Font]([ExtResource("2_symbols"), SubResource("SystemFont_last")])

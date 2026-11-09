@@ -5,6 +5,8 @@ Godot **4.6.2** · GDScript · Renderer: Compatibility (รองรับ Andro
 
 ![Castle](docs/screenshots/castle_castle_overview.png)
 
+> 🎮 **เล่นบนเว็บ:** https://phuketradar-cloud.github.io/princess-castle/ · **ดาวน์โหลด Windows/Android:** [Releases](https://github.com/phuketradar-cloud/princess-castle/releases)
+>
 > **เปิดเกม (F5) จะเริ่มที่ปราสาท** → เลือกเจ้าหญิง → ออกผจญภัย → ชนะ/แพ้ → ปุ่ม **ปราสาท** เพื่อกลับ
 
 ---
@@ -294,6 +296,15 @@ GODOT="$HOME/Downloads/Godot_v4.6.2-stable_win64.exe/Godot_v4.6.2-stable_win64_c
 ```bash
 "$GODOT" --headless --path . --export-release "Windows" build/windows/PrincessCastle.exe
 ```
+
+## 6c. เล่นผ่านเว็บ
+- **เล่นเลย:** https://phuketradar-cloud.github.io/princess-castle/ (คอมและเบราว์เซอร์มือถือ, ไม่ต้องติดตั้ง, โหลดครั้งแรก ~10 MB)
+- เซฟเก็บในเบราว์เซอร์ (IndexedDB) แยกจากเวอร์ชัน Windows/Android · ล้างข้อมูลเว็บไซต์ = เซฟหาย
+- เป็น build แบบไม่ใช้เธรด (ทำงานบน GitHub Pages ได้โดยไม่ต้องตั้ง header พิเศษ)
+- ทดสอบในเครื่อง: `"$GODOT" --headless --path . --export-release "Web" build/web/index.html` แล้ว `node tools/serve_web.js` → http://localhost:8060
+- อัปเดตเว็บ: export ใหม่ แล้ว push โฟลเดอร์ `build/web` ไปที่ branch `gh-pages`
+
+**ฟอนต์:** ใช้ **Prompt** (Cadson Demak) และ **Noto Sans Symbols 2** (Noto Project) — SIL Open Font License 1.1 (`assets/fonts/OFL-*.txt`) — ฝังในเกม ภาษาไทยจึงแสดงเหมือนกันทุกแพลตฟอร์ม (`tests/test_release.gd` ตรวจว่าทุกตัวอักษรในเกมมีในฟอนต์)
 
 ## 7. ข้อจำกัด / Phase ถัดไป
 - ภาพเป็น placeholder ที่วาดด้วยโค้ด · ปีกบางแบบถูกผมเปียบังไปบางส่วน (ปรับได้ด้วย `layer_offset` หรือภาพจริง)

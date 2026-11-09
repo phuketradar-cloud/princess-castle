@@ -131,7 +131,7 @@ func _build_overview() -> void:
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	th.add_child(spacer)
 	th.add_child(_materials_row(24))
-	var gear := UIKit.button("⚙", UIKit.BUTTON_ALT, 34, Vector2(84, 72))
+	var gear := UIKit.button("ตั้งค่า", UIKit.BUTTON_ALT, 24, Vector2(130, 72))
 	gear.name = "SettingsButton"
 	gear.pressed.connect(open_settings)
 	th.add_child(gear)
@@ -160,7 +160,7 @@ func _build_overview() -> void:
 	bottom.add_theme_constant_override("separation", 24)
 	_overview.add_child(bottom)
 	var active: PrincessDefinition = game_state.active_princess()
-	var go := UIKit.button("⚔  ออกผจญภัยกับ %s" % (active.display_name if active else "-"), UIKit.BUTTON, 36, Vector2(620, 110))
+	var go := UIKit.button("▶  ออกผจญภัยกับ %s" % (active.display_name if active else "-"), UIKit.BUTTON, 36, Vector2(620, 110))
 	go.name = "AdventureButton"
 	go.pressed.connect(func(): open_stage_select(active))
 	bottom.add_child(go)
@@ -237,7 +237,7 @@ func _wing_card(p: PrincessDefinition) -> Control:
 		v.add_child(comp)
 		room_buttons["companion_" + p.id] = comp
 	else:
-		v.add_child(_label_c("🔒 ล็อกอยู่", 26, Color(1, 1, 1, 0.5)))
+		v.add_child(_label_c("✗ ล็อกอยู่", 26, Color(1, 1, 1, 0.5)))
 		v.add_child(_label_c(_unlock_text(p), 20, Color(1, 1, 1, 0.5)))
 	return card
 
@@ -306,7 +306,7 @@ func open_stage_select(p: PrincessDefinition = null) -> void:
 		info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		h.add_child(info)
 		var title := "%s%s" % [s.display_name, "  ✓ ผ่านแล้ว" if cleared else ""]
-		info.add_child(UIKit.label(title if open else "🔒 " + s.display_name, 30, UIKit.GOLD if open else Color(1, 1, 1, 0.45)))
+		info.add_child(UIKit.label(title if open else "✗ " + s.display_name, 30, UIKit.GOLD if open else Color(1, 1, 1, 0.45)))
 		var boss := s.boss_name()
 		var detail := "แนะนำ Lv%d%s  •  %d การต่อสู้%s" % [s.recommended_level, " (คุณ Lv%d)" % lv if lv < s.recommended_level else "",
 			s.encounters.size(), "  •  บอส: " + boss if boss != "" else ""]
@@ -467,10 +467,10 @@ func _build_room_ui() -> void:
 	side.offset_bottom = -30
 	side.add_theme_constant_override("separation", 12)
 	_room_ui.add_child(side)
-	for entry in [["talk", "💬 พูดคุย", UIKit.BUTTON, talk], ["gift", "🎁 ให้ของขวัญ", Color8(170, 90, 40), open_gift],
-			["decorate", "🛏 ตกแต่งห้อง", Color8(60, 110, 90), open_decorate],
+	for entry in [["talk", "♥ พูดคุย", UIKit.BUTTON, talk], ["gift", "✦ ให้ของขวัญ", Color8(170, 90, 40), open_gift],
+			["decorate", "◆ ตกแต่งห้อง", Color8(60, 110, 90), open_decorate],
 			["status", "สถานะ & อุปกรณ์", UIKit.BUTTON_ALT, open_status], ["cards", "การ์ด", Color8(40, 100, 150), open_cards],
-			["adventure", "⚔ ออกผจญภัยกับเธอ", Color8(150, 40, 60), func(): open_stage_select(current)]]:
+			["adventure", "▶ ออกผจญภัยกับเธอ", Color8(150, 40, 60), func(): open_stage_select(current)]]:
 		var b := UIKit.button(entry[1], entry[2], 26, Vector2(276, 84))
 		b.pressed.connect(entry[3])
 		side.add_child(b)
@@ -817,6 +817,8 @@ func on_back() -> void:
 		_close_panel()
 	elif current != null:
 		show_overview()
+	elif OS.has_feature("web"):
+		return # a web page cannot quit itself; the browser tab is closed instead
 	elif Time.get_ticks_msec() < _quit_armed_until:
 		game_state.save_game()
 		get_tree().quit()

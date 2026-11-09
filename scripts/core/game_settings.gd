@@ -111,5 +111,5 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func vibrate(ms := 60) -> void:
-	if vibration and OS.has_feature("mobile"):
+	if vibration and (OS.has_feature("mobile") or OS.has_feature("web_android")):
 		Input.vibrate_handheld(ms)

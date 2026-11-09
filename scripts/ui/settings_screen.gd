@@ -108,7 +108,7 @@ func _build() -> void:
 	actions.add_theme_constant_override("separation", 20)
 	actions.alignment = BoxContainer.ALIGNMENT_CENTER
 	v.add_child(actions)
-	save_button = UIKit.button("💾 บันทึกเกมตอนนี้", Color8(40, 110, 80), 28, Vector2(380, 90))
+	save_button = UIKit.button("✓ บันทึกเกมตอนนี้", Color8(40, 110, 80), 28, Vector2(380, 90))
 	save_button.pressed.connect(_save_now)
 	actions.add_child(save_button)
 	new_game_button = UIKit.button("เริ่มเกมใหม่", Color8(130, 40, 50), 28, Vector2(300, 90))
