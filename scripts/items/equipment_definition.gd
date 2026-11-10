@@ -20,6 +20,8 @@ extends Resource
 @export var texture: Texture2D
 ## Fine-tune position relative to the princess's slot anchor (texture pixels).
 @export var layer_offset: Vector2 = Vector2.ZERO
+## Scale of the texture when drawn on the princess (high-res art, e.g. 0.46).
+@export var layer_scale: float = 1.0
 
 
 func bonus() -> StatBlock:

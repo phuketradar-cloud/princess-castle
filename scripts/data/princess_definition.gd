@@ -57,6 +57,9 @@ enum Archetype { SWORD, MAGIC, SHADOW, LIGHT, DRAGON }
 @export var battle_texture: Texture2D
 @export var theme_color: Color = Color(0.85, 0.35, 0.55)
 @export var battle_scale: float = 1.0
+## Body + face art is drawn at this scale (high-res art, e.g. 0.46 = drawn at ~2x). Slot and
+## face anchors stay in on-screen (scaled) pixels, so equipment sizes are unaffected.
+@export var art_scale: float = 1.0
 ## Where each equipment slot sits on this body, in pixels relative to the FEET
 ## (bottom-centre of battle_texture, y up is negative). Keys = ItemTypes.Slot.
 @export var slot_anchors: Dictionary = {

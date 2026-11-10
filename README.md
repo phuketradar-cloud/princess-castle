@@ -297,6 +297,12 @@ GODOT="$HOME/Downloads/Godot_v4.6.2-stable_win64.exe/Godot_v4.6.2-stable_win64_c
 "$GODOT" --headless --path . --export-release "Windows" build/windows/PrincessCastle.exe
 ```
 
+## 6d. ภาพจาก AI (Sword Princess)
+- ต้นฉบับ: `assets/art/source/sword_princess_sheet.webp` (ชีตชิ้นส่วนจาก AI)
+- สร้างใหม่: `"$GODOT" --headless --path . --script res://tools/build_princess_art.gd` → ลบพื้นตารางปลอม, ตัดตัว (ลบใบดาบในมือ), ทำสีหน้า 9 แบบจากหัว 6 หัว, ดาบกุหลาบ + มงกุฎ HD → แล้วรัน `tools/generate_data.gd`
+- ตำแหน่งตา/ปาก/มือ ปรับได้ที่ค่าคงที่บนสุดของ `tools/build_princess_art.gd` · ภาพความละเอียดสูงใช้ `art_scale` (เจ้าหญิง) และ `layer_scale` (อุปกรณ์)
+- ชุดเกราะ/เครื่องรางไม่วาดทับชุดของเธอ (ได้ค่าสถานะครบ)
+
 ## 6c. เล่นผ่านเว็บ
 - **เล่นเลย:** https://phuketradar-cloud.github.io/princess-castle/ (คอมและเบราว์เซอร์มือถือ, ไม่ต้องติดตั้ง, โหลดครั้งแรก ~10 MB)
 - เซฟเก็บในเบราว์เซอร์ (IndexedDB) แยกจากเวอร์ชัน Windows/Android · ล้างข้อมูลเว็บไซต์ = เซฟหาย

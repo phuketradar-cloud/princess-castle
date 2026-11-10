@@ -199,7 +199,7 @@ func _build() -> void:
 
 func _refresh() -> void:
 	var gear := collection.equipped_items(princess.id)
-	_doll.setup(princess.battle_texture, Color.WHITE, false, princess.slot_anchors)
+	_doll.setup(princess.battle_texture, Color.WHITE, false, princess.slot_anchors, princess.art_scale)
 	_doll.setup_face(princess.face_dir, princess.face_anchor)
 	_doll.set_equipment(gear)
 

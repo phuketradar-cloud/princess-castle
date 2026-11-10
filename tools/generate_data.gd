@@ -14,6 +14,8 @@ const E_ICE := CardTypes.Element.ICE
 const E_SHADOW := CardTypes.Element.SHADOW
 const E_LIGHT := CardTypes.Element.LIGHT
 const E_DRAGON := CardTypes.Element.DRAGON
+## id -> [layer_scale, layer_offset]: grip of the rose rapier lands on the hand anchor.
+const HD_ITEMS := {"rose_rapier": [0.46, Vector2(-61, 33)], "silver_tiara": [0.42, Vector2(0, 0)]}
 
 
 func _init() -> void:
@@ -73,6 +75,11 @@ func _init() -> void:
 		it.special_value = row[6]
 		it.description = row[7]
 		it.texture = load("res://assets/art/items/%s.png" % it.id)
+		# HD art from the Sword Princess sheet (tools/build_princess_art.gd): scale + hand offset.
+		if HD_ITEMS.has(it.id):
+			it.texture = load("res://assets/art/items_hd/%s.png" % it.id)
+			it.layer_scale = HD_ITEMS[it.id][0]
+			it.layer_offset = HD_ITEMS[it.id][1]
 		var path := "res://data/items/%s.tres" % it.id
 		ok = _save(it, path) and ok
 		all_items.append(load(path))

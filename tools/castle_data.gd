@@ -178,6 +178,8 @@ static func generate(saver: Callable) -> bool:
 		p.battle_texture = load("res://assets/art/princesses/%s/body.png" % p.id)
 		p.face_dir = "res://assets/art/princesses/%s" % p.id
 		p.face_anchor = Vector2(-4, -168)
+		if HD_ART.has(p.id):
+			_apply_hd_art(p, HD_ART[p.id])
 		var path := "res://data/princess_sword.tres" if p.id == "sword_princess" else "res://data/princesses/%s.tres" % p.id
 		ok = saver.call(p, path) and ok
 		princesses.append(load(path))
@@ -332,3 +334,26 @@ static func _lines() -> Array:
 		L("STORY_BOND3", "เลยต้องทำตัวเข้มแข็งตลอดเวลา...", X.CRYING, -1, {"princess": "dragon_princess", "bond": 3}),
 		L("STORY_BOND3", "แต่กับเธอ... ฉันไม่ต้องฝืนก็ได้ใช่ไหม?", X.SURPRISED, -1, {"princess": "dragon_princess", "bond": 3}),
 	]
+
+
+## Princesses with real (AI parts-sheet) art built by tools/build_princess_art.gd.
+## dir, art_scale, face anchor and slot anchors in on-screen pixels from her feet.
+## Armor / accessory slots are left out: her outfit already IS armor, so those items
+## give stats but are not drawn over the dress.
+const HD_ART := {
+	"sword_princess": {
+		"dir": "res://assets/art/princesses/sword_princess_ai",
+		"art_scale": 0.46,
+		"face_anchor": Vector2(-14.5, -172.7),
+		"anchors": {ItemTypes.Slot.WEAPON: Vector2(-60.7, -111.8), ItemTypes.Slot.HEADGEAR: Vector2(-12.4, -206.0),
+			ItemTypes.Slot.WING: Vector2(-7.8, -136.0)},
+	},
+}
+
+
+static func _apply_hd_art(p: PrincessDefinition, art: Dictionary) -> void:
+	p.battle_texture = load(art.dir + "/body.png")
+	p.face_dir = art.dir
+	p.face_anchor = art.face_anchor
+	p.art_scale = art.art_scale
+	p.slot_anchors = art.anchors.duplicate()

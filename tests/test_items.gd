@@ -229,9 +229,13 @@ func test_real_item_data_is_valid() -> void:
 		per_slot[it.slot] += 1
 	for s in 5:
 		check(per_slot[s] >= 3, "slot %s has items" % ItemTypes.SLOT_NAMES_EN[s])
-	var princess: PrincessDefinition = load("res://data/princess_sword.tres")
-	for s in ItemTypes.Slot.values():
-		check(princess.slot_anchors.has(s), "princess has anchor for slot %d" % s)
+	# Every princess draws weapon, headgear and wings. Placeholder-art princesses draw all 5
+	# slots; HD-art ones (art_scale != 1) may skip armor / accessory (their outfit is armor).
+	var roster: PrincessRoster = load("res://data/princess_roster.tres")
+	for princess in roster.princesses:
+		var must: Array = [ItemTypes.Slot.WEAPON, ItemTypes.Slot.HEADGEAR, ItemTypes.Slot.WING] if princess.art_scale != 1.0 else ItemTypes.Slot.values()
+		for s in must:
+			check(princess.slot_anchors.has(s), "%s has anchor for slot %d" % [princess.id, s])
 
 
 func test_game_state_writes_and_reads_json_file() -> void:

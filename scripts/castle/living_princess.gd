@@ -40,7 +40,7 @@ func setup(p: PrincessDefinition, equipment: Array, room_scale := 1.5) -> void:
 	add_child(visual)
 	doll = PaperDoll.new()
 	visual.add_child(doll)
-	doll.setup(p.battle_texture, Color.WHITE, false, p.slot_anchors)
+	doll.setup(p.battle_texture, Color.WHITE, false, p.slot_anchors, p.art_scale)
 	doll.setup_face(p.face_dir, p.face_anchor)
 	doll.set_equipment(equipment)
 	visual.rest_scale = Vector2(_scale, _scale)

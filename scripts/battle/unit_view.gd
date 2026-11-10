@@ -29,10 +29,10 @@ var _time := 0.0
 
 
 ## anchors = slot -> position on the body (princesses only; monsters pass {}).
-func bind(p_unit: CombatUnit, texture: Texture2D, tint: Color, visual_scale: float, flip: bool, anchors: Dictionary = {}) -> void:
+func bind(p_unit: CombatUnit, texture: Texture2D, tint: Color, visual_scale: float, flip: bool, anchors: Dictionary = {}, art_scale := 1.0) -> void:
 	unit = p_unit
 	name = "Unit_%s_%d" % [unit.unit_name.replace(" ", ""), unit.id]
-	doll.setup(texture, tint, flip, anchors)
+	doll.setup(texture, tint, flip, anchors, art_scale)
 	var tex_size := doll.texture_size()
 	visual.rest_scale = Vector2.ONE * visual_scale
 	visual.reset_pose()

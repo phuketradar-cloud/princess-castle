@@ -29,6 +29,8 @@ var _blink_left := 3.0
 var _blink_time := 0.0
 var _prop: Sprite2D
 var _tex_cache := {}
+## Body + face draw scale (PrincessDefinition.art_scale).
+var art_scale := 1.0
 
 
 func _ready() -> void:
@@ -43,8 +45,10 @@ func _ensure_body() -> void:
 		add_child(body)
 
 
-func setup(texture: Texture2D, tint: Color, flip: bool, anchors: Dictionary = {}) -> void:
+func setup(texture: Texture2D, tint: Color, flip: bool, anchors: Dictionary = {}, p_art_scale := 1.0) -> void:
 	_ensure_body()
+	art_scale = p_art_scale
+	body.scale = Vector2(art_scale, art_scale)
 	_flip = flip
 	_anchors = anchors
 	body.texture = texture
@@ -69,6 +73,7 @@ func setup_face(face_dir: String, face_anchor: Vector2) -> void:
 		pos.x = -pos.x
 	for s in [_eyes, _brows, _mouth]:
 		s.position = pos
+		s.scale = Vector2(art_scale, art_scale)
 		s.flip_h = _flip
 	set_expression(expression)
 
@@ -163,6 +168,7 @@ func set_equipment(items: Array) -> void:
 		s.position = pos
 		s.flip_h = _flip
 		s.z_index = ItemTypes.SLOT_Z[item.slot]
+		s.scale = Vector2(item.layer_scale, item.layer_scale)
 		add_child(s)
 		_layers[item.slot] = s
 
@@ -172,4 +178,4 @@ func layer_count() -> int:
 
 
 func texture_size() -> Vector2:
-	return body.texture.get_size() if body != null and body.texture != null else Vector2(120, 160)
+	return body.texture.get_size() * art_scale if body != null and body.texture != null else Vector2(120, 160)

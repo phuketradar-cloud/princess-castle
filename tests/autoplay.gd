@@ -98,8 +98,10 @@ func _process(_delta: float) -> bool:
 				return true
 			# Paper doll must show every equipped item on the princess.
 			var pv: UnitView = controller._view(p)
-			if pv.doll.layer_count() != col.equipped_items(controller.princess.id).size():
-				_fail("paper doll shows %d layers, expected %d" % [pv.doll.layer_count(), col.equipped_items(controller.princess.id).size()])
+			# Items in slots this princess draws (her slot_anchors); e.g. HD art hides armor.
+			var drawn := col.equipped_items(controller.princess.id).filter(func(i): return controller.princess.slot_anchors.has(i.slot)).size()
+			if pv.doll.layer_count() != drawn:
+				_fail("paper doll shows %d layers, expected %d" % [pv.doll.layer_count(), drawn])
 				return true
 		settle_frames = 0
 		return false

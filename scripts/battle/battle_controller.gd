@@ -220,7 +220,7 @@ func _begin_encounter(index: int) -> void:
 	var gear := collection.equipped_items(princess.id)
 	var player := _create_player(_carried_hp)
 	_next_id += 1
-	_spawn(player, princess.battle_texture, Color.WHITE, princess.battle_scale * player_scale, player_slot, false, princess.slot_anchors)
+	_spawn(player, princess.battle_texture, Color.WHITE, princess.battle_scale * player_scale, player_slot, false, princess.slot_anchors, princess.art_scale)
 	_view(player).set_equipment(gear)
 	_view(player).doll.setup_face(princess.face_dir, princess.face_anchor)
 
@@ -231,7 +231,7 @@ func _begin_encounter(index: int) -> void:
 		companion_unit = UnitFactory.create_companion(companion, _next_id, castle.level(companion.id), c_gear)
 		_next_id += 1
 		_spawn(companion_unit, companion.battle_texture, Color.WHITE, companion.battle_scale * companion_scale,
-			companion_slot, false, companion.slot_anchors)
+			companion_slot, false, companion.slot_anchors, companion.art_scale)
 		var cv := _view(companion_unit)
 		cv.set_equipment(c_gear)
 		cv.doll.setup_face(companion.face_dir, companion.face_anchor)
@@ -290,12 +290,12 @@ func _begin_encounter(index: int) -> void:
 	_run_turn_loop(engine.start())
 
 
-func _spawn(unit: CombatUnit, texture: Texture2D, tint: Color, s: float, slot: Vector2, flip: bool, anchors := {}) -> void:
+func _spawn(unit: CombatUnit, texture: Texture2D, tint: Color, s: float, slot: Vector2, flip: bool, anchors := {}, art_scale := 1.0) -> void:
 	var view: UnitView = unit_view_scene.instantiate()
 	units_root.add_child(view)
 	view.position = slot
 	view.z_index = int(slot.y / 10.0) # lower on screen = in front
-	view.bind(unit, texture, tint, s, flip, anchors)
+	view.bind(unit, texture, tint, s, flip, anchors, art_scale)
 	view.clicked.connect(func(v: UnitView): select_target(v.unit.id))
 	_views[unit.id] = view
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_7nww8"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_mu4jn"]
-[ext_resource type="Texture2D" path="res://assets/art/items/silver_tiara.png" id="3_cxj1d"]
+[ext_resource type="Texture2D" path="res://assets/art/items_hd/silver_tiara.png" id="3_cxj1d"]
 
 [sub_resource type="Resource" id="Resource_dbkc4"]
 script = ExtResource("2_mu4jn")
@@ -20,3 +20,4 @@ rarity = 1
 description = "มงกุฎเงินเล็กๆ ของเจ้าหญิงฝึกหัด"
 stats = SubResource("Resource_dbkc4")
 texture = ExtResource("3_cxj1d")
+layer_scale = 0.42

@@ -200,7 +200,7 @@ func _wing_card(p: PrincessDefinition) -> Control:
 	doll.position = Vector2(150, 262)
 	doll.scale = Vector2(1.0, 1.0)
 	vp.add_child(doll)
-	doll.setup(p.battle_texture, Color.WHITE if unlocked else Color(0.05, 0.03, 0.08), false, p.slot_anchors)
+	doll.setup(p.battle_texture, Color.WHITE if unlocked else Color(0.05, 0.03, 0.08), false, p.slot_anchors, p.art_scale)
 	if unlocked:
 		doll.setup_face(p.face_dir, p.face_anchor)
 		doll.set_equipment(collection.equipped_items(p.id))

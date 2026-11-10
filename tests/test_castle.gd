@@ -283,6 +283,8 @@ func test_real_roster() -> void:
 		for expr in CastleTypes.EXPRESSION_PARTS:
 			var parts: Array = CastleTypes.EXPRESSION_PARTS[expr]
 			check(ResourceLoader.exists("%s/eyes_%s.png" % [p.face_dir, parts[0]]), "%s eyes_%s" % [p.id, parts[0]])
+			if p.art_scale != 1.0:
+				continue # HD art: one whole-face overlay per expression (eyes_*), no brow / mouth layers
 			check(ResourceLoader.exists("%s/brows_%s.png" % [p.face_dir, parts[1]]), "%s brows_%s" % [p.id, parts[1]])
 			check(ResourceLoader.exists("%s/mouth_%s.png" % [p.face_dir, parts[2]]), "%s mouth_%s" % [p.id, parts[2]])
 		check(ResourceLoader.exists(p.face_dir + "/eyes_closed.png"), "%s blink frame" % p.id)
