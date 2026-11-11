@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_r0ur3"]
 [ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_n065f"]
 [ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_fsndp"]
-[ext_resource type="Texture2D" path="res://assets/art/goblin.png" id="6_7y3d8"]
+[ext_resource type="Texture2D" path="res://assets/art/monsters_hd/goblin.png" id="6_8oxl7"]
 
 [sub_resource type="Resource" id="Resource_y00ew"]
 script = ExtResource("1_8oxl7")
@@ -46,4 +46,6 @@ description = "Poison Dagger ทำดาเมจ 4% HP ทุกเทิร�
 base_stats = SubResource("Resource_rtbyh")
 abilities = Array[ExtResource("1_8oxl7")]([SubResource("Resource_y00ew"), SubResource("Resource_onrpj")])
 drops = Array[ExtResource("3_r0ur3")]([SubResource("Resource_7fcxh")])
-texture = ExtResource("6_7y3d8")
+texture = ExtResource("6_8oxl7")
+visual_scale = 0.6540018685767673
+faces_left = true

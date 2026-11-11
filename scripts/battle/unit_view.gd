@@ -108,6 +108,16 @@ func set_support_mode() -> void:
 	hp_label.visible = false
 
 
+## Status text to the right of the HP bar instead of above the name (used for the princess,
+## whose overhead area sits under the battle log).
+func place_status_beside_hp() -> void:
+	status_label.offset_left = 96.0
+	status_label.offset_right = 520.0
+	status_label.offset_top = -34.0
+	status_label.offset_bottom = 4.0
+	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+
+
 func set_dead_visuals() -> void:
 	set_selected(false)
 	overhead.visible = false

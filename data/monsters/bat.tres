@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_yqf1x"]
 [ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_sqbt0"]
 [ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_8eet1"]
-[ext_resource type="Texture2D" path="res://assets/art/bat.png" id="6_geoxi"]
+[ext_resource type="Texture2D" path="res://assets/art/monsters_hd/bat.png" id="6_fq5ae"]
 
 [sub_resource type="Resource" id="Resource_gbuch"]
 script = ExtResource("1_fq5ae")
@@ -43,5 +43,6 @@ description = "บอบบางแต่หลบเก่ง (30%) กัด�
 base_stats = SubResource("Resource_t8mxg")
 abilities = Array[ExtResource("1_fq5ae")]([SubResource("Resource_gbuch"), SubResource("Resource_b7x41")])
 drops = Array[ExtResource("3_yqf1x")]([SubResource("Resource_3r317")])
-texture = ExtResource("6_geoxi")
-visual_scale = 0.85
+texture = ExtResource("6_fq5ae")
+visual_scale = 0.6009615384615384
+faces_left = true

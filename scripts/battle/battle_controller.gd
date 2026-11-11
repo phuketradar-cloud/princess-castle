@@ -35,8 +35,8 @@ const EV = BattleEvent.Type
 @export var monster_scale := 1.3
 ## Enemy positions in spawn order; encounters bigger than this are truncated.
 @export var enemy_slots := PackedVector2Array([
-	Vector2(1150, 720), Vector2(1350, 455), Vector2(1450, 720),
-	Vector2(1650, 455), Vector2(1750, 720), Vector2(1050, 455)])
+	Vector2(1150, 725), Vector2(1350, 575), Vector2(1470, 725),
+	Vector2(1660, 575), Vector2(1760, 725), Vector2(1040, 575)])
 
 @export_group("Presentation")
 @export var turn_banner_delay := 0.35
@@ -173,6 +173,7 @@ func _on_equipment_changed() -> void:
 func start_stage() -> void:
 	if not _validate_setup():
 		return
+	_apply_stage_background()
 	stage_cleared = false
 	_carried_hp = -1
 	_begin_encounter(0)
@@ -223,6 +224,7 @@ func _begin_encounter(index: int) -> void:
 	_spawn(player, princess.battle_texture, Color.WHITE, princess.battle_scale * player_scale, player_slot, false, princess.slot_anchors, princess.art_scale)
 	_view(player).set_equipment(gear)
 	_view(player).doll.setup_face(princess.face_dir, princess.face_anchor)
+	_view(player).place_status_beside_hp() # keeps it clear of the battle log (top-left)
 
 	# Companion: back row, smaller, never targeted; assists automatically.
 	companion_unit = null
@@ -237,6 +239,7 @@ func _begin_encounter(index: int) -> void:
 		cv.doll.setup_face(companion.face_dir, companion.face_anchor)
 		cv.z_index -= 5
 		cv.set_support_mode()
+		cv.overhead.position.y += 70.0 # keep her labels below the battle log box
 		cv.set_intent("ASSIST ทุก %d รอบ" % companion.assist_interval, Color(0.6, 0.9, 1))
 
 	var enemies: Array = []
@@ -255,7 +258,7 @@ func _begin_encounter(index: int) -> void:
 			enemies.append(m)
 			_slot_of[m.id] = i
 			# Art faces right; flip so monsters face the princess.
-			_spawn(m, def.texture, def.tint, def.visual_scale * monster_scale, enemy_slots[i], true)
+			_spawn(m, def.texture, def.tint, def.visual_scale * monster_scale, enemy_slots[i], not def.faces_left)
 
 	if enemies.is_empty():
 		push_error("Encounter %d has no valid monsters" % encounter_index)
@@ -287,6 +290,11 @@ func _begin_encounter(index: int) -> void:
 		has_boss = has_boss or m.is_boss
 	_music("boss" if has_boss and encounter.reward_tier == ItemTypes.Tier.BOSS else "battle")
 	react("BOSS_APPEAR" if has_boss else "BATTLE_START")
+	if has_boss:
+		for m in enemies:
+			if m.is_boss:
+				_boss_banner(m.unit_name, encounter.reward_tier != ItemTypes.Tier.BOSS)
+				break
 	_run_turn_loop(engine.start())
 
 
@@ -520,7 +528,7 @@ func _spawn_summon(unit: CombatUnit) -> void:
 	_slot_of[unit.id] = slot
 	var def := _find_monster_def(unit.definition_id)
 	var tex: Texture2D = def.texture if def else null
-	_spawn(unit, tex, def.tint if def else Color.WHITE, (def.visual_scale if def else 1.0) * monster_scale, enemy_slots[slot], true)
+	_spawn(unit, tex, def.tint if def else Color.WHITE, (def.visual_scale if def else 1.0) * monster_scale, enemy_slots[slot], not (def != null and def.faces_left))
 	var v := _view(unit)
 	if v:
 		v.set_hp(unit.current_hp, unit.stats.max_hp, true)
@@ -746,6 +754,18 @@ func _play_one(e: BattleEvent) -> void:
 				v.set_hp(e.hp_after, e.target.stats.max_hp)
 				if e.target.is_alive():
 					v.visual.hit()
+				# Effects: sword arc + sparks on hits, element burst on burn / poison ticks.
+				var at := _body_center(v)
+				if e.from_status:
+					BattleFx.burst(popups_root, at, BattleFx.status_color(e.status), 12, 160.0, -120.0)
+				elif e.amount > 0 or e.absorbed > 0:
+					var big := e.crit or e.executed
+					BattleFx.slash(popups_root, at, BattleFx.CRIT if big else BattleFx.HIT, 1.5 if big else 1.0)
+					BattleFx.burst(popups_root, at, BattleFx.CRIT if big else BattleFx.HIT, 22 if big else 10)
+					if e.absorbed > 0:
+						BattleFx.ring(popups_root, v.position, BattleFx.SHIELD, 110.0)
+					if big:
+						_shake(12.0, 0.25)
 			if e.from_status:
 				hud.log_line("%s โดน%s %d" % [e.target.unit_name, "ไฟเผา" if e.status == CombatTypes.Status.BURN else "พิษ", e.amount])
 			_on_unit_changed(e.target)
@@ -766,6 +786,8 @@ func _play_one(e: BattleEvent) -> void:
 			var v := _view(e.target)
 			if v:
 				FloatingText.spawn(popups_root, v.popup_position(), "+%d" % e.amount, Color(0.45, 1, 0.6), 48)
+				if e.amount > 0:
+					BattleFx.rise(popups_root, _body_center(v), BattleFx.HEAL)
 				v.set_hp(e.hp_after, e.target.stats.max_hp)
 			_on_unit_changed(e.target)
 			await _wait(after_status_delay)
@@ -788,6 +810,10 @@ func _play_one(e: BattleEvent) -> void:
 				elif e.status == CombatTypes.Status.SLEEP:
 					label = "Zzz..."
 				FloatingText.spawn(popups_root, v.popup_position(), label, Color(0.8, 0.6, 1), 40)
+				if e.status == CombatTypes.Status.SHIELD:
+					BattleFx.ring(popups_root, v.position, BattleFx.SHIELD, 140.0)
+				else:
+					BattleFx.burst(popups_root, _body_center(v), BattleFx.status_color(e.status), 14, 200.0, 60.0)
 				_apply_status_visual(v, e.target)
 			hud.log_line("%s ติด %s (%d เทิร์น)" % [e.target.unit_name, CombatTypes.status_name(e.status), e.turns])
 			_on_unit_changed(e.target)
@@ -820,6 +846,7 @@ func _play_one(e: BattleEvent) -> void:
 			hud.log_line("%s ถูกปราบ!" % e.target.unit_name)
 			var v := _view(e.target)
 			if v:
+				BattleFx.burst(popups_root, _body_center(v), BattleFx.SMOKE, 20, 140.0, -60.0)
 				v.set_dead_visuals()
 				await v.visual.die()
 			await _wait(after_death_delay)
@@ -833,6 +860,9 @@ func _play_one(e: BattleEvent) -> void:
 			hud.log_line("⚠ " + e.reason)
 			if v:
 				FloatingText.spawn(popups_root, v.popup_position() + Vector2(0, -50), "PHASE!", Color(1, 0.3, 0.45), 64)
+				BattleFx.ring(popups_root, v.position, Color(1, 0.3, 0.45), 220.0)
+				BattleFx.burst(popups_root, _body_center(v), Color(1, 0.35, 0.4), 30, 380.0, 200.0)
+				_shake(16.0, 0.4)
 				await v.visual.brace()
 			hud.set_hint(e.reason)
 			react("BOSS_PHASE")
@@ -841,6 +871,10 @@ func _play_one(e: BattleEvent) -> void:
 		EV.UNIT_SUMMONED:
 			_sfx("summon")
 			_spawn_summon(e.target)
+			var sv := _view(e.target)
+			if sv:
+				BattleFx.ring(popups_root, sv.position, BattleFx.SHADOW, 130.0)
+				BattleFx.burst(popups_root, _body_center(sv), BattleFx.SHADOW, 16, 220.0, -80.0)
 			hud.log_line("%s ปรากฏตัว!" % e.target.unit_name)
 			_refresh_intents()
 			await _wait(after_status_delay)
@@ -887,6 +921,71 @@ func _music(id: String) -> void:
 	var a := get_node_or_null("/root/Audio")
 	if a != null:
 		a.music(id)
+
+
+# ------------------------------------------------------------ effects (Phase 6+)
+
+## Camera shake (crits, boss phases). Off when Settings > screen shake is off.
+func _shake(strength := 10.0, duration := 0.25) -> void:
+	var s := get_node_or_null("/root/Settings")
+	var cam := get_node_or_null("Camera2D") as Camera2D
+	if cam == null or (s != null and not s.screen_shake):
+		return
+	var tw := cam.create_tween()
+	tw.tween_method(func(t: float):
+		var k := strength * (1.0 - t)
+		cam.offset = Vector2(randf_range(-k, k), randf_range(-k, k)), 0.0, 1.0, duration)
+	tw.tween_callback(func(): cam.offset = Vector2.ZERO)
+
+
+## Middle of a character's body (between feet and the HP bar), for effects.
+func _body_center(v: UnitView) -> Vector2:
+	return (v.position + v.popup_position()) * 0.5 + Vector2(0, 40)
+
+
+## Big "BOSS" banner when a boss / mini boss fight starts.
+func _boss_banner(boss_name: String, mini: bool) -> void:
+	var box := VBoxContainer.new()
+	box.set_anchors_preset(Control.PRESET_CENTER)
+	box.offset_left = -700
+	box.offset_right = 700
+	box.offset_top = -170
+	box.offset_bottom = 30
+	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var tag := UIKit.label("MINI BOSS" if mini else "BOSS", 48, Color(1, 0.4, 0.45), HORIZONTAL_ALIGNMENT_CENTER)
+	var title := UIKit.label(boss_name, 96, UIKit.GOLD, HORIZONTAL_ALIGNMENT_CENTER)
+	title.add_theme_constant_override("outline_size", 18)
+	title.add_theme_color_override("font_outline_color", Color(0.15, 0.03, 0.08))
+	tag.add_theme_constant_override("outline_size", 12)
+	tag.add_theme_color_override("font_outline_color", Color(0.15, 0.03, 0.08))
+	box.add_child(tag)
+	box.add_child(title)
+	var layer := CanvasLayer.new() # above the HUD and every unit label
+	layer.layer = 30
+	add_child(layer)
+	layer.add_child(box)
+	box.modulate.a = 0.0
+	box.scale = Vector2(1.4, 1.4)
+	box.pivot_offset = Vector2(700, 100)
+	var tw := box.create_tween()
+	tw.tween_property(box, "modulate:a", 1.0, 0.25)
+	tw.parallel().tween_property(box, "scale", Vector2.ONE, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.tween_interval(1.1)
+	tw.tween_property(box, "modulate:a", 0.0, 0.4)
+	tw.tween_callback(layer.queue_free)
+	_shake(8.0, 0.3)
+
+
+## Stage background (StageDefinition.background), drawn to cover the screen.
+func _apply_stage_background() -> void:
+	var bg := get_node_or_null("Background") as Sprite2D
+	if bg == null or stage == null or stage.background == null:
+		return
+	bg.texture = stage.background
+	bg.position = Vector2(960, 540) + stage.background_offset
+	var size := stage.background.get_size()
+	var cover := maxf(1920.0 / size.x, 1080.0 / size.y)
+	bg.scale = Vector2(cover, cover)
 
 
 # ------------------------------------------------------------ UI refresh

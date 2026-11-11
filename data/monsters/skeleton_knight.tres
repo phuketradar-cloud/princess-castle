@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_ee1yq"]
 [ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_c1hrj"]
 [ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_75fjt"]
-[ext_resource type="Texture2D" path="res://assets/art/skeleton.png" id="6_s5vvk"]
+[ext_resource type="Texture2D" path="res://assets/art/monsters_hd/skeleton_knight.png" id="6_slj3s"]
 
 [sub_resource type="Resource" id="Resource_250xw"]
 script = ExtResource("1_slj3s")
@@ -60,5 +60,6 @@ abilities = Array[ExtResource("1_slj3s")]([SubResource("Resource_250xw"), SubRes
 is_boss = true
 control_resistance = 0.5
 drops = Array[ExtResource("3_ee1yq")]([SubResource("Resource_c0qok"), SubResource("Resource_vgvyi"), SubResource("Resource_slj3s"), SubResource("Resource_n5r0q")])
-texture = ExtResource("6_s5vvk")
-visual_scale = 1.05
+texture = ExtResource("6_slj3s")
+visual_scale = 0.5917159763313609
+faces_left = true

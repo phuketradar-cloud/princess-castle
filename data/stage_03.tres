@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="StageDefinition" format=3]
 
+[ext_resource type="Texture2D" path="res://assets/art/battle_bg/stage_03.png" id="1_i8s7k"]
 [ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="1_scg8h"]
 [ext_resource type="Resource" path="res://data/encounters/s3_01_imp_swarm.tres" id="2_i8s7k"]
 [ext_resource type="Resource" path="res://data/encounters/s3_02_cursed_grove.tres" id="3_tjl6q"]
@@ -12,6 +13,8 @@ script = ExtResource("6_uu8p6")
 id = "stage_03"
 display_name = "Shadow Woods"
 description = "ป่าเงา: ฝูงอิมพ์ติดไฟ หมาป่าคลั่ง และแม่มดราตรี"
+background = ExtResource("1_i8s7k")
+background_offset = Vector2(0, -169)
 encounters = Array[ExtResource("1_scg8h")]([ExtResource("2_i8s7k"), ExtResource("3_tjl6q"), ExtResource("4_5some"), ExtResource("5_5rr2m")])
 recommended_level = 10
 unlock_after = "stage_02"

@@ -195,6 +195,7 @@ func _init() -> void:
 	ok = _generate_cards() and ok
 	ok = _generate_castle() and ok
 	ok = StageData.generate(_save) and ok # Phase 5: stages 2-4, bosses, progression, synergies
+	ok = BattleData.apply(_save) and ok # AI battle art: monsters + stage backgrounds
 	print("generate_data: ", "OK" if ok else "FAILED")
 	quit(0 if ok else 1)
 

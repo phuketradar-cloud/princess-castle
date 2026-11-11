@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="StageDefinition" format=3]
 
 [ext_resource type="Script" path="res://scripts/data/encounter_definition.gd" id="1_3txm7"]
+[ext_resource type="Texture2D" path="res://assets/art/battle_bg/stage_04.png" id="1_v5f7n"]
 [ext_resource type="Resource" path="res://data/encounters/s4_01_wyvern_nest.tres" id="2_v5f7n"]
 [ext_resource type="Resource" path="res://data/encounters/s4_02_scorched_cliffs.tres" id="3_d80qt"]
 [ext_resource type="Resource" path="res://data/encounters/s4_03_drake_lair.tres" id="4_ajjh0"]
@@ -12,6 +13,8 @@ script = ExtResource("6_7shm1")
 id = "stage_04"
 display_name = "Dragon's Peak"
 description = "ยอดเขามังกร: ด่านสุดท้าย — ราชันมังกร Elder Wyrm"
+background = ExtResource("1_v5f7n")
+background_offset = Vector2(0, -267)
 encounters = Array[ExtResource("1_3txm7")]([ExtResource("2_v5f7n"), ExtResource("3_d80qt"), ExtResource("4_ajjh0"), ExtResource("5_itn88")])
 heal_between_battles = 0.45
 recommended_level = 14

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_1fl7l"]
 [ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_tggll"]
 [ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_8yiwi"]
-[ext_resource type="Texture2D" path="res://assets/art/monster_imp.png" id="6_yqwve"]
+[ext_resource type="Texture2D" path="res://assets/art/monsters_hd/imp.png" id="6_6asqt"]
 
 [sub_resource type="Resource" id="Resource_00kxe"]
 script = ExtResource("1_6asqt")
@@ -46,5 +46,6 @@ description = "ตัวเล็ก หลบเก่ง พ่นไฟติ
 base_stats = SubResource("Resource_o8ln3")
 abilities = Array[ExtResource("1_6asqt")]([SubResource("Resource_00kxe"), SubResource("Resource_8qrpv")])
 drops = Array[ExtResource("3_1fl7l")]([SubResource("Resource_87i1s")])
-texture = ExtResource("6_yqwve")
-visual_scale = 0.8
+texture = ExtResource("6_6asqt")
+visual_scale = 0.47883843064565956
+faces_left = true

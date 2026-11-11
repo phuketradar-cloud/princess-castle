@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_nrb2b"]
 [ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_wxhbw"]
 [ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_osrm5"]
-[ext_resource type="Texture2D" path="res://assets/art/monster_frost_golem.png" id="6_acx6n"]
+[ext_resource type="Texture2D" path="res://assets/art/monsters_hd/frost_golem.png" id="6_s85px"]
 
 [sub_resource type="Resource" id="Resource_yfs01"]
 script = ExtResource("1_s85px")
@@ -56,4 +56,6 @@ is_boss = true
 control_resistance = 0.6
 phases = Array[ExtResource("4_wxhbw")]([SubResource("Resource_73r1b")])
 drops = Array[ExtResource("3_nrb2b")]([SubResource("Resource_xj62q"), SubResource("Resource_0sjcy")])
-texture = ExtResource("6_acx6n")
+texture = ExtResource("6_s85px")
+visual_scale = 0.49290515309932786
+faces_left = true

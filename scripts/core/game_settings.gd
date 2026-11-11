@@ -16,6 +16,7 @@ var music_volume := 0.7   ## 0..1
 var sfx_volume := 0.9     ## 0..1
 var battle_speed := 1.0   ## multiplies battle animation speed (delays are divided by it)
 var vibration := true     ## short vibration on crits / boss phases (Android)
+var screen_shake := true  ## camera shake on crits / boss phases
 var fps_limit := 60       ## lower = less battery / heat
 ## Tests turn this off so they never touch the player's settings file.
 var persist := true
@@ -29,7 +30,7 @@ func _ready() -> void:
 
 func to_dict() -> Dictionary:
 	return {"music_volume": music_volume, "sfx_volume": sfx_volume, "battle_speed": battle_speed,
-		"vibration": vibration, "fps_limit": fps_limit}
+		"vibration": vibration, "fps_limit": fps_limit, "screen_shake": screen_shake}
 
 
 ## Unknown / missing / out-of-range values fall back to safe defaults.
@@ -39,6 +40,7 @@ func from_dict(d: Dictionary) -> void:
 	var spd := float(d.get("battle_speed", battle_speed))
 	battle_speed = spd if SPEEDS.has(spd) else 1.0
 	vibration = bool(d.get("vibration", vibration))
+	screen_shake = bool(d.get("screen_shake", screen_shake))
 	var fps := int(d.get("fps_limit", fps_limit))
 	fps_limit = fps if FPS_OPTIONS.has(fps) else 60
 

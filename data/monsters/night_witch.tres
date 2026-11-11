@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_6mltp"]
 [ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_v6mlg"]
 [ext_resource type="Resource" path="res://data/monsters/imp.tres" id="6_4bexj"]
-[ext_resource type="Texture2D" path="res://assets/art/monster_night_witch.png" id="7_sbumd"]
+[ext_resource type="Texture2D" path="res://assets/art/monsters_hd/night_witch.png" id="7_r4b7v"]
 
 [sub_resource type="Resource" id="Resource_rejg5"]
 script = ExtResource("1_r4b7v")
@@ -89,4 +89,6 @@ is_boss = true
 control_resistance = 0.7
 phases = Array[ExtResource("4_6mltp")]([SubResource("Resource_jrvwk"), SubResource("Resource_wnil1")])
 drops = Array[ExtResource("3_jlvx5")]([SubResource("Resource_222ba"), SubResource("Resource_maly8"), SubResource("Resource_xmwyd")])
-texture = ExtResource("7_sbumd")
+texture = ExtResource("7_r4b7v")
+visual_scale = 0.5631868131868132
+faces_left = true

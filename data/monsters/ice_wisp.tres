@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_f1gcu"]
 [ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_dqgdi"]
 [ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_uerok"]
-[ext_resource type="Texture2D" path="res://assets/art/monster_ice_wisp.png" id="6_kdv18"]
+[ext_resource type="Texture2D" path="res://assets/art/monsters_hd/ice_wisp.png" id="6_twljf"]
 
 [sub_resource type="Resource" id="Resource_fxiqs"]
 script = ExtResource("1_twljf")
@@ -65,5 +65,6 @@ description = "สร้างโล่น้ำแข็งให้ตัว�
 base_stats = SubResource("Resource_ld2js")
 abilities = Array[ExtResource("1_twljf")]([SubResource("Resource_fxiqs"), SubResource("Resource_7kxm7"), SubResource("Resource_tvgeu")])
 drops = Array[ExtResource("3_f1gcu")]([SubResource("Resource_551gc"), SubResource("Resource_o7ybl")])
-texture = ExtResource("6_kdv18")
-visual_scale = 0.9
+texture = ExtResource("6_twljf")
+visual_scale = 0.5201765447667087
+faces_left = true

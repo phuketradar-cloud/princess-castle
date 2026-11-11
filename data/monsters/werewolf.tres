@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_es42j"]
 [ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_qq546"]
 [ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_7tnub"]
-[ext_resource type="Texture2D" path="res://assets/art/monster_werewolf.png" id="6_hywhj"]
+[ext_resource type="Texture2D" path="res://assets/art/monsters_hd/werewolf.png" id="6_4qtf0"]
 
 [sub_resource type="Resource" id="Resource_ica87"]
 script = ExtResource("1_4qtf0")
@@ -59,5 +59,6 @@ is_boss = true
 control_resistance = 0.6
 phases = Array[ExtResource("4_qq546")]([SubResource("Resource_4qg52")])
 drops = Array[ExtResource("3_es42j")]([SubResource("Resource_5kg2t"), SubResource("Resource_ss5kb")])
-texture = ExtResource("6_hywhj")
-visual_scale = 1.05
+texture = ExtResource("6_4qtf0")
+visual_scale = 0.5326648911170295
+faces_left = true

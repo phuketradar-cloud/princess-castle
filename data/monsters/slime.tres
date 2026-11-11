@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_hsnj0"]
 [ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_xulun"]
 [ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_d6j8p"]
-[ext_resource type="Texture2D" path="res://assets/art/slime.png" id="6_ulqam"]
+[ext_resource type="Texture2D" path="res://assets/art/monsters_hd/slime.png" id="6_gesbe"]
 
 [sub_resource type="Resource" id="Resource_o1lla"]
 script = ExtResource("1_gesbe")
@@ -52,5 +52,6 @@ description = "ตัวเดียวไม่น่ากลัว แต่ 
 base_stats = SubResource("Resource_q2gc3")
 abilities = Array[ExtResource("1_gesbe")]([SubResource("Resource_o1lla"), SubResource("Resource_x47od")])
 drops = Array[ExtResource("3_hsnj0")]([SubResource("Resource_8maa8"), SubResource("Resource_ygyn7"), SubResource("Resource_gesbe")])
-texture = ExtResource("6_ulqam")
-visual_scale = 0.9
+texture = ExtResource("6_gesbe")
+visual_scale = 0.6410256410256411
+faces_left = true

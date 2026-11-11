@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_maglv"]
 [ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_rnbcm"]
 [ext_resource type="Resource" path="res://data/monsters/ice_wisp.tres" id="6_f585s"]
-[ext_resource type="Texture2D" path="res://assets/art/monster_lich_queen.png" id="7_lm8m1"]
+[ext_resource type="Texture2D" path="res://assets/art/monsters_hd/lich_queen.png" id="7_jqme6"]
 
 [sub_resource type="Resource" id="Resource_aa5bb"]
 script = ExtResource("1_jqme6")
@@ -89,4 +89,6 @@ is_boss = true
 control_resistance = 0.7
 phases = Array[ExtResource("4_maglv")]([SubResource("Resource_si44r"), SubResource("Resource_hoyr4")])
 drops = Array[ExtResource("3_gm7mc")]([SubResource("Resource_6eope"), SubResource("Resource_eo5gn"), SubResource("Resource_x2tuf"), SubResource("Resource_8mmbj")])
-texture = ExtResource("7_lm8m1")
+texture = ExtResource("7_jqme6")
+visual_scale = 0.5692863093585114
+faces_left = true

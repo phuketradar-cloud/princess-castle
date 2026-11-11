@@ -13,6 +13,7 @@ var sfx_slider: HSlider
 var speed_buttons := {}     ## speed -> Button
 var fps_buttons := {}       ## fps -> Button
 var vibration_button: Button
+var shake_button: Button
 var save_button: Button
 var new_game_button: Button
 var confirm_button: Button
@@ -96,6 +97,11 @@ func _build() -> void:
 	vibration_button = UIKit.button("เปิด", UIKit.BUTTON_ALT, 28, Vector2(150, 80))
 	vibration_button.pressed.connect(func(): _change("vibration", not settings.vibration))
 	vib.add_child(vibration_button)
+
+	var shk := _row(v, "จอสั่น (ตอนคริ / บอส)")
+	shake_button = UIKit.button("เปิด", UIKit.BUTTON_ALT, 28, Vector2(150, 80))
+	shake_button.pressed.connect(func(): _change("screen_shake", not settings.screen_shake))
+	shk.add_child(shake_button)
 
 	var fps := _row(v, "เฟรมเรต (ประหยัดแบต)")
 	for f in GameSettings.FPS_OPTIONS:
@@ -187,6 +193,8 @@ func _refresh() -> void:
 		_mark(fps_buttons[f], settings.fps_limit == f)
 	vibration_button.text = "เปิด" if settings.vibration else "ปิด"
 	_mark(vibration_button, settings.vibration)
+	shake_button.text = "เปิด" if settings.screen_shake else "ปิด"
+	_mark(shake_button, settings.screen_shake)
 
 
 func _show_slider(s: HSlider, v: float) -> void:

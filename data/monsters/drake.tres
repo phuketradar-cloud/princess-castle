@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/cards/essence_drop.gd" id="3_hmmac"]
 [ext_resource type="Script" path="res://scripts/data/boss_phase.gd" id="4_vjfos"]
 [ext_resource type="Script" path="res://scripts/data/monster_definition.gd" id="5_ikd66"]
-[ext_resource type="Texture2D" path="res://assets/art/monster_drake.png" id="6_dqmjw"]
+[ext_resource type="Texture2D" path="res://assets/art/monsters_hd/drake.png" id="6_l2j0n"]
 
 [sub_resource type="Resource" id="Resource_orkbd"]
 script = ExtResource("1_l2j0n")
@@ -65,4 +65,6 @@ is_boss = true
 control_resistance = 0.65
 phases = Array[ExtResource("4_vjfos")]([SubResource("Resource_eomav")])
 drops = Array[ExtResource("3_hmmac")]([SubResource("Resource_bx15q"), SubResource("Resource_4q18e"), SubResource("Resource_ah2x1")])
-texture = ExtResource("6_dqmjw")
+texture = ExtResource("6_l2j0n")
+visual_scale = 0.5482986615062087
+faces_left = true

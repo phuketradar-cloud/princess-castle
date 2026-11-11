@@ -7,6 +7,10 @@ extends Resource
 @export var id: String = "stage_01"
 @export var display_name: String = "Stage 1"
 @export_multiline var description: String = ""
+## Battle background for this stage (null = the default battle background).
+@export var background: Texture2D
+## Moves the background so its ground line meets the characters' feet.
+@export var background_offset: Vector2 = Vector2.ZERO
 @export var encounters: Array[EncounterDefinition] = []
 ## Fraction of max HP restored after each won battle.
 @export_range(0.0, 1.0) var heal_between_battles: float = 0.4

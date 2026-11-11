@@ -28,6 +28,8 @@ extends Resource
 @export var texture: Texture2D
 @export var tint: Color = Color.WHITE
 @export var visual_scale: float = 1.0
+## The art faces LEFT (toward the princess) so it is not mirrored in battle.
+@export var faces_left: bool = false
 
 
 func exp_value() -> int:

@@ -308,6 +308,11 @@ GODOT="$HOME/Downloads/Godot_v4.6.2-stable_win64.exe/Godot_v4.6.2-stable_win64_c
 - สร้างใหม่: `"$GODOT" --headless --path . --script res://tools/build_room_art.gd` แล้วรัน `tools/generate_data.gd`
 - ตำแหน่งเฟอร์นิเจอร์ / หน้าต่าง / จุดนอน-อ่าน-จิบชา ของแต่ละห้องอยู่ใน `RoomLayout` (`tools/castle_data.gd` → `_room_layouts()`) — ห้องอื่นเพิ่มได้โดยไม่แก้โค้ด
 
+## 6f. ฉากต่อสู้จาก AI + เอฟเฟกต์
+- ต้นฉบับ: `assets/art/source/battle/` — พื้นหลัง 4 ด่าน (`bg_stage_0N.jpg`) + มอนสเตอร์ 4 ภาพรวมบนพื้นเขียว (`monsters_stage_0N.jpg`, เรียงซ้ายไปขวา)
+- สร้างใหม่: `"$GODOT" --headless --path . --script res://tools/build_battle_art.gd` แล้วรัน `tools/generate_data.gd` (ขนาดมอนสเตอร์ / ตำแหน่งพื้นหลังอยู่ใน `tools/battle_data.gd`)
+- เอฟเฟกต์ (`scripts/battle/battle_fx.gd`, สร้างด้วยโค้ด): รอยฟันดาบ, ประกาย, ไฟ/พิษ/น้ำแข็ง, ฮีล, วงแหวนโล่/เรียกลูกน้อง/บอสเปลี่ยนเฟส, จอสั่น (ปิดได้ในตั้งค่า), ป้ายชื่อบอส
+
 ## 6c. เล่นผ่านเว็บ
 - **เล่นเลย:** https://phuketradar-cloud.github.io/princess-castle/ (คอมและเบราว์เซอร์มือถือ, ไม่ต้องติดตั้ง, โหลดครั้งแรก ~10 MB)
 - เซฟเก็บในเบราว์เซอร์ (IndexedDB) แยกจากเวอร์ชัน Windows/Android · ล้างข้อมูลเว็บไซต์ = เซฟหาย
