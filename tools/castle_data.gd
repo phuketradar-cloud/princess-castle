@@ -341,12 +341,13 @@ static func _lines() -> Array:
 ## Armor / accessory slots are left out: her outfit already IS armor, so those items
 ## give stats but are not drawn over the dress.
 const HD_ART := {
+	# v2 art (tools/build_princess_art_v2.gd): image px from feet x 0.35
 	"sword_princess": {
-		"dir": "res://assets/art/princesses/sword_princess_ai",
-		"art_scale": 0.46,
-		"face_anchor": Vector2(-14.5, -172.7),
-		"anchors": {ItemTypes.Slot.WEAPON: Vector2(-60.7, -111.8), ItemTypes.Slot.HEADGEAR: Vector2(-12.4, -206.0),
-			ItemTypes.Slot.WING: Vector2(-7.8, -136.0)},
+		"dir": "res://assets/art/princesses/sword_princess_v2",
+		"art_scale": 0.35,
+		"face_anchor": Vector2(8.75, -165.2),
+		"anchors": {ItemTypes.Slot.WEAPON: Vector2(47.3, -116.9), ItemTypes.Slot.HEADGEAR: Vector2(4.0, -217.0),
+			ItemTypes.Slot.WING: Vector2(0.0, -124.0)},
 	},
 }
 

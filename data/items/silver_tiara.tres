@@ -20,4 +20,4 @@ rarity = 1
 description = "มงกุฎเงินเล็กๆ ของเจ้าหญิงฝึกหัด"
 stats = SubResource("Resource_dbkc4")
 texture = ExtResource("3_cxj1d")
-layer_scale = 0.42
+layer_scale = 0.062

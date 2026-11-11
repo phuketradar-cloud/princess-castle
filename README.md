@@ -297,11 +297,11 @@ GODOT="$HOME/Downloads/Godot_v4.6.2-stable_win64.exe/Godot_v4.6.2-stable_win64_c
 "$GODOT" --headless --path . --export-release "Windows" build/windows/PrincessCastle.exe
 ```
 
-## 6d. ภาพจาก AI (Sword Princess)
-- ต้นฉบับ: `assets/art/source/sword_princess_sheet.webp` (ชีตชิ้นส่วนจาก AI)
-- สร้างใหม่: `"$GODOT" --headless --path . --script res://tools/build_princess_art.gd` → ลบพื้นตารางปลอม, ตัดตัว (ลบใบดาบในมือ), ทำสีหน้า 9 แบบจากหัว 6 หัว, ดาบกุหลาบ + มงกุฎ HD → แล้วรัน `tools/generate_data.gd`
-- ตำแหน่งตา/ปาก/มือ ปรับได้ที่ค่าคงที่บนสุดของ `tools/build_princess_art.gd` · ภาพความละเอียดสูงใช้ `art_scale` (เจ้าหญิง) และ `layer_scale` (อุปกรณ์)
-- ชุดเกราะ/เครื่องรางไม่วาดทับชุดของเธอ (ได้ค่าสถานะครบ)
+## 6d. ภาพจาก AI (Sword Princess v2)
+- ต้นฉบับ: `assets/art/source/sword_v2/` — ภาพตัวเต็มพื้นเขียว + 8 ภาพที่แก้เฉพาะหน้าจากภาพเดียวกัน (ตรงตำแหน่งทุกพิกเซล) + ดาบ + มงกุฎ
+- สร้างใหม่: `"$GODOT" --headless --path . --script res://tools/build_princess_art_v2.gd` แล้วรัน `tools/generate_data.gd` → ตัดพื้นเขียว, ทำสีหน้า 9 แบบ (ปรับสีผิวให้ตรงต้นฉบับ + ดึงตาที่เพี้ยนเป็นม่วงกลับเป็นชมพู), ดาบกุหลาบ + มงกุฎ HD
+- เคล็ดลับสั่ง AI: พื้นเขียวล้วน, มือเปล่า, หัวตรง, แก้หน้าด้วย Edit/Inpaint จากภาพตัวเต็ม**ต้นฉบับ**ทุกครั้ง (แก้ต่อจากภาพที่แก้แล้วสีจะเพี้ยนสะสม)
+- ภาพความละเอียดสูงใช้ `art_scale` (เจ้าหญิง) และ `layer_scale` (อุปกรณ์) · ชุดเกราะ/เครื่องรางไม่วาดทับชุดของเธอ (ได้ค่าสถานะครบ)
 
 ## 6c. เล่นผ่านเว็บ
 - **เล่นเลย:** https://phuketradar-cloud.github.io/princess-castle/ (คอมและเบราว์เซอร์มือถือ, ไม่ต้องติดตั้ง, โหลดครั้งแรก ~10 MB)

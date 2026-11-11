@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_sivq2"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_l41ta"]
-[ext_resource type="Texture2D" path="res://assets/art/princesses/sword_princess_ai/body.png" id="3_al2fl"]
+[ext_resource type="Texture2D" path="res://assets/art/princesses/sword_princess_v2/body.png" id="3_al2fl"]
 [ext_resource type="Resource" path="res://data/cards/rose_oath.tres" id="4_npakj"]
 [ext_resource type="Script" path="res://scripts/data/princess_definition.gd" id="4_w6xp3"]
 [ext_resource type="Resource" path="res://data/furniture/rose_vanity.tres" id="5_fepuo"]
@@ -54,8 +54,8 @@ description = "สายโจมตีกายภาพ สมดุล ตี
 base_stats = SubResource("Resource_wt3lp")
 abilities = Array[ExtResource("1_sivq2")]([SubResource("Resource_sv2bj"), SubResource("Resource_je507"), SubResource("Resource_h2kue")])
 starting_equipment = Array[ExtResource("5_npakj")]([ExtResource("6_fepuo")])
-face_dir = "res://assets/art/princesses/sword_princess_ai"
-face_anchor = Vector2(-14.5, -172.7)
+face_dir = "res://assets/art/princesses/sword_princess_v2"
+face_anchor = Vector2(8.75, -165.2)
 bond_card = ExtResource("4_npakj")
 bond_cosmetic = ExtResource("5_fepuo")
 growth_hp = 9.0
@@ -64,9 +64,9 @@ growth_defense = 0.5
 assist = SubResource("Resource_al2fl")
 activity_weights = PackedFloat32Array(1, 1, 1, 0.5, 3, 0.7, 0.8)
 battle_texture = ExtResource("3_al2fl")
-art_scale = 0.46
+art_scale = 0.35
 slot_anchors = {
-0: Vector2(-60.7, -111.8),
-1: Vector2(-12.4, -206),
-2: Vector2(-7.8, -136)
+0: Vector2(47.3, -116.9),
+1: Vector2(4, -217),
+2: Vector2(0, -124)
 }

@@ -1,4 +1,6 @@
 extends SceneTree
+## SUPERSEDED by tools/build_princess_art_v2.gd (green-screen v2 art). Running this would
+## overwrite items_hd/ with the old v1 sword + tiara. Kept for reference only.
 ## Builds the Sword Princess art from the AI parts sheet (assets/art/source/sword_princess_sheet.webp):
 ##   body.png        the dressed character, blade removed from her hand (equipment draws weapons)
 ##   eyes_<v>.png    face overlays (eyes + mouth) cut from the 6 bald expression heads, scaled /

@@ -14,8 +14,9 @@ const E_ICE := CardTypes.Element.ICE
 const E_SHADOW := CardTypes.Element.SHADOW
 const E_LIGHT := CardTypes.Element.LIGHT
 const E_DRAGON := CardTypes.Element.DRAGON
-## id -> [layer_scale, layer_offset]: grip of the rose rapier lands on the hand anchor.
-const HD_ITEMS := {"rose_rapier": [0.46, Vector2(-61, 33)], "silver_tiara": [0.42, Vector2(0, 0)]}
+## id -> [layer_scale, layer_offset]: grip of the rose rapier lands on the hand anchor
+## (art from tools/build_princess_art_v2.gd).
+const HD_ITEMS := {"rose_rapier": [0.155, Vector2(-49.8, 36.3)], "silver_tiara": [0.062, Vector2(0, 0)]}
 
 
 func _init() -> void:

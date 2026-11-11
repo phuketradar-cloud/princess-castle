@@ -18,5 +18,5 @@ rarity = 1
 description = "เรเปียร์เบาหวิว แทงได้แม่นยำ"
 stats = SubResource("Resource_csxma")
 texture = ExtResource("3_vaext")
-layer_offset = Vector2(-61, 33)
-layer_scale = 0.46
+layer_offset = Vector2(-49.8, 36.3)
+layer_scale = 0.155
