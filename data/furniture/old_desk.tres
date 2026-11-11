@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_chuu8"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_vqkui"]
-[ext_resource type="Texture2D" path="res://assets/art/furniture/old_desk.png" id="3_0m72n"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture_hd/old_desk.png" id="3_0m72n"]
 
 [sub_resource type="Resource" id="Resource_hgyah"]
 script = ExtResource("2_vqkui")
@@ -17,3 +17,4 @@ slot = 1
 description = "โต๊ะไม้เก่าๆ"
 stats = SubResource("Resource_hgyah")
 texture = ExtResource("3_0m72n")
+room_scale = 1.45

@@ -12,6 +12,8 @@ extends Resource
 ## Phase 5: adventure stages in order, and princess pair bonuses.
 @export var stages: Array[StageDefinition] = []
 @export var synergies: Array[Synergy] = []
+## Room backgrounds / furniture positions per wing (rooms without one use defaults).
+@export var room_layouts: Array[RoomLayout] = []
 
 
 func find(princess_id: String) -> PrincessDefinition:
@@ -37,6 +39,13 @@ func craftable_furniture() -> Array[FurnitureDefinition]:
 		if f != null and not f.recipe.is_empty():
 			out.append(f)
 	return out
+
+
+func layout_for(wing: int) -> RoomLayout:
+	for l in room_layouts:
+		if l != null and l.wing == wing:
+			return l
+	return null
 
 
 func find_stage(stage_id: String) -> StageDefinition:

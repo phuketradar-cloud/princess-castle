@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_8pabp"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_pmcke"]
-[ext_resource type="Texture2D" path="res://assets/art/furniture/starry_canopy_bed.png" id="3_i5pis"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture_hd/starry_canopy_bed.png" id="3_i5pis"]
 
 [sub_resource type="Resource" id="Resource_4cmag"]
 script = ExtResource("2_pmcke")
@@ -18,3 +18,4 @@ description = "สกินเตียงลายดาว (ไม่มีค
 stats = SubResource("Resource_4cmag")
 is_skin = true
 texture = ExtResource("3_i5pis")
+room_scale = 1.45

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_cqxox"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_jupf6"]
-[ext_resource type="Texture2D" path="res://assets/art/furniture/rose_vanity.png" id="3_um1vy"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture_hd/rose_vanity.png" id="3_um1vy"]
 
 [sub_resource type="Resource" id="Resource_fivfj"]
 script = ExtResource("2_jupf6")
@@ -19,3 +19,4 @@ description = "สกินโต๊ะเครื่องแป้ง (ไม
 stats = SubResource("Resource_fivfj")
 is_skin = true
 texture = ExtResource("3_um1vy")
+room_scale = 1.45

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_6x6nb"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_myynb"]
-[ext_resource type="Texture2D" path="res://assets/art/furniture/wooden_dummy.png" id="3_iy3gw"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture_hd/wooden_dummy.png" id="3_iy3gw"]
 
 [sub_resource type="Resource" id="Resource_y5a6a"]
 script = ExtResource("2_myynb")
@@ -17,3 +17,4 @@ slot = 2
 description = "หุ่นฝึกไม้"
 stats = SubResource("Resource_y5a6a")
 texture = ExtResource("3_iy3gw")
+room_scale = 1.45

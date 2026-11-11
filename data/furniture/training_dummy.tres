@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_0r6u4"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_i4je3"]
-[ext_resource type="Texture2D" path="res://assets/art/furniture/training_dummy.png" id="3_1rrsv"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture_hd/training_dummy.png" id="3_1rrsv"]
 
 [sub_resource type="Resource" id="Resource_g2c6n"]
 script = ExtResource("2_i4je3")
@@ -18,6 +18,7 @@ rarity = 1
 description = "หุ่นฝึกมีเป้า (Attack)"
 stats = SubResource("Resource_g2c6n")
 texture = ExtResource("3_1rrsv")
+room_scale = 1.45
 recipe = {
 "fire": 4,
 "shadow": 1

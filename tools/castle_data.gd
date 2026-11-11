@@ -71,6 +71,10 @@ static func generate(saver: Callable) -> bool:
 		f.recipe = row[7]
 		f.description = row[8]
 		f.texture = load("res://assets/art/furniture/%s.png" % f.id)
+		# HD art from tools/build_room_art.gd replaces the placeholder when present.
+		if ResourceLoader.exists("res://assets/art/furniture_hd/%s.png" % f.id):
+			f.texture = load("res://assets/art/furniture_hd/%s.png" % f.id)
+			f.room_scale = HD_FURNITURE_SCALE
 		var path := "res://data/furniture/%s.tres" % f.id
 		ok = saver.call(f, path) and ok
 		furniture[f.id] = load(path)
@@ -199,6 +203,9 @@ static func generate(saver: Callable) -> bool:
 	for id in ["simple_bed", "old_desk", "wooden_dummy", "plain_chair"]:
 		roster.starter_furniture.append(furniture[id])
 	roster.dialogue = load("res://data/dialogue_db.tres")
+	roster.room_layouts.clear()
+	for l in _room_layouts():
+		roster.room_layouts.append(l)
 	ok = saver.call(roster, "res://data/princess_roster.tres") and ok
 	return ok
 
@@ -358,3 +365,25 @@ static func _apply_hd_art(p: PrincessDefinition, art: Dictionary) -> void:
 	p.face_anchor = art.face_anchor
 	p.art_scale = art.art_scale
 	p.slot_anchors = art.anchors.duplicate()
+
+
+## HD furniture (AI art) is drawn this much larger in the room.
+const HD_FURNITURE_SCALE := 1.45
+
+
+## Rooms with real background art: positions read off the background (1920x1080 screen,
+## floor contact points). Back pieces are a bit smaller (depth).
+static func _room_layouts() -> Array:
+	var SLOT := CastleTypes.FurnitureSlot
+	var sword := RoomLayout.new()
+	sword.wing = CastleTypes.Wing.SWORD
+	sword.background = load("res://assets/art/rooms_hd/sword_wing.png")
+	sword.slot_positions = {SLOT.BED: Vector2(350, 1005), SLOT.DESK: Vector2(1300, 830),
+		SLOT.TRAINING: Vector2(1530, 1015), SLOT.DECOR: Vector2(1030, 810)}
+	sword.slot_depth_scale = {SLOT.BED: 1.1, SLOT.DESK: 0.9, SLOT.TRAINING: 1.1, SLOT.DECOR: 0.88}
+	sword.window_spot = Vector2(700, 845)
+	sword.stand_spot = Vector2(960, 990)
+	var A := CastleTypes.Activity
+	# Activity spots tuned to this art: lie on the mattress, read / drink tea in front of the desk.
+	sword.spot_offsets = {A.SLEEPING: Vector2(215, -180), A.READING: Vector2(-200, 70), A.DRINKING_TEA: Vector2(-40, 110)}
+	return [sword]

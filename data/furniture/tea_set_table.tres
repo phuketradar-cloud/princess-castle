@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_j5qpi"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_gf35i"]
-[ext_resource type="Texture2D" path="res://assets/art/furniture/tea_set_table.png" id="3_0qfia"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture_hd/tea_set_table.png" id="3_0qfia"]
 
 [sub_resource type="Resource" id="Resource_b3bdh"]
 script = ExtResource("2_gf35i")
@@ -18,6 +18,7 @@ rarity = 1
 description = "โต๊ะน้ำชายามบ่าย (HP)"
 stats = SubResource("Resource_b3bdh")
 texture = ExtResource("3_0qfia")
+room_scale = 1.45
 recipe = {
 "fire": 2,
 "light": 3

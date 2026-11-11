@@ -15,6 +15,8 @@ extends Resource
 ## Cosmetic-only variant: stats are ignored.
 @export var is_skin: bool = false
 @export var texture: Texture2D
+## Draw scale in the room (HD art from tools/build_room_art.gd is drawn larger).
+@export var room_scale: float = 1.0
 ## Crafting cost: material key -> amount (empty = not craftable, e.g. starters / bond rewards).
 @export var recipe: Dictionary = {}
 

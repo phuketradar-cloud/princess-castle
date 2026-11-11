@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_3uvf8"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_cjrnf"]
-[ext_resource type="Texture2D" path="res://assets/art/furniture/pink_canopy_bed.png" id="3_04hj7"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture_hd/pink_canopy_bed.png" id="3_04hj7"]
 
 [sub_resource type="Resource" id="Resource_2q0re"]
 script = ExtResource("2_cjrnf")
@@ -18,3 +18,4 @@ description = "สกินเตียง (ไม่มีค่าสถาน
 stats = SubResource("Resource_2q0re")
 is_skin = true
 texture = ExtResource("3_04hj7")
+room_scale = 1.45

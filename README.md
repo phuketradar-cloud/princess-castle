@@ -303,6 +303,11 @@ GODOT="$HOME/Downloads/Godot_v4.6.2-stable_win64.exe/Godot_v4.6.2-stable_win64_c
 - เคล็ดลับสั่ง AI: พื้นเขียวล้วน, มือเปล่า, หัวตรง, แก้หน้าด้วย Edit/Inpaint จากภาพตัวเต็ม**ต้นฉบับ**ทุกครั้ง (แก้ต่อจากภาพที่แก้แล้วสีจะเพี้ยนสะสม)
 - ภาพความละเอียดสูงใช้ `art_scale` (เจ้าหญิง) และ `layer_scale` (อุปกรณ์) · ชุดเกราะ/เครื่องรางไม่วาดทับชุดของเธอ (ได้ค่าสถานะครบ)
 
+## 6e. ห้องเจ้าหญิงจาก AI (Sword Wing)
+- ต้นฉบับ: `assets/art/source/rooms/` — พื้นหลังห้องว่าง (`sword_wing_bg.jpg`) + เฟอร์นิเจอร์ 12 ชิ้นในภาพเดียวบนพื้นเขียว (`furniture_sheet.jpg`, ตาราง 4×3)
+- สร้างใหม่: `"$GODOT" --headless --path . --script res://tools/build_room_art.gd` แล้วรัน `tools/generate_data.gd`
+- ตำแหน่งเฟอร์นิเจอร์ / หน้าต่าง / จุดนอน-อ่าน-จิบชา ของแต่ละห้องอยู่ใน `RoomLayout` (`tools/castle_data.gd` → `_room_layouts()`) — ห้องอื่นเพิ่มได้โดยไม่แก้โค้ด
+
 ## 6c. เล่นผ่านเว็บ
 - **เล่นเลย:** https://phuketradar-cloud.github.io/princess-castle/ (คอมและเบราว์เซอร์มือถือ, ไม่ต้องติดตั้ง, โหลดครั้งแรก ~10 MB)
 - เซฟเก็บในเบราว์เซอร์ (IndexedDB) แยกจากเวอร์ชัน Windows/Android · ล้างข้อมูลเว็บไซต์ = เซฟหาย

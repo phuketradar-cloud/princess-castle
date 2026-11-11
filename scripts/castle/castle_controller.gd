@@ -25,6 +25,7 @@ var castle: CastleProgress
 var collection: Collection
 var current: PrincessDefinition        ## princess whose room is open (null = overview)
 var princess_node: LivingPrincess
+var room_layout: RoomLayout           ## layout of the open room (null = defaults)
 var last_speech := ""                   ## for tests
 var story_lines: Array[DialogueLine] = []
 
@@ -102,6 +103,7 @@ func _ready() -> void:
 
 func show_overview() -> void:
 	current = null
+	room_layout = null
 	_clear_room()
 	_bg.texture = load("res://assets/art/rooms/castle_overview.png")
 	_bg.scale = Vector2(5.4, 5.4)
@@ -361,8 +363,15 @@ func enter_room(p: PrincessDefinition) -> void:
 	current = p
 	castle.ensure_room(p, roster)
 	collection.ensure_starting_gear(p)
-	_bg.texture = load("res://assets/art/rooms/%s.png" % ["sword_wing", "magic_wing", "shadow_wing", "light_wing", "dragon_wing"][p.wing])
-	_bg.scale = Vector2(4.0, 4.0) * 1.35
+	room_layout = roster.layout_for(p.wing)
+	if room_layout != null and room_layout.background != null:
+		_bg.texture = room_layout.background
+		var size := room_layout.background.get_size()
+		var cover := maxf(1920.0 / size.x, 1080.0 / size.y) # fill the screen, keep aspect
+		_bg.scale = Vector2(cover, cover)
+	else:
+		_bg.texture = load("res://assets/art/rooms/%s.png" % ["sword_wing", "magic_wing", "shadow_wing", "light_wing", "dragon_wing"][p.wing])
+		_bg.scale = Vector2(4.0, 4.0) * 1.35
 	_build_room_world()
 	_build_room_ui()
 	_say_trigger("GREETING")
@@ -387,13 +396,15 @@ func _build_room_world() -> void:
 		s.texture = f.texture
 		s.centered = false
 		s.offset = Vector2(-f.texture.get_width() * 0.5, -f.texture.get_height())
-		s.position = SLOT_POS[slot]
-		s.z_index = int(SLOT_POS[slot].y / 10.0)
+		s.position = _slot_pos(slot)
+		var k := f.room_scale * _slot_depth(slot)
+		s.scale = Vector2(k, k)
+		s.z_index = int(s.position.y / 10.0)
 		s.name = "Furniture_%s" % f.id
 		_furniture_root.add_child(s)
 	princess_node = LivingPrincess.new()
 	princess_node.setup(current, collection.equipped_items(current.id), ROOM_SCALE)
-	princess_node.position = Vector2(960, 980)
+	princess_node.position = room_layout.stand_spot if room_layout else Vector2(960, 980)
 	princess_node.z_index = 100
 	princess_node.spots = _spots()
 	_world.add_child(princess_node)
@@ -403,21 +414,32 @@ func _build_room_world() -> void:
 		_activity_label.text = ""
 
 
+func _slot_pos(slot: int) -> Vector2:
+	if room_layout != null and room_layout.slot_positions.has(slot):
+		return room_layout.slot_positions[slot]
+	return SLOT_POS[slot]
+
+
+func _slot_depth(slot: int) -> float:
+	return float(room_layout.slot_depth_scale.get(slot, 1.0)) if room_layout != null else 1.0
+
+
 ## Event spots for every activity based on where the furniture is.
 func _spots() -> Dictionary:
 	var A := CastleTypes.Activity
-	var bed: Vector2 = SLOT_POS[CastleTypes.FurnitureSlot.BED]
-	var desk: Vector2 = SLOT_POS[CastleTypes.FurnitureSlot.DESK]
-	var train: Vector2 = SLOT_POS[CastleTypes.FurnitureSlot.TRAINING]
-	var decor: Vector2 = SLOT_POS[CastleTypes.FurnitureSlot.DECOR]
+	var bed := _slot_pos(CastleTypes.FurnitureSlot.BED)
+	var desk := _slot_pos(CastleTypes.FurnitureSlot.DESK)
+	var train := _slot_pos(CastleTypes.FurnitureSlot.TRAINING)
+	var decor := _slot_pos(CastleTypes.FurnitureSlot.DECOR)
+	var off := room_layout.spot_offsets if room_layout else {}
 	return {
-		A.STANDING: {"pos": Vector2(960, 990)},
-		A.SITTING: {"pos": decor + Vector2(0, 8)},
-		A.SLEEPING: {"pos": bed + Vector2(120, -95)},
-		A.READING: {"pos": desk + Vector2(-170, 60), "face_left": false},
-		A.TRAINING: {"pos": train + Vector2(-190, 40), "face_left": false},
-		A.LOOKING_OUTSIDE: {"pos": WINDOW_SPOT, "face_left": true},
-		A.DRINKING_TEA: {"pos": desk + Vector2(160, 70), "face_left": true},
+		A.STANDING: {"pos": room_layout.stand_spot if room_layout else Vector2(960, 990)},
+		A.SITTING: {"pos": decor + off.get(A.SITTING, Vector2(0, 8))},
+		A.SLEEPING: {"pos": bed + off.get(A.SLEEPING, Vector2(120, -95))},
+		A.READING: {"pos": desk + off.get(A.READING, Vector2(-170, 60)), "face_left": false},
+		A.TRAINING: {"pos": train + off.get(A.TRAINING, Vector2(-190, 40)), "face_left": false},
+		A.LOOKING_OUTSIDE: {"pos": room_layout.window_spot if room_layout else WINDOW_SPOT, "face_left": true},
+		A.DRINKING_TEA: {"pos": desk + off.get(A.DRINKING_TEA, Vector2(160, 70)), "face_left": true},
 	}
 
 

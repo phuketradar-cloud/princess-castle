@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_ph3k1"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_s31vd"]
-[ext_resource type="Texture2D" path="res://assets/art/furniture/rose_training_hall.png" id="3_2t2mp"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture_hd/rose_training_hall.png" id="3_2t2mp"]
 
 [sub_resource type="Resource" id="Resource_8ylb7"]
 script = ExtResource("2_s31vd")
@@ -20,6 +20,7 @@ room_type = 0
 description = "ชั้นวางอาวุธอัศวินกุหลาบ — เฉพาะห้องดาบ"
 stats = SubResource("Resource_8ylb7")
 texture = ExtResource("3_2t2mp")
+room_scale = 1.45
 recipe = {
 "bone_fragment": 2,
 "fire": 5
