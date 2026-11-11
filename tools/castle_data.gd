@@ -33,6 +33,10 @@ static func generate(saver: Callable) -> bool:
 		it.stats = StatBlock.make(s[0], s[1], s[2], s[3], s[4], s[5])
 		it.description = row[3]
 		it.texture = load("res://assets/art/items/%s.png" % it.id)
+		if STARTER_HD.has(it.id) and ResourceLoader.exists("res://assets/art/items_hd/%s.png" % it.id):
+			it.texture = load("res://assets/art/items_hd/%s.png" % it.id)
+			it.layer_scale = STARTER_HD[it.id][0]
+			it.layer_offset = STARTER_HD[it.id][1]
 		var path := "res://data/items/%s.tres" % it.id
 		ok = saver.call(it, path) and ok
 		starters[it.id] = load(path)
@@ -356,6 +360,14 @@ const HD_ART := {
 		"anchors": {ItemTypes.Slot.WEAPON: Vector2(47.3, -116.9), ItemTypes.Slot.HEADGEAR: Vector2(4.0, -217.0),
 			ItemTypes.Slot.WING: Vector2(0.0, -124.0)},
 	},
+	# tools/build_princess_art_sheet.gd (mirrored art): body px from feet x 0.34
+	"magic_princess": {
+		"dir": "res://assets/art/princesses/magic_princess_hd",
+		"art_scale": 0.34,
+		"face_anchor": Vector2(15.6, -165.8),
+		"anchors": {ItemTypes.Slot.WEAPON: Vector2(58.5, -113.9), ItemTypes.Slot.HEADGEAR: Vector2(7.5, -225.4),
+			ItemTypes.Slot.WING: Vector2(-4.4, -126.8)},
+	},
 }
 
 
@@ -387,3 +399,7 @@ static func _room_layouts() -> Array:
 	# Activity spots tuned to this art: lie on the mattress, read / drink tea in front of the desk.
 	sword.spot_offsets = {A.SLEEPING: Vector2(215, -180), A.READING: Vector2(-200, 70), A.DRINKING_TEA: Vector2(-40, 110)}
 	return [sword]
+
+
+## HD starter weapons: id -> [layer_scale, layer_offset] (grip lands on the hand anchor).
+const STARTER_HD := {"apprentice_wand": [0.15, Vector2(34.2, -30.2)]}
