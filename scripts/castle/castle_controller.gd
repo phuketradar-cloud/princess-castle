@@ -118,6 +118,20 @@ func _build_overview() -> void:
 	_overview.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_overview.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_ui.add_child(_overview)
+	var shade_g := Gradient.new()
+	shade_g.set_color(0, Color(0.12, 0.05, 0.22, 0.55))
+	shade_g.set_color(1, Color(0.03, 0.01, 0.08, 0.85))
+	var shade_t := GradientTexture2D.new()
+	shade_t.gradient = shade_g
+	shade_t.fill_to = Vector2(0, 1)
+	shade_t.width = 8
+	shade_t.height = 256
+	var shade := TextureRect.new()
+	shade.texture = shade_t
+	shade.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_overview.add_child(shade)
 
 	var top := UIKit.panel(Color(0.08, 0.03, 0.12, 0.85), UIKit.EDGE, 0, 0)
 	top.set_anchors_preset(Control.PRESET_TOP_WIDE)
@@ -142,33 +156,34 @@ func _build_overview() -> void:
 
 	var row := HBoxContainer.new()
 	row.set_anchors_preset(Control.PRESET_FULL_RECT)
-	row.offset_top = 120
-	row.offset_bottom = -190
+	row.offset_top = 110
+	row.offset_bottom = -118
 	row.offset_left = 30
 	row.offset_right = -30
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
-	row.add_theme_constant_override("separation", 18)
+	row.add_theme_constant_override("separation", 22)
 	_overview.add_child(row)
 	for p in roster.princesses:
 		row.add_child(_wing_card(p))
 
 	var bottom := HBoxContainer.new()
 	bottom.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	bottom.offset_top = -160
-	bottom.offset_bottom = -30
+	bottom.offset_top = -100
+	bottom.offset_bottom = -14
 	bottom.offset_left = 40
 	bottom.offset_right = -40
 	bottom.alignment = BoxContainer.ALIGNMENT_CENTER
 	bottom.add_theme_constant_override("separation", 24)
 	_overview.add_child(bottom)
 	var active: PrincessDefinition = game_state.active_princess()
-	var go := UIKit.button("▶  ออกผจญภัยกับ %s" % (active.display_name if active else "-"), UIKit.BUTTON, 36, Vector2(620, 110))
+	var go := UIKit.button("▶  ออกผจญภัยกับ %s" % (active.display_name if active else "-"), UIKit.BUTTON, 30, Vector2(540, 82))
+	_glow_button(go, UIKit.GOLD, 12)
 	go.name = "AdventureButton"
 	go.pressed.connect(func(): open_stage_select(active))
 	bottom.add_child(go)
 	room_buttons["adventure_overview"] = go
 	if OS.is_debug_build():
-		var dev := UIKit.button("[ทดสอบ] ปลดล็อกทั้งหมด", Color(0.25, 0.25, 0.3), 22, Vector2(300, 80))
+		var dev := UIKit.button("[ทดสอบ] ปลดล็อกทั้งหมด", Color(0.25, 0.25, 0.3), 20, Vector2(280, 64))
 		dev.pressed.connect(func():
 			castle.unlock_all = not castle.unlock_all
 			for p in castle.unlocked(roster):
@@ -177,52 +192,59 @@ func _build_overview() -> void:
 		bottom.add_child(dev)
 	_toast = _nl("", 26, Color(0.55, 1, 0.7))
 	_toast.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	_toast.offset_top = -200
+	_toast.offset_top = -150
 	_overview.add_child(_toast)
 
 
+## Room art per wing (the card's backdrop); missing art = plain tinted card.
+const WING_ROOMS := ["sword_wing", "magic_wing", "shadow_wing", "light_wing", "dragon_wing"]
+## Card glow per wing: rose, frost, violet, gold, ember.
+const WING_GLOW := [Color(1, 0.4, 0.55), Color(0.4, 0.8, 1), Color(0.68, 0.45, 1), Color(1, 0.84, 0.4), Color(1, 0.5, 0.25)]
+
+
+## Character card: glowing border in her colour, her room behind a big doll, EXP bar,
+## Bond with a heart, compact buttons.
 func _wing_card(p: PrincessDefinition) -> Control:
 	var unlocked := castle.is_unlocked(p)
-	var card := UIKit.panel(Color(0.09, 0.05, 0.14, 0.95), p.theme_color.lightened(0.2) if unlocked else Color(1, 1, 1, 0.2), 22, 4)
-	card.custom_minimum_size = Vector2(340, 700)
+	var glow: Color = (WING_GLOW[p.wing] if p.wing < WING_GLOW.size() else p.theme_color) if unlocked else Color(1, 1, 1, 0.25)
+	var card := PanelContainer.new()
+	var card_bg := Color(0.06, 0.03, 0.1).lerp(glow, 0.1) if unlocked else Color(0.06, 0.03, 0.1)
+	var sb := UIKit.panel_style(Color(card_bg, 0.92), glow, 20, 3)
+	sb.shadow_color = Color(glow, 0.55 if unlocked else 0.15)
+	sb.shadow_size = 16
+	sb.content_margin_left = 10
+	sb.content_margin_right = 10
+	sb.content_margin_top = 10
+	sb.content_margin_bottom = 14
+	card.add_theme_stylebox_override("panel", sb)
+	card.custom_minimum_size = Vector2(330, 0)
 	var v := VBoxContainer.new()
-	v.add_theme_constant_override("separation", 8)
+	v.add_theme_constant_override("separation", 6)
 	card.add_child(v)
-	v.add_child(_label_c(CastleTypes.WING_NAMES[p.wing], 26, UIKit.GOLD))
-	# mini doll preview
-	var box := SubViewportContainer.new()
-	box.custom_minimum_size = Vector2(300, 270)
-	box.stretch = true
-	v.add_child(box)
-	var vp := SubViewport.new()
-	vp.transparent_bg = true
-	vp.size = Vector2i(300, 270)
-	box.add_child(vp)
-	var doll := PaperDoll.new()
-	doll.position = Vector2(150, 262)
-	doll.scale = Vector2(1.0, 1.0)
-	vp.add_child(doll)
-	doll.setup(p.battle_texture, Color.WHITE if unlocked else Color(0.05, 0.03, 0.08), false, p.slot_anchors, p.art_scale)
-	if unlocked:
-		doll.setup_face(p.face_dir, p.face_anchor)
-		doll.set_equipment(collection.equipped_items(p.id))
-		doll.set_expression(CastleTypes.Expr.HAPPY if game_state.active_princess() == p else CastleTypes.Expr.NORMAL)
+	v.add_child(_card_art(p, unlocked, glow, card_bg))
 	v.add_child(_label_c(p.display_name if unlocked else "???", 30, Color.WHITE))
 	if unlocked:
-		v.add_child(_label_c(p.title, 20, UIKit.LAVENDER))
-		v.add_child(_label_c(_level_text(p), 22, Color(0.6, 0.9, 1)))
-		var lvl := castle.bond_level(p.id)
-		v.add_child(_label_c("Bond Lv %d  (%d/%d)" % [lvl, castle.bond_points(p.id), CastleTypes.bond_next(castle.bond_points(p.id))], 22, Color(1, 0.6, 0.8)))
+		var title := _label_c(p.title, 18, UIKit.LAVENDER)
+		title.custom_minimum_size.y = 46 # two lines, so every card's rows line up
+		title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		v.add_child(title)
+		var lv := castle.level(p.id)
+		var maxed := lv >= CastleTypes.MAX_LEVEL
+		var need := CastleTypes.exp_to_next(lv) if not maxed else 1
+		v.add_child(_bar(castle.exp_points(p.id) if not maxed else 1, need, glow, _level_text(p)))
+		var pts := castle.bond_points(p.id)
+		v.add_child(_label_c("Bond Lv %d ♥ (%d/%d)" % [castle.bond_level(p.id), pts, CastleTypes.bond_next(pts)], 22, Color(1, 0.6, 0.8)))
 		var act: String = CastleTypes.ACTIVITY_NAMES[_rng_activity(p)]
-		v.add_child(_label_c("ตอนนี้: %s" % act, 20, Color(1, 1, 1, 0.6)))
-		var enter := UIKit.button("เข้าห้อง", UIKit.BUTTON_ALT, 26, Vector2(280, 64))
+		v.add_child(_label_c("ตอนนี้: %s" % act, 18, Color(1, 1, 1, 0.6)))
+		var enter := UIKit.button("เข้าห้อง", UIKit.BUTTON_ALT, 26, Vector2(290, 60))
+		_glow_button(enter, Color(0.75, 0.55, 1))
 		enter.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		enter.pressed.connect(func(): enter_room(p))
 		v.add_child(enter)
 		wing_buttons[p.id] = enter
 		var is_active: bool = game_state.active_princess() == p
 		var is_comp: bool = game_state.companion_princess() == p
-		var pick := UIKit.button("✓ ตัวที่ออกผจญภัย" if is_active else "เลือกออกผจญภัย", Color(0.2, 0.35, 0.25), 20, Vector2(280, 52))
+		var pick := UIKit.button("✓ ตัวที่ออกผจญภัย" if is_active else "เลือกออกผจญภัย", Color(0.2, 0.35, 0.25), 20, Vector2(270, 46))
 		pick.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		pick.disabled = is_active
 		pick.pressed.connect(func():
@@ -231,7 +253,7 @@ func _wing_card(p: PrincessDefinition) -> Control:
 			game_state.set_active_princess(p)
 			_build_overview())
 		v.add_child(pick)
-		var comp := UIKit.button("✓ ผู้ช่วย (กดเพื่อถอด)" if is_comp else "เลือกเป็นผู้ช่วย", Color(0.2, 0.3, 0.45), 20, Vector2(280, 52))
+		var comp := UIKit.button("✓ ผู้ช่วย (กดเพื่อถอด)" if is_comp else "เลือกเป็นผู้ช่วย", Color(0.2, 0.3, 0.45), 20, Vector2(270, 46))
 		comp.name = "Companion_" + p.id
 		comp.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		comp.disabled = is_active
@@ -242,6 +264,119 @@ func _wing_card(p: PrincessDefinition) -> Control:
 		v.add_child(_label_c("✗ ล็อกอยู่", 26, Color(1, 1, 1, 0.5)))
 		v.add_child(_label_c(_unlock_text(p), 20, Color(1, 1, 1, 0.5)))
 	return card
+
+
+## Top of the card: her room (darkened, fading into the card), wing name, big doll.
+func _card_art(p: PrincessDefinition, unlocked: bool, glow: Color, card_bg: Color) -> Control:
+	var art := Control.new()
+	art.custom_minimum_size = Vector2(310, 420)
+	art.clip_contents = true
+	art.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var room_path := ""
+	if p.wing < WING_ROOMS.size():
+		room_path = "res://assets/art/rooms_hd/%s.png" % WING_ROOMS[p.wing]
+	if room_path != "" and ResourceLoader.exists(room_path):
+		var bg := TextureRect.new()
+		bg.texture = load(room_path)
+		bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+		bg.modulate = Color(0.8, 0.8, 0.85) if unlocked else Color(0.15, 0.12, 0.18)
+		bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		art.add_child(bg)
+	else:
+		var tint := ColorRect.new()
+		tint.color = Color(glow, 0.15)
+		tint.set_anchors_preset(Control.PRESET_FULL_RECT)
+		tint.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		art.add_child(tint)
+	# fade the bottom into the card so the name sits on a calm background
+	var g := Gradient.new()
+	g.set_color(0, Color(card_bg, 0.0))
+	g.set_color(1, Color(card_bg, 1.0))
+	var gt := GradientTexture2D.new()
+	gt.gradient = g
+	gt.fill_from = Vector2(0, 0)
+	gt.fill_to = Vector2(0, 1)
+	gt.width = 8
+	gt.height = 128
+	var fade := TextureRect.new()
+	fade.texture = gt
+	fade.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	fade.anchor_left = 0.0
+	fade.anchor_right = 1.0
+	fade.anchor_top = 0.55
+	fade.anchor_bottom = 1.0
+	fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	art.add_child(fade)
+	# big doll
+	var box := SubViewportContainer.new()
+	box.stretch = true
+	box.set_anchors_preset(Control.PRESET_FULL_RECT)
+	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	art.add_child(box)
+	var vp := SubViewport.new()
+	vp.transparent_bg = true
+	vp.size = Vector2i(310, 420)
+	box.add_child(vp)
+	var doll := PaperDoll.new()
+	doll.position = Vector2(155, 405)
+	doll.scale = Vector2(1.45, 1.45)
+	vp.add_child(doll)
+	doll.setup(p.battle_texture, Color.WHITE if unlocked else Color(0.05, 0.03, 0.08), false, p.slot_anchors, p.art_scale)
+	if unlocked:
+		doll.setup_face(p.face_dir, p.face_anchor)
+		doll.set_equipment(collection.equipped_items(p.id))
+		doll.set_expression(CastleTypes.Expr.HAPPY if game_state.active_princess() == p else CastleTypes.Expr.NORMAL)
+	var wing := _label_c(CastleTypes.WING_NAMES[p.wing], 26, UIKit.GOLD)
+	wing.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	wing.offset_top = 6
+	wing.add_theme_color_override("font_outline_color", Color(0.1, 0.03, 0.12))
+	wing.add_theme_constant_override("outline_size", 8)
+	art.add_child(wing)
+	return art
+
+
+## Slim rounded progress bar with its text on top.
+func _bar(value: int, max_value: int, color: Color, text: String) -> Control:
+	var bar := ProgressBar.new()
+	bar.min_value = 0
+	bar.max_value = maxi(max_value, 1)
+	bar.value = clampi(value, 0, maxi(max_value, 1))
+	bar.show_percentage = false
+	bar.custom_minimum_size = Vector2(270, 28)
+	bar.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	var bg := StyleBoxFlat.new()
+	bg.bg_color = Color(0.02, 0.01, 0.05, 0.85)
+	bg.set_corner_radius_all(14)
+	bg.set_border_width_all(2)
+	bg.border_color = Color(color, 0.6)
+	var fill := StyleBoxFlat.new()
+	fill.bg_color = color.darkened(0.15)
+	fill.set_corner_radius_all(14)
+	bar.add_theme_stylebox_override("background", bg)
+	bar.add_theme_stylebox_override("fill", fill)
+	var l := UIKit.label(text, 17, Color.WHITE, HORIZONTAL_ALIGNMENT_CENTER)
+	l.set_anchors_preset(Control.PRESET_FULL_RECT)
+	l.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	l.add_theme_color_override("font_outline_color", Color(0.05, 0.02, 0.1))
+	l.add_theme_constant_override("outline_size", 6)
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	bar.add_child(l)
+	return bar
+
+
+## Soft outer glow on a button's normal / hover look.
+func _glow_button(b: Button, color: Color, size := 8) -> void:
+	for state in ["normal", "hover"]:
+		var sb := b.get_theme_stylebox(state) as StyleBoxFlat
+		if sb == null:
+			continue
+		sb = sb.duplicate()
+		sb.shadow_color = Color(color, 0.5)
+		sb.shadow_size = size
+		sb.border_color = Color(color.lightened(0.3), 0.8)
+		b.add_theme_stylebox_override(state, sb)
 
 
 func _level_text(p: PrincessDefinition) -> String:
