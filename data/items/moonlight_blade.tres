@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_02bcv"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_tt78p"]
-[ext_resource type="Texture2D" path="res://assets/art/items/moonlight_blade.png" id="3_ascsh"]
+[ext_resource type="Texture2D" path="res://assets/art/items_hd/moonlight_blade.png" id="3_ascsh"]
 
 [sub_resource type="Resource" id="Resource_y2t1d"]
 script = ExtResource("2_tt78p")
@@ -20,3 +20,5 @@ stats = SubResource("Resource_y2t1d")
 special = 3
 special_value = 0.25
 texture = ExtResource("3_ascsh")
+layer_offset = Vector2(28.6, -43.9)
+layer_scale = 0.21

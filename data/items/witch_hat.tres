@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_colvx"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_h2nrx"]
-[ext_resource type="Texture2D" path="res://assets/art/items/witch_hat.png" id="3_a086e"]
+[ext_resource type="Texture2D" path="res://assets/art/items_hd/witch_hat.png" id="3_a086e"]
 
 [sub_resource type="Resource" id="Resource_n7loq"]
 script = ExtResource("2_h2nrx")
@@ -21,3 +21,5 @@ stats = SubResource("Resource_n7loq")
 special = 4
 special_value = 0.3
 texture = ExtResource("3_a086e")
+layer_offset = Vector2(0, -14)
+layer_scale = 0.33

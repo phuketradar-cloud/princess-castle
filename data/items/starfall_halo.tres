@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_kj1o8"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_64ji7"]
-[ext_resource type="Texture2D" path="res://assets/art/items/starfall_halo.png" id="3_fsvlt"]
+[ext_resource type="Texture2D" path="res://assets/art/items_hd/starfall_halo.png" id="3_fsvlt"]
 
 [sub_resource type="Resource" id="Resource_6egtk"]
 script = ExtResource("2_64ji7")
@@ -21,3 +21,5 @@ rarity = 4
 description = "วงแหวนดาวตกที่ลอยเหนือศีรษะ"
 stats = SubResource("Resource_6egtk")
 texture = ExtResource("3_fsvlt")
+layer_offset = Vector2(0, -30)
+layer_scale = 0.3

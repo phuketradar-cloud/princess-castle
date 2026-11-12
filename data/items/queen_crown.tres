@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_6iba8"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_a33d4"]
-[ext_resource type="Texture2D" path="res://assets/art/items/queen_crown.png" id="3_r17wu"]
+[ext_resource type="Texture2D" path="res://assets/art/items_hd/queen_crown.png" id="3_r17wu"]
 
 [sub_resource type="Resource" id="Resource_1dnew"]
 script = ExtResource("2_a33d4")
@@ -20,3 +20,5 @@ rarity = 3
 description = "มันสวยเกินไปหรือเปล่านะ?"
 stats = SubResource("Resource_1dnew")
 texture = ExtResource("3_r17wu")
+layer_offset = Vector2(0, -6)
+layer_scale = 0.215

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_jd1ah"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_eovfv"]
-[ext_resource type="Texture2D" path="res://assets/art/items/rose_knight_armor.png" id="3_6fahr"]
+[ext_resource type="Texture2D" path="res://assets/art/items_hd/rose_knight_armor.png" id="3_6fahr"]
 
 [sub_resource type="Resource" id="Resource_fqwng"]
 script = ExtResource("2_eovfv")

@@ -16,7 +16,31 @@ const E_LIGHT := CardTypes.Element.LIGHT
 const E_DRAGON := CardTypes.Element.DRAGON
 ## id -> [layer_scale, layer_offset]: grip of the rose rapier lands on the hand anchor
 ## (art from tools/build_princess_art_v2.gd).
-const HD_ITEMS := {"rose_rapier": [0.155, Vector2(-49.8, 36.3)], "silver_tiara": [0.062, Vector2(0, 0)]}
+## AI item art (assets/art/items_hd, tools/build_item_art.gd): [layer scale, offset from the slot
+## anchor]. Weapons: offset = (image centre - grip) x scale, so the grip sits in her fist.
+## Armor / accessories are not drawn on the HD princesses (outfit = armor): icon only.
+const HD_ITEMS := {
+	"rose_rapier": [0.155, Vector2(-49.8, 36.3)],
+	"rusty_sword": [0.19, Vector2(16.5, -31.4)],
+	"moonlight_blade": [0.21, Vector2(28.6, -43.9)],
+	"dragon_sword": [0.22, Vector2(33.2, -61.8)],
+	"abyss_scythe": [0.28, Vector2(53.5, -54.6)],
+	"silver_tiara": [0.062, Vector2(0, 0)],
+	"ribbon_bow": [0.19, Vector2(-12, 2)],
+	"witch_hat": [0.33, Vector2(0, -14)],
+	"queen_crown": [0.215, Vector2(0, -6)],
+	"starfall_halo": [0.3, Vector2(0, -30)],
+	"moth_wings": [0.65, Vector2.ZERO],
+	"bat_wings": [0.7, Vector2.ZERO],
+	"fairy_wings": [0.7, Vector2.ZERO],
+	"dragon_wings": [0.75, Vector2.ZERO],
+	"seraph_wings": [0.9, Vector2.ZERO],
+	"leather_corset": [1.0, Vector2.ZERO], "lace_guard_dress": [1.0, Vector2.ZERO],
+	"thorn_plate": [1.0, Vector2.ZERO], "rose_knight_armor": [1.0, Vector2.ZERO],
+	"clover_charm": [1.0, Vector2.ZERO], "ruby_pendant": [1.0, Vector2.ZERO],
+	"vampire_locket": [1.0, Vector2.ZERO], "mirror_of_thorns": [1.0, Vector2.ZERO],
+	"moon_tear": [1.0, Vector2.ZERO],
+}
 
 
 func _init() -> void:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_repbh"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_hewrh"]
-[ext_resource type="Texture2D" path="res://assets/art/items/seraph_wings.png" id="3_crn1n"]
+[ext_resource type="Texture2D" path="res://assets/art/items_hd/seraph_wings.png" id="3_crn1n"]
 
 [sub_resource type="Resource" id="Resource_m84s7"]
 script = ExtResource("2_hewrh")
@@ -20,3 +20,4 @@ rarity = 4
 description = "ปีกเทวดาหกชั้น"
 stats = SubResource("Resource_m84s7")
 texture = ExtResource("3_crn1n")
+layer_scale = 0.9

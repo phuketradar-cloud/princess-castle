@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_ygbuw"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_ch21u"]
-[ext_resource type="Texture2D" path="res://assets/art/items/dragon_wings.png" id="3_4gx4j"]
+[ext_resource type="Texture2D" path="res://assets/art/items_hd/dragon_wings.png" id="3_4gx4j"]
 
 [sub_resource type="Resource" id="Resource_ft77d"]
 script = ExtResource("2_ch21u")
@@ -20,3 +20,4 @@ rarity = 3
 description = "ฉันดูน่ากลัวขึ้นไหม?"
 stats = SubResource("Resource_ft77d")
 texture = ExtResource("3_4gx4j")
+layer_scale = 0.75

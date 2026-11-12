@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_8plg1"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_psun7"]
-[ext_resource type="Texture2D" path="res://assets/art/items/clover_charm.png" id="3_mp1st"]
+[ext_resource type="Texture2D" path="res://assets/art/items_hd/clover_charm.png" id="3_mp1st"]
 
 [sub_resource type="Resource" id="Resource_j020q"]
 script = ExtResource("2_psun7")

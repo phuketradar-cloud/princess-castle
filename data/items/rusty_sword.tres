@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_rxses"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_8h8up"]
-[ext_resource type="Texture2D" path="res://assets/art/items/rusty_sword.png" id="3_71ydu"]
+[ext_resource type="Texture2D" path="res://assets/art/items_hd/rusty_sword.png" id="3_71ydu"]
 
 [sub_resource type="Resource" id="Resource_plxin"]
 script = ExtResource("2_8h8up")
@@ -16,3 +16,5 @@ display_name = "Rusty Sword"
 description = "ดาบเก่าจากคลังอาวุธของปราสาท"
 stats = SubResource("Resource_plxin")
 texture = ExtResource("3_71ydu")
+layer_offset = Vector2(16.5, -31.4)
+layer_scale = 0.19

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_iv32g"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_xbsfw"]
-[ext_resource type="Texture2D" path="res://assets/art/items/fairy_wings.png" id="3_pp5bi"]
+[ext_resource type="Texture2D" path="res://assets/art/items_hd/fairy_wings.png" id="3_pp5bi"]
 
 [sub_resource type="Resource" id="Resource_1x50n"]
 script = ExtResource("2_xbsfw")
@@ -20,3 +20,4 @@ rarity = 2
 description = "ปีกนางฟ้าโปร่งแสง"
 stats = SubResource("Resource_1x50n")
 texture = ExtResource("3_pp5bi")
+layer_scale = 0.7

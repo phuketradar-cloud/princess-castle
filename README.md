@@ -321,6 +321,13 @@ GODOT="$HOME/Downloads/Godot_v4.6.2-stable_win64.exe/Godot_v4.6.2-stable_win64_c
 - ภาพรวมสีหน้าวางแบบไหนก็ได้ (3×3 หรือ 4/3/3) — หัวที่ชิดกันจะถูกแยกเอง, `sheet_order` บอกชื่อแต่ละหัว ("skip" = หัวซ้ำ)
 - Light ใช้พื้นชมพู (`"key": "magenta"`) เพราะตาสีเขียว; Dragon ผมแดง (`"hair": "red"`) และคางในภาพสีหน้าสั้นไม่เท่ากัน → `align_chin` / `chin_guard`
 
+## 6h. อุปกรณ์จาก AI (ครบ 28 ชิ้น)
+- ต้นฉบับ: `assets/art/source/items/` — weapons / headgear / wings / icons (.jpg) บนพื้นเขียว หลายชิ้นต่อภาพ
+- สร้างใหม่: `"$GODOT" --headless --path . --script res://tools/build_item_art.gd` แล้วรัน `tools/generate_data.gd`
+- แต่ละภาพกำหนดช่อง (cell) ของแต่ละชิ้นใน `SHEETS`; ประกายเล็กๆ / ปีกอีกข้างจะถูกรวมเข้าชิ้นที่ใกล้ที่สุด
+- ขนาด/ตำแหน่งบนตัว: `HD_ITEMS` ใน `tools/generate_data.gd` (อาวุธ: offset = (กลางภาพ − ด้ามจับ) × scale)
+- ชุดเกราะ / เครื่องราง ไม่วาดทับตัวเจ้าหญิง (ชุดของเธอคือเกราะแล้ว) — แสดงเป็นไอคอนในกระเป๋า/รางวัล
+
 ## 6c. เล่นผ่านเว็บ
 - **เล่นเลย:** https://phuketradar-cloud.github.io/princess-castle/ (คอมและเบราว์เซอร์มือถือ, ไม่ต้องติดตั้ง, โหลดครั้งแรก ~10 MB)
 - เซฟเก็บในเบราว์เซอร์ (IndexedDB) แยกจากเวอร์ชัน Windows/Android · ล้างข้อมูลเว็บไซต์ = เซฟหาย

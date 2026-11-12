@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/items/equipment_definition.gd" id="1_bucsp"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_ybyir"]
-[ext_resource type="Texture2D" path="res://assets/art/items/ribbon_bow.png" id="3_ae0a3"]
+[ext_resource type="Texture2D" path="res://assets/art/items_hd/ribbon_bow.png" id="3_ae0a3"]
 
 [sub_resource type="Resource" id="Resource_78t0n"]
 script = ExtResource("2_ybyir")
@@ -18,3 +18,5 @@ slot = 1
 description = "โบว์นำโชค"
 stats = SubResource("Resource_78t0n")
 texture = ExtResource("3_ae0a3")
+layer_offset = Vector2(-12, 2)
+layer_scale = 0.19
