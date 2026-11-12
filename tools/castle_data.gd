@@ -368,6 +368,30 @@ const HD_ART := {
 		"anchors": {ItemTypes.Slot.WEAPON: Vector2(58.5, -113.9), ItemTypes.Slot.HEADGEAR: Vector2(7.5, -225.4),
 			ItemTypes.Slot.WING: Vector2(-4.4, -126.8)},
 	},
+	# tools/build_princess_art_sheet.gd: body px from feet x 0.35
+	"shadow_princess": {
+		"dir": "res://assets/art/princesses/shadow_princess_hd",
+		"art_scale": 0.35,
+		"face_anchor": Vector2(14.0, -178.9),
+		"anchors": {ItemTypes.Slot.WEAPON: Vector2(52.2, -141.8), ItemTypes.Slot.HEADGEAR: Vector2(3.2, -226.8),
+			ItemTypes.Slot.WING: Vector2(-2.1, -127.0)},
+	},
+	# tools/build_princess_art_sheet.gd (mirrored art): body px from feet x 0.34
+	"light_princess": {
+		"dir": "res://assets/art/princesses/light_princess_hd",
+		"art_scale": 0.34,
+		"face_anchor": Vector2(13.8, -168.1),
+		"anchors": {ItemTypes.Slot.WEAPON: Vector2(64.3, -131.6), ItemTypes.Slot.HEADGEAR: Vector2(6.5, -227.0),
+			ItemTypes.Slot.WING: Vector2(-4.0, -127.0)},
+	},
+	# tools/build_princess_art_sheet.gd: body px from feet x 0.33 (her art is taller: horns)
+	"dragon_princess": {
+		"dir": "res://assets/art/princesses/dragon_princess_hd",
+		"art_scale": 0.33,
+		"face_anchor": Vector2(14.5, -149.3),
+		"anchors": {ItemTypes.Slot.WEAPON: Vector2(57.1, -95.7), ItemTypes.Slot.HEADGEAR: Vector2(13.2, -208.6),
+			ItemTypes.Slot.WING: Vector2(-3.3, -116.0)},
+	},
 }
 
 
@@ -402,4 +426,7 @@ static func _room_layouts() -> Array:
 
 
 ## HD starter weapons: id -> [layer_scale, layer_offset] (grip lands on the hand anchor).
-const STARTER_HD := {"apprentice_wand": [0.15, Vector2(34.2, -30.2)]}
+const STARTER_HD := {"apprentice_wand": [0.15, Vector2(34.2, -30.2)],
+	"twin_dagger": [0.075, Vector2(21.6, 12.5)],
+	"prayer_staff": [0.22, Vector2(13.75, -17.4)],
+	"scale_club": [0.07, Vector2(32.4, -16.0)]}

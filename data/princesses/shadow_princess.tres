@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_8lb21"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_has41"]
-[ext_resource type="Texture2D" path="res://assets/art/princesses/shadow_princess/body.png" id="3_7pg8o"]
+[ext_resource type="Texture2D" path="res://assets/art/princesses/shadow_princess_hd/body.png" id="3_7pg8o"]
 [ext_resource type="Resource" path="res://data/cards/night_veil.tres" id="4_qrgpt"]
 [ext_resource type="Resource" path="res://data/furniture/starry_canopy_bed.tres" id="5_u6bub"]
 [ext_resource type="Script" path="res://scripts/data/princess_definition.gd" id="6_1pb2v"]
@@ -61,7 +61,8 @@ personality = 2
 wing = 2
 unlock_clears = 2
 liked_material = "shadow"
-face_dir = "res://assets/art/princesses/shadow_princess"
+face_dir = "res://assets/art/princesses/shadow_princess_hd"
+face_anchor = Vector2(14, -178.9)
 bond_card = ExtResource("4_qrgpt")
 bond_cosmetic = ExtResource("5_u6bub")
 unlock_stage = "stage_02"
@@ -74,3 +75,9 @@ growth_luck = 0.8
 assist = SubResource("Resource_8lb21")
 activity_weights = PackedFloat32Array(0.8, 1.5, 1, 0.6, 0.8, 3, 0.6)
 battle_texture = ExtResource("3_7pg8o")
+art_scale = 0.35
+slot_anchors = {
+0: Vector2(52.2, -141.8),
+1: Vector2(3.2, -226.8),
+2: Vector2(-2.1, -127)
+}

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_4h43x"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_m6ps8"]
-[ext_resource type="Texture2D" path="res://assets/art/princesses/dragon_princess/body.png" id="3_t3we4"]
+[ext_resource type="Texture2D" path="res://assets/art/princesses/dragon_princess_hd/body.png" id="3_t3we4"]
 [ext_resource type="Resource" path="res://data/cards/dragon_soul.tres" id="4_le3o8"]
 [ext_resource type="Resource" path="res://data/furniture/pink_canopy_bed.tres" id="5_ool72"]
 [ext_resource type="Script" path="res://scripts/data/princess_definition.gd" id="6_araw4"]
@@ -64,7 +64,8 @@ personality = 4
 wing = 4
 unlock_clears = 4
 liked_material = "dragon"
-face_dir = "res://assets/art/princesses/dragon_princess"
+face_dir = "res://assets/art/princesses/dragon_princess_hd"
+face_anchor = Vector2(14.5, -149.3)
 bond_card = ExtResource("4_le3o8")
 bond_cosmetic = ExtResource("5_ool72")
 unlock_stage = "stage_03"
@@ -75,3 +76,9 @@ growth_luck = 0.3
 assist = SubResource("Resource_4h43x")
 activity_weights = PackedFloat32Array(1, 0.8, 2, 0.3, 2, 0.8, 0.5)
 battle_texture = ExtResource("3_t3we4")
+art_scale = 0.33
+slot_anchors = {
+0: Vector2(57.1, -95.7),
+1: Vector2(13.2, -208.6),
+2: Vector2(-3.3, -116)
+}

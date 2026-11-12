@@ -313,10 +313,13 @@ GODOT="$HOME/Downloads/Godot_v4.6.2-stable_win64.exe/Godot_v4.6.2-stable_win64_c
 - สร้างใหม่: `"$GODOT" --headless --path . --script res://tools/build_battle_art.gd` แล้วรัน `tools/generate_data.gd` (ขนาดมอนสเตอร์ / ตำแหน่งพื้นหลังอยู่ใน `tools/battle_data.gd`)
 - เอฟเฟกต์ (`scripts/battle/battle_fx.gd`, สร้างด้วยโค้ด): รอยฟันดาบ, ประกาย, ไฟ/พิษ/น้ำแข็ง, ฮีล, วงแหวนโล่/เรียกลูกน้อง/บอสเปลี่ยนเฟส, จอสั่น (ปิดได้ในตั้งค่า), ป้ายชื่อบอส
 
-## 6g. เจ้าหญิงจาก AI แบบภาพรวมสีหน้า (Magic Princess)
+## 6g. เจ้าหญิงจาก AI แบบภาพรวมสีหน้า (Magic, Shadow, Light, Dragon)
 - ต้นฉบับ: `assets/art/source/magic/` — ตัวเต็ม + ภาพรวม 9 สีหน้า (ตาราง 3×3) + อาวุธ บนพื้นเขียว
 - สร้างใหม่: `"$GODOT" --headless --path . --script res://tools/build_princess_art_sheet.gd -- --princess=magic_princess` แล้วรัน `tools/generate_data.gd`
 - เครื่องมือหาตาจากสีตาดำ, ย่อ/หมุนหน้าให้ตรงกับตัว, ปรับสีผิว, กลับภาพถ้า AI วาดหันซ้าย — เพิ่มเจ้าหญิงคนใหม่ได้ใน `CONFIG` บนสุดของไฟล์
+- ครบ 4 คนแล้ว: `magic_princess`, `shadow_princess`, `light_princess`, `dragon_princess` (`--princess=<id>`)
+- ภาพรวมสีหน้าวางแบบไหนก็ได้ (3×3 หรือ 4/3/3) — หัวที่ชิดกันจะถูกแยกเอง, `sheet_order` บอกชื่อแต่ละหัว ("skip" = หัวซ้ำ)
+- Light ใช้พื้นชมพู (`"key": "magenta"`) เพราะตาสีเขียว; Dragon ผมแดง (`"hair": "red"`) และคางในภาพสีหน้าสั้นไม่เท่ากัน → `align_chin` / `chin_guard`
 
 ## 6c. เล่นผ่านเว็บ
 - **เล่นเลย:** https://phuketradar-cloud.github.io/princess-castle/ (คอมและเบราว์เซอร์มือถือ, ไม่ต้องติดตั้ง, โหลดครั้งแรก ~10 MB)

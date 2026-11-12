@@ -52,6 +52,22 @@ func _init() -> void:
 	quit()
 
 
+## Magenta screen (#FF00FF) for art with green in it (e.g. green eyes): alpha from how much
+## more red+blue than green a pixel has; despill pulls blue back to green.
+static func key_magenta(src: Image) -> Image:
+	var img := src.duplicate() as Image
+	for y in img.get_height():
+		for x in img.get_width():
+			var c := img.get_pixel(x, y)
+			var m := minf(c.r, c.b) - c.g
+			var a := clampf(1.0 - (m - 0.12) / 0.25, 0.0, 1.0)
+			if a < 1.0:
+				c.b = minf(c.b, c.g)
+			c.a = a
+			img.set_pixel(x, y, c if a > 0.02 else Color(0, 0, 0, 0))
+	return img
+
+
 static func key_green(src: Image) -> Image:
 	var img := src.duplicate() as Image
 	for y in img.get_height():
