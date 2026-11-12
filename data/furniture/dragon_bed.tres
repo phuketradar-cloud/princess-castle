@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_114wd"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_dfxk5"]
-[ext_resource type="Texture2D" path="res://assets/art/furniture/dragon_bed.png" id="3_1yfu8"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture_hd/dragon_bed.png" id="3_1yfu8"]
 
 [sub_resource type="Resource" id="Resource_y34si"]
 script = ExtResource("2_dfxk5")
@@ -18,6 +18,7 @@ room_type = 4
 description = "เตียงเกล็ดมังกร — เฉพาะห้องมังกร"
 stats = SubResource("Resource_y34si")
 texture = ExtResource("3_1yfu8")
+room_scale = 1.15
 recipe = {
 "dragon": 4,
 "dragon_scale": 2

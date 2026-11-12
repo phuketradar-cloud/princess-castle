@@ -308,6 +308,11 @@ GODOT="$HOME/Downloads/Godot_v4.6.2-stable_win64.exe/Godot_v4.6.2-stable_win64_c
 - สร้างใหม่: `"$GODOT" --headless --path . --script res://tools/build_room_art.gd` แล้วรัน `tools/generate_data.gd`
 - ตำแหน่งเฟอร์นิเจอร์ / หน้าต่าง / จุดนอน-อ่าน-จิบชา ของแต่ละห้องอยู่ใน `RoomLayout` (`tools/castle_data.gd` → `_room_layouts()`) — ห้องอื่นเพิ่มได้โดยไม่แก้โค้ด
 
+## 6e2. ห้องเจ้าหญิงอีก 4 ห้อง (Magic, Shadow, Light, Dragon)
+- ต้นฉบับ: `assets/art/source/rooms/<wing>_bg.jpg` + `wing_furniture.jpg` (เฟอร์นิเจอร์เฉพาะห้อง 4 ชิ้น)
+- ห้อง: `tools/build_room_art.gd` (`BACKGROUNDS`); เฟอร์นิเจอร์เฉพาะห้อง: `tools/build_item_art.gd` แล้วรัน `tools/generate_data.gd`
+- 4 ห้องใช้มุมกล้องเดียวกัน → ตำแหน่งเฟอร์นิเจอร์ชุดเดียวใน `_room_layouts()`; ขนาดชิ้นใหญ่ปรับใน `HD_FURNITURE_SCALE_BY_ID`
+
 ## 6f. ฉากต่อสู้จาก AI + เอฟเฟกต์
 - ต้นฉบับ: `assets/art/source/battle/` — พื้นหลัง 4 ด่าน (`bg_stage_0N.jpg`) + มอนสเตอร์ 4 ภาพรวมบนพื้นเขียว (`monsters_stage_0N.jpg`, เรียงซ้ายไปขวา)
 - สร้างใหม่: `"$GODOT" --headless --path . --script res://tools/build_battle_art.gd` แล้วรัน `tools/generate_data.gd` (ขนาดมอนสเตอร์ / ตำแหน่งพื้นหลังอยู่ใน `tools/battle_data.gd`)

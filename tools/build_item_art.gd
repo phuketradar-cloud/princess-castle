@@ -1,5 +1,6 @@
 extends SceneTree
 ## Equipment art from AI sheets in assets/art/source/items/ (green screen) -> assets/art/items_hd/<id>.png
+## (also the wing-only furniture sheet in source/rooms/ -> assets/art/furniture_hd/<id>.png)
 ## Each sheet lists its items with a cell (sheet px): a big island belongs to the cell holding its
 ## centre; small bits (sparkles, glow specks, the second half of a wing pair) join the nearest item.
 ##   Godot_console.exe --headless --path . --script res://tools/build_item_art.gd
@@ -7,6 +8,7 @@ extends SceneTree
 
 const SRC := "res://assets/art/source/items/"
 const OUT := "res://assets/art/items_hd"
+const FURN_OUT := "res://assets/art/furniture_hd"
 const BIG_AREA := 2500   ## islands at least this big are item parts
 const MIN_BIT := 25      ## smaller islands are compression noise
 
@@ -24,6 +26,11 @@ const SHEETS := {
 		["moth_wings", Rect2i(0, 0, 300, 768)], ["bat_wings", Rect2i(300, 0, 265, 768)],
 		["fairy_wings", Rect2i(565, 0, 240, 768)], ["dragon_wings", Rect2i(805, 0, 275, 768)],
 		["seraph_wings", Rect2i(1080, 0, 296, 768)],
+	],
+	# wing-only furniture (one per princess room) -> furniture_hd
+	"res://assets/art/source/rooms/wing_furniture.jpg": [
+		["frozen_library", Rect2i(0, 0, 430, 768)], ["shadow_mirror", Rect2i(430, 0, 260, 768)],
+		["light_throne", Rect2i(690, 0, 270, 768)], ["dragon_bed", Rect2i(960, 0, 416, 768)],
 	],
 	# 4 columns: armor / dress / plate ... ; the last column holds 3 small pendants
 	"icons.jpg": [
@@ -46,9 +53,13 @@ func _init() -> void:
 
 
 func _cut(file: String, items: Array) -> bool:
-	var img := Image.load_from_file(ProjectSettings.globalize_path(SRC + file))
+	var path := file if file.begins_with("res://") else SRC + file
+	var out_dir := FURN_OUT if file.contains("/rooms/") else OUT
+	var img := Image.load_from_file(ProjectSettings.globalize_path(path))
 	img.convert(Image.FORMAT_RGBA8)
 	var keyed: Image = load("res://tools/build_room_art.gd").key_green(img)
+	if file.contains("/rooms/"):
+		_despill(keyed) # purple mirror smoke picks up a green tint from the screen
 	var battle = load("res://tools/build_battle_art.gd")
 	var lab: Dictionary = battle._label(keyed)
 	var groups := []
@@ -98,9 +109,19 @@ func _cut(file: String, items: Array) -> bool:
 				var p := r.position + Vector2i(x, y)
 				if keep.has(lab.map[p.y * w + p.x]):
 					out.set_pixel(x, y, keyed.get_pixelv(p))
-		out.save_png(ProjectSettings.globalize_path("%s/%s.png" % [OUT, items[g][0]]))
+		out.save_png(ProjectSettings.globalize_path("%s/%s.png" % [out_dir, items[g][0]]))
 		print("%-18s %s parts %d" % [items[g][0], r.size, groups[g].labels.size()])
 	return true
+
+
+## Any pixel greener than both red and blue loses the extra green (screen spill).
+static func _despill(img: Image) -> void:
+	for y in img.get_height():
+		for x in img.get_width():
+			var c := img.get_pixel(x, y)
+			if c.a > 0.0 and c.g > maxf(c.r, c.b):
+				c.g = maxf(c.r, c.b)
+				img.set_pixel(x, y, c)
 
 
 static func _add(group: Dictionary, isl: Dictionary) -> void:

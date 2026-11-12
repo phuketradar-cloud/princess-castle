@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_0270d"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_e7i2p"]
-[ext_resource type="Texture2D" path="res://assets/art/furniture/shadow_mirror.png" id="3_4p5o6"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture_hd/shadow_mirror.png" id="3_4p5o6"]
 
 [sub_resource type="Resource" id="Resource_1ecda"]
 script = ExtResource("2_e7i2p")

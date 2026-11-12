@@ -78,7 +78,7 @@ static func generate(saver: Callable) -> bool:
 		# HD art from tools/build_room_art.gd replaces the placeholder when present.
 		if ResourceLoader.exists("res://assets/art/furniture_hd/%s.png" % f.id):
 			f.texture = load("res://assets/art/furniture_hd/%s.png" % f.id)
-			f.room_scale = HD_FURNITURE_SCALE
+			f.room_scale = HD_FURNITURE_SCALE_BY_ID.get(f.id, HD_FURNITURE_SCALE)
 		var path := "res://data/furniture/%s.tres" % f.id
 		ok = saver.call(f, path) and ok
 		furniture[f.id] = load(path)
@@ -405,6 +405,8 @@ static func _apply_hd_art(p: PrincessDefinition, art: Dictionary) -> void:
 
 ## HD furniture (AI art) is drawn this much larger in the room.
 const HD_FURNITURE_SCALE := 1.45
+## Wing-only pieces are drawn bigger in their sheet: scaled down to fit the room.
+const HD_FURNITURE_SCALE_BY_ID := {"frozen_library": 1.0, "shadow_mirror": 1.0, "light_throne": 0.95, "dragon_bed": 1.15}
 
 
 ## Rooms with real background art: positions read off the background (1920x1080 screen,
@@ -422,7 +424,25 @@ static func _room_layouts() -> Array:
 	var A := CastleTypes.Activity
 	# Activity spots tuned to this art: lie on the mattress, read / drink tea in front of the desk.
 	sword.spot_offsets = {A.SLEEPING: Vector2(215, -180), A.READING: Vector2(-200, 70), A.DRINKING_TEA: Vector2(-40, 110)}
-	return [sword]
+	var out := [sword]
+	# The other four rooms share one AI composition (same corner, window left of centre); their
+	# floor starts ~55 px lower than the sword room's, so the back-wall pieces sit lower.
+	var W := CastleTypes.Wing
+	for wing in [[W.MAGIC, "magic_wing"], [W.SHADOW, "shadow_wing"], [W.LIGHT, "light_wing"], [W.DRAGON, "dragon_wing"]]:
+		var path := "res://assets/art/rooms_hd/%s.png" % wing[1]
+		if not ResourceLoader.exists(path):
+			continue
+		var r := RoomLayout.new()
+		r.wing = wing[0]
+		r.background = load(path)
+		r.slot_positions = {SLOT.BED: Vector2(350, 1010), SLOT.DESK: Vector2(1310, 880),
+			SLOT.TRAINING: Vector2(1540, 1020), SLOT.DECOR: Vector2(1040, 860)}
+		r.slot_depth_scale = sword.slot_depth_scale.duplicate()
+		r.window_spot = Vector2(560, 885)
+		r.stand_spot = Vector2(960, 1000)
+		r.spot_offsets = sword.spot_offsets.duplicate()
+		out.append(r)
+	return out
 
 
 ## HD starter weapons: id -> [layer_scale, layer_offset] (grip lands on the hand anchor).

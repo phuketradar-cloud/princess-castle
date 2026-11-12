@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/castle/furniture_definition.gd" id="1_51wox"]
 [ext_resource type="Script" path="res://scripts/combat/stat_block.gd" id="2_1g54l"]
-[ext_resource type="Texture2D" path="res://assets/art/furniture/light_throne.png" id="3_c7hn5"]
+[ext_resource type="Texture2D" path="res://assets/art/furniture_hd/light_throne.png" id="3_c7hn5"]
 
 [sub_resource type="Resource" id="Resource_7bn6n"]
 script = ExtResource("2_1g54l")
@@ -20,6 +20,7 @@ room_type = 3
 description = "บัลลังก์แสง — เฉพาะห้องแสง"
 stats = SubResource("Resource_7bn6n")
 texture = ExtResource("3_c7hn5")
+room_scale = 0.95
 recipe = {
 "holy_fragment": 2,
 "light": 6
