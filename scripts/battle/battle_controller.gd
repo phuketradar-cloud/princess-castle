@@ -78,7 +78,6 @@ var reward_screen: RewardScreen
 var equipment_screen: EquipmentScreen
 var cards_screen: CardsScreen
 var settings_screen: SettingsScreen
-var settings_button: Button
 ## Essences dropped by the last won encounter (key -> amount).
 var last_drops := {}
 var roster: PrincessRoster
@@ -97,6 +96,11 @@ var last_exp := 0
 var last_level_ups := 0
 var companion_unit: CombatUnit
 var _slot_of := {} # unit id -> enemy_slots index
+## Auto battle (the AUTO button): plays cards + actions with the same smart policy the tests use.
+## Kept for the whole session so it stays on from battle to battle.
+static var auto_session := false
+var _policy := AutoBattlePolicy.new()
+var _auto_cards := 0
 
 
 func _ready() -> void:
@@ -108,6 +112,8 @@ func _ready() -> void:
 	hud.cards_pressed.connect(open_cards)
 	hud.castle_pressed.connect(go_to_castle)
 	hud.card_pressed.connect(_on_card_pressed)
+	hud.auto_toggled.connect(set_auto)
+	hud.set_auto(auto_session)
 
 	game_state = get_node_or_null("/root/GameState")
 	if game_state == null:
@@ -144,7 +150,6 @@ func _ready() -> void:
 	settings_screen = SettingsScreen.new()
 	add_child(settings_screen)
 	settings_screen.new_game_started.connect(go_to_castle)
-	_add_settings_button()
 	for layer in [hud, reward_screen, equipment_screen, cards_screen, settings_screen]:
 		SafeArea.apply_to_layer(layer)
 
@@ -225,6 +230,7 @@ func _begin_encounter(index: int) -> void:
 	_view(player).set_equipment(gear)
 	_view(player).doll.setup_face(princess.face_dir, princess.face_anchor)
 	_view(player).place_status_beside_hp() # keeps it clear of the battle log (top-left)
+	_view(player).hide_name_and_hp() # shown on the HUD plate instead
 
 	# Companion: back row, smaller, never targeted; assists automatically.
 	companion_unit = null
@@ -279,7 +285,9 @@ func _begin_encounter(index: int) -> void:
 	select_target(engine.first_targetable_enemy().id)
 
 	hud.set_player(_player_label(), player.current_hp, player.stats.max_hp, true)
-	hud.set_hint("แตะมอนสเตอร์เพื่อเลือกเป้าหมาย • ใช้การ์ดได้หลายใบก่อนโจมตี (ใช้มานา)")
+	_refresh_action_icons()
+	_refresh_materials()
+	hud.set_hint("แตะมอนสเตอร์เพื่อเลือกเป้าหมาย • ใช้การ์ดได้หลายใบก่อนโจมตี (ใช้มานา) • ESC / ปุ่มย้อนกลับ = ตั้งค่า")
 	hud.log_line("มอนสเตอร์ %d ตัวปรากฏตัว!" % enemies.size())
 	if companion_unit != null:
 		hud.log_line("ผู้ช่วย: %s (%s ทุก %d รอบ)" % [companion.display_name, companion.assist.display_name, companion.assist_interval])
@@ -339,7 +347,9 @@ func _run_turn_loop(first_events: Array[BattleEvent]) -> void:
 		if first:
 			select_target(first.id)
 	is_busy = false
+	_auto_cards = 0
 	_refresh_buttons()
+	_maybe_auto()
 
 
 func _on_ability_pressed(index: int) -> void:
@@ -384,6 +394,7 @@ func _run_card(events: Array[BattleEvent]) -> void:
 			select_target(first.id)
 	is_busy = false
 	_refresh_buttons()
+	_maybe_auto()
 
 
 func _execute(cmd: PlayerCommand) -> void:
@@ -415,6 +426,7 @@ func _handle_end() -> void:
 		var token := _token
 		var exp_text := _award_exp()
 		var drop_text := _collect_essences()
+		_refresh_materials()
 		var reward_text := await _offer_reward()
 		if token != _token:
 			return
@@ -617,7 +629,8 @@ func react(trigger: String, item: EquipmentDefinition = null) -> void:
 	pv.doll.set_expression(line.expression)
 	if _bubble != null and is_instance_valid(_bubble):
 		_bubble.queue_free()
-	_bubble = SpeechBubble.say(popups_root, pv.popup_position() + Vector2(0, -70), line.text, 2.8)
+	# just above her head (her name / HP bar are on the HUD plate, not over her)
+	_bubble = SpeechBubble.say(popups_root, pv.overhead.global_position + Vector2(0, 10), line.text, 2.8)
 	_expression_token += 1
 	var token := _expression_token
 	await get_tree().create_timer(2.8).timeout
@@ -626,26 +639,15 @@ func react(trigger: String, item: EquipmentDefinition = null) -> void:
 		pv.doll.set_expression(CastleTypes.Expr.NORMAL)
 
 
-## Small "ตั้งค่า" (settings) button in the top-right corner (settings can change speed / volume mid-fight).
-func _add_settings_button() -> void:
-	settings_button = UIKit.button("ตั้งค่า", UIKit.BUTTON_ALT, 26, Vector2(140, 76))
-	settings_button.name = "SettingsButton"
-	settings_button.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	settings_button.offset_left = -160
-	settings_button.offset_right = -20
-	settings_button.offset_top = 92
-	settings_button.offset_bottom = 168
-	settings_button.pressed.connect(func(): settings_screen.open())
-	hud.add_child(settings_button)
-
-
 ## Android Back (Esc on desktop): close overlays; leave to the castle only from a result screen.
+## Mid-fight it opens Settings (there is no settings button on the battle screen).
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		on_back()
 
 
-func _unhandled_input(event: InputEvent) -> void:
+# _input (not _unhandled): a focused button / slider in Settings must not swallow Esc.
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		on_back()
 		get_viewport().set_input_as_handled()
@@ -663,7 +665,7 @@ func on_back() -> void:
 	elif hud.is_result_visible():
 		go_to_castle()
 	else:
-		hud.log_line("กำลังต่อสู้อยู่ — จบการต่อสู้ก่อนจึงกลับปราสาทได้")
+		settings_screen.open()
 
 
 func go_to_castle() -> void:
@@ -1073,3 +1075,82 @@ func _format_statuses(unit: CombatUnit) -> String:
 	if unit.is_defending:
 		parts.append("GUARD")
 	return "  ".join(parts)
+
+
+# ------------------------------------------------------------ auto battle + HUD art
+
+func set_auto(on: bool) -> void:
+	auto_session = on
+	hud.set_auto(on)
+	if on:
+		_maybe_auto()
+
+
+## On the player's turn with AUTO on: play the best card (a few per turn), else act.
+func _maybe_auto() -> void:
+	if not auto_session or is_busy or engine == null or engine.phase != Phase.PLAYER_TURN:
+		return
+	var token := _token
+	await get_tree().create_timer(0.35 / _speed()).timeout
+	if token != _token or not auto_session or is_busy or engine == null or engine.phase != Phase.PLAYER_TURN:
+		return
+	if _auto_cards < 6:
+		var play := _policy.choose_card(engine)
+		if not play.is_empty():
+			_auto_cards += 1
+			if int(play.target) >= 0:
+				select_target(play.target)
+			_on_card_pressed(play.index)
+			return
+	var cmd := _policy.decide(engine)
+	if cmd.target_id >= 0:
+		select_target(cmd.target_id)
+	_execute(cmd)
+
+
+## Action card art: her weapon on Attack, a matching card icon on each skill, a shield on Defend.
+func _refresh_action_icons() -> void:
+	var weapon_icon: Texture2D = null
+	for item in collection.equipped_items(princess.id):
+		if item != null and item.slot == ItemTypes.Slot.WEAPON:
+			weapon_icon = UIKit.icon_texture(item)
+	var icons: Array = []
+	for i in hud.ability_buttons.size():
+		if engine == null or i >= engine.player.abilities.size():
+			icons.append(null)
+			continue
+		var spec := engine.player.abilities[i].spec
+		var card := "shadow_execution"
+		if i == 0 and weapon_icon != null:
+			icons.append(weapon_icon)
+			continue
+		var own := _card_icon("skill_" + spec.id) # her own skill art (tools/build_card_art.gd)
+		if own != null:
+			icons.append(own)
+			continue
+		if spec.target == CombatTypes.Target.ALL_OPPONENTS:
+			card = "meteor"
+		elif spec.heals():
+			card = "heal"
+		elif spec.status == CombatTypes.Status.STUN:
+			card = "fire_blast"
+		elif spec.status == CombatTypes.Status.SHIELD:
+			card = "holy_shield"
+		icons.append(_card_icon(card))
+	var defend := _card_icon("skill_defend")
+	hud.set_action_icons(icons, defend if defend != null else _card_icon("holy_shield"))
+
+
+func _card_icon(id: String) -> Texture2D:
+	var path := "res://assets/art/cards/%s.png" % id
+	return load(path) if ResourceLoader.exists(path) else null
+
+
+func _refresh_materials() -> void:
+	var counts: Array = []
+	for key in CastleTypes.MATERIALS:
+		var n := collection.essence(key)
+		var icon := CastleTypes.material_icon(key)
+		if n > 0 and icon != null:
+			counts.append({"icon": icon, "count": n})
+	hud.set_materials(counts)

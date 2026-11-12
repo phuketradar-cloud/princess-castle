@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CardDefinition" format=3]
 
 [ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_iq51o"]
-[ext_resource type="Texture2D" path="res://assets/art/cards/sleep.png" id="2_d3hxi"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/night_veil.png" id="2_d3hxi"]
 [ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_b5ofa"]
 
 [sub_resource type="Resource" id="Resource_w5c71"]

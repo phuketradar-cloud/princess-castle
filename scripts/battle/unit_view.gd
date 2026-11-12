@@ -49,9 +49,15 @@ func bind(p_unit: CombatUnit, texture: Texture2D, tint: Color, visual_scale: flo
 	name_label.text = ("[BOSS] " if unit.is_boss else "") + unit.unit_name
 	name_label.add_theme_color_override("font_color", Color(1, 0.84, 0.47) if unit.is_boss else Color(0.88, 0.82, 0.96))
 	hp_fill.color = player_hp_color if unit.team == CombatTypes.Team.PLAYER else enemy_hp_color
+	# Bosses get a longer bar and a gold frame (more intimidating than normal monsters).
+	if unit.is_boss:
+		hp_bar_width = 280.0
+		name_label.add_theme_font_size_override("font_size", 30)
 	hp_back.size = Vector2(hp_bar_width + 6, 22)
 	hp_back.position = Vector2(-hp_bar_width * 0.5 - 3, -25)
+	hp_back.color = Color(0, 0, 0, 0)
 	hp_fill.position = Vector2(-hp_bar_width * 0.5, -22)
+	_add_frame()
 
 	_shown_ratio = unit.hp_ratio()
 	set_hp(unit.current_hp, unit.stats.max_hp, true)
@@ -106,6 +112,15 @@ func set_support_mode() -> void:
 	hp_back.visible = false
 	hp_fill.visible = false
 	hp_label.visible = false
+	var frame := overhead.get_node_or_null("HpFrame")
+	if frame != null:
+		frame.visible = false
+
+
+## The princess: her name / HP live on the HUD plate, so only statuses stay above her head.
+func hide_name_and_hp() -> void:
+	set_support_mode()
+	name_label.visible = false
 
 
 ## Status text to the right of the HP bar instead of above the name (used for the princess,
@@ -136,6 +151,29 @@ func _process(delta: float) -> void:
 	if selection.visible:
 		var pulse := 1.0 + sin(_time * 6.0) * 0.06
 		selection.scale = Vector2(pulse, pulse)
+
+
+## Dark rounded plate with a frame behind the HP bar (gold for bosses).
+func _add_frame() -> void:
+	var old := overhead.get_node_or_null("HpFrame")
+	if old != null:
+		old.free()
+	var frame := Panel.new()
+	frame.name = "HpFrame"
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.03, 0.01, 0.06, 0.85)
+	sb.set_corner_radius_all(6)
+	sb.set_border_width_all(2 if not unit.is_boss else 3)
+	sb.border_color = Color(0.85, 0.68, 0.35) if unit.is_boss else Color(1, 1, 1, 0.3)
+	if unit.is_boss:
+		sb.shadow_color = Color(1, 0.3, 0.3, 0.35)
+		sb.shadow_size = 8
+	frame.add_theme_stylebox_override("panel", sb)
+	frame.position = hp_back.position + Vector2(-2, -2)
+	frame.size = hp_back.size + Vector2(4, 4)
+	frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	overhead.add_child(frame)
+	overhead.move_child(frame, hp_back.get_index())
 
 
 func _update_bar() -> void:

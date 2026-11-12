@@ -54,6 +54,9 @@ static func material_name(key: String) -> String:
 	return MATERIALS.get(key, key)
 
 static func material_icon(key: String) -> Texture2D:
+	var hd := "res://assets/art/materials_hd/%s.png" % key # AI icons (tools/build_material_art.gd)
+	if ResourceLoader.exists(hd):
+		return load(hd)
 	var path := "res://assets/art/cards/essence_%s.png" % key
 	if not ResourceLoader.exists(path):
 		path = "res://assets/art/materials/%s.png" % key

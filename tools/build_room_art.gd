@@ -8,7 +8,7 @@ extends SceneTree
 const SRC := "res://assets/art/source/rooms/"
 const ROOMS_OUT := "res://assets/art/rooms_hd"
 const FURN_OUT := "res://assets/art/furniture_hd"
-const BACKGROUNDS := ["sword_wing", "magic_wing", "shadow_wing", "light_wing", "dragon_wing"]
+const BACKGROUNDS := ["castle_overview", "sword_wing", "magic_wing", "shadow_wing", "light_wing", "dragon_wing"]
 ## Grid order of furniture_sheet.jpg (rows top to bottom, left to right).
 const SHEET_ORDER := [
 	"simple_bed", "old_desk", "wooden_dummy", "plain_chair",

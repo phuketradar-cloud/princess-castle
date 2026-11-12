@@ -105,8 +105,15 @@ func show_overview() -> void:
 	current = null
 	room_layout = null
 	_clear_room()
-	_bg.texture = load("res://assets/art/rooms/castle_overview.png")
-	_bg.scale = Vector2(5.4, 5.4)
+	const HD_HALL := "res://assets/art/rooms_hd/castle_overview.png" # AI castle hall at night
+	if ResourceLoader.exists(HD_HALL):
+		_bg.texture = load(HD_HALL)
+		var size := _bg.texture.get_size()
+		var cover := maxf(1920.0 / size.x, 1080.0 / size.y)
+		_bg.scale = Vector2(cover, cover)
+	else:
+		_bg.texture = load("res://assets/art/rooms/castle_overview.png")
+		_bg.scale = Vector2(5.4, 5.4)
 	_build_overview()
 
 
@@ -119,8 +126,8 @@ func _build_overview() -> void:
 	_overview.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_ui.add_child(_overview)
 	var shade_g := Gradient.new()
-	shade_g.set_color(0, Color(0.12, 0.05, 0.22, 0.55))
-	shade_g.set_color(1, Color(0.03, 0.01, 0.08, 0.85))
+	shade_g.set_color(0, Color(0.12, 0.05, 0.22, 0.2))
+	shade_g.set_color(1, Color(0.03, 0.01, 0.08, 0.45))
 	var shade_t := GradientTexture2D.new()
 	shade_t.gradient = shade_g
 	shade_t.fill_to = Vector2(0, 1)
@@ -146,7 +153,7 @@ func _build_overview() -> void:
 	var spacer := Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	th.add_child(spacer)
-	th.add_child(_materials_row(24))
+	th.add_child(_materials_row(20)) # compact: all 9 materials must fit
 	var gear := UIKit.button("ตั้งค่า", UIKit.BUTTON_ALT, 24, Vector2(130, 72))
 	gear.name = "SettingsButton"
 	gear.pressed.connect(open_settings)
@@ -927,7 +934,7 @@ func _close_panel() -> void:
 
 func _materials_row(size: int) -> Control:
 	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 14)
+	row.add_theme_constant_override("separation", 6)
 	for key in CastleTypes.MATERIALS:
 		var n := collection.essence(key)
 		if n <= 0:

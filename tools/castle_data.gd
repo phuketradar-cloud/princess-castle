@@ -106,7 +106,9 @@ static func generate(saver: Callable) -> bool:
 		c.rarity = R.LEGENDARY
 		c.mana_cost = row[4]
 		c.effect = row[5]
-		c.icon = load("res://assets/art/cards/%s.png" % row[6])
+		# own art when it exists (tools/build_card_art.gd), else the borrowed icon in row[6]
+		var own := "res://assets/art/cards/%s.png" % c.id
+		c.icon = load(own if ResourceLoader.exists(own) else "res://assets/art/cards/%s.png" % row[6])
 		c.description = row[7]
 		c.drop_weight = 0.0
 		var path := "res://data/cards/%s.tres" % c.id

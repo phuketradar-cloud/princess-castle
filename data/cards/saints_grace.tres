@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CardDefinition" format=3]
 
 [ext_resource type="Script" path="res://scripts/combat/ability_spec.gd" id="1_f0uo8"]
-[ext_resource type="Texture2D" path="res://assets/art/cards/heal.png" id="2_khx0r"]
+[ext_resource type="Texture2D" path="res://assets/art/cards/saints_grace.png" id="2_khx0r"]
 [ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="3_ioyms"]
 
 [sub_resource type="Resource" id="Resource_bec1x"]

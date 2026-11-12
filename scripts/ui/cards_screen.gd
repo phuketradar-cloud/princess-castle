@@ -280,7 +280,7 @@ func _essence_row() -> Control:
 		var key := CardTypes.element_key(e)
 		var box := HBoxContainer.new()
 		var tex := TextureRect.new()
-		tex.texture = load("res://assets/art/cards/essence_%s.png" % key)
+		tex.texture = CastleTypes.material_icon(key)
 		tex.custom_minimum_size = Vector2(56, 56)
 		tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
